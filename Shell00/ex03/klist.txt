@@ -1,5 +1,0 @@
-Credentials cache: API:E4A047C0-F58F-43BF-B82B-F89CB928C86C
-        Principal: wonyang@42SEOUL.KR
-
-  Issued                Expires               Principal
-May 17 15:04:12 2022  May 18 01:04:09 2022  krbtgt/42SEOUL.KR@42SEOUL.KR
