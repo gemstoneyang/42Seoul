@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:22:09 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/10 17:08:02 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/11 00:04:57 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LIBFT_H
 
 # include <stdlib.h>
-# include <unistd.h>
 
 typedef struct s_list
 {
@@ -41,9 +40,9 @@ char		*ft_strnstr(const char *str, const char *substr, size_t len);
 void		*ft_memset(void *ptr, int value, size_t len);
 void		ft_bzero(void *ptr, size_t len);
 void		*ft_memcpy(void *dst, const void *src, size_t len);
-void		*ft_memmove(void *dst, const void *src, size_t num);
-void		*ft_memchr(const void *ptr, int c, size_t num);
-int			ft_memcmp(const void *s1, const void *s2, size_t num);
+void		*ft_memmove(void *dst, const void *src, size_t len);
+void		*ft_memchr(const void *ptr, int c, size_t len);
+int			ft_memcmp(const void *s1, const void *s2, size_t len);
 
 int			ft_atoi(const char *str);
 

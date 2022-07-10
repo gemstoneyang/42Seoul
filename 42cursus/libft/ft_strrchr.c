@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 15:41:45 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/10 16:35:03 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/10 23:16:17 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 char	*ft_strrchr(const char *str, int c)
 {
-	unsigned char	ch;
-	char			*res;
-	size_t			i;
+	char	ch;
+	char	*res;
+	size_t	i;
 
-	ch = (unsigned char)c;
+	ch = (char)c;
 	res = 0;
 	i = 0;
 	while (str[i])

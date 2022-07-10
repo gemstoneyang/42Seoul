@@ -6,15 +6,15 @@
 /*   By: wonyang <wonyang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 16:59:16 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/09 20:09:54 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/10 20:07:27 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	res;
+	int		i;
+	int		sign;
+	long	res;
 
 	i = 0;
 	sign = 1;

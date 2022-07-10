@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 17:18:23 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/08 17:26:12 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/10 20:19:12 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strdup(const char *str)
 	if (!s)
 		return (s);
 	i = 0;
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		s[i] = str[i];
 		i++;

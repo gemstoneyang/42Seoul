@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 18:01:58 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/10 16:51:50 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/10 22:35:24 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t len)
 	s = (const unsigned char *)src;
 	while (i < len)
 	{
-		*(d + i) = *(s + i);
+		d[i] = s[i];
 		i++;
 	}
 	return (dst);
