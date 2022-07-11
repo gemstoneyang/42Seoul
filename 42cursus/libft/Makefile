@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.k>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/09 03:04:43 by wonyang           #+#    #+#              #
-#    Updated: 2022/07/10 21:24:44 by wonyang          ###   ########.fr        #
+#    Updated: 2022/07/11 21:50:55 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,8 +80,7 @@ $(NAME) : $(OBJ_FILES)
 	ar crs $(NAME) $(OBJ_FILES)
 
 bonus :
-	sleep 1
-	make WITH_BONUS=1 all
+	@make WITH_BONUS=1 all
 
 clean :
 	$(RM) $(OBJS) $(OBJS_BONUS)
