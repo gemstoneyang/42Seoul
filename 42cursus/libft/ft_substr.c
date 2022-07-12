@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:20:46 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/10 15:39:23 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/13 00:44:11 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	str_len = ft_strlen(s);
 	if (start >= str_len)
 		return (ft_strdup(""));
-	if (str_len >= len)
+	if (str_len >= len + start)
 		res = (char *)malloc((len + 1) * sizeof(char));
 	else
 		res = (char *)malloc((str_len - start + 1) * sizeof(char));

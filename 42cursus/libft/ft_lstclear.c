@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 00:41:42 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/10 12:54:51 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/12 16:49:24 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	t_list	*now;
 	t_list	*nxt;
 
-	if (!lst || !del)
-		return ;
 	now = *lst;
 	nxt = now->next;
 	while (nxt)

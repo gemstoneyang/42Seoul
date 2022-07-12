@@ -6,11 +6,10 @@
 /*   By: wonyang <wonyang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/09 05:03:34 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/09 14:08:59 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/12 16:53:17 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include <unistd.h>
 
 static void	int_to_char(int n, int fd)

@@ -6,13 +6,13 @@
 #    By: wonyang <wonyang@student.42seoul.k>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/09 03:04:43 by wonyang           #+#    #+#              #
-#    Updated: 2022/07/11 21:50:55 by wonyang          ###   ########.fr        #
+#    Updated: 2022/07/13 00:43:51 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-CC = gcc
+CC = cc
 RM = rm -rf
 CLFAGS = -Wall -Wextra -Werror
 
@@ -74,7 +74,7 @@ endif
 all : $(NAME)
 
 .c.o:
-	$(CC) $(CLFAGS) -g -c $< -o $(<:.c=.o)
+	$(CC) $(CLFAGS) -c $< -o $(<:.c=.o)
 
 $(NAME) : $(OBJ_FILES)
 	ar crs $(NAME) $(OBJ_FILES)
