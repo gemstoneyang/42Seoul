@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 03:22:52 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/18 23:04:21 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/19 02:58:30 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strndup(const char *str, size_t len);
 void	free_all(char **p1, char **p2);
-int	make_new_line(char **cache, char **buffer, char **result);
+int	make_new_line(char **cache, char buffer[BUFFER_SIZE + 1], char **result);
 char	*get_next_line(int fd);
 
 #endif
