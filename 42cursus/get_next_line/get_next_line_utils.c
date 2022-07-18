@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 03:23:05 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/17 23:09:27 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/18 19:21:47 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,24 +72,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t len)
 	return (count);
 }
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t len)
-{
-	size_t	i;
-	size_t	count;
-
-	i = 0;
-	count = ft_strlen(src);
-	if (len == 0)
-		return (count);
-	while (src[i] && i < len - 1)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (count);
-}
-
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	len;
@@ -104,21 +86,39 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_strchr(const char *str, int c)
 {
-	char	*res;
-	size_t	str_len;
+	char	ch;
+	size_t	i;
 
-	str_len = ft_strlen(s);
-	if (start >= str_len)
-		return (ft_calloc(1, sizeof(char)));
-	if (str_len >= len + start)
-		res = (char *)ft_calloc(len + 1, sizeof(char));
+	ch = (char)c;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == ch)
+			return ((char *)(str + i));
+		i++;
+	}
+	if (ch == '\0')
+		return ((char *)(str + i));
 	else
-		res = (char *)ft_calloc(str_len - start + 1, sizeof(char));
-	if (!res)
-		return (res);
-	ft_strlcpy(res, s + start, len + 1);
-	return (res);
+		return (0);
 }
 
+char	*ft_strndup(const char *str, size_t len)
+{
+	char	*s;
+	size_t	i;
+
+	s = (char *)malloc(sizeof(char) * (len + 1));
+	if (!s)
+	    return (s);
+	i = 0;
+	while (i < len)
+	{
+	    s[i] = str[i];
+	    i++;
+	}
+	s[i] = '\0';
+	return (s);
+}

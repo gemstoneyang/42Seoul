@@ -6,21 +6,11 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 03:28:01 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/18 01:15:11 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/18 23:06:12 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-size_t	find_ed_chr(char *buffer)
-{
-	size_t	i;
-
-	i = 0;
-	while (buffer[i] != '\0' && buffer[i] != '\n')
-		i++;
-	return (i);
-}
 
 void	free_all(char **p1, char **p2)
 {
@@ -30,137 +20,78 @@ void	free_all(char **p1, char **p2)
 	*p2 = NULL;
 }
 
+int make_new_line(char **cache, char **buffer, char **result)
+{
+    char    *nxt_chr;
+    char    *tmp;
+
+    if (ft_strlen(*buffer) == 0)
+    {
+	if (ft_strlen(*cache) == 0)
+	{
+	    free_all(buffer, cache);
+	    return (0);
+	}
+	*result = ft_strndup(*cache, ft_strlen(*cache));
+	free_all(buffer, cache);
+	return (1);
+    }
+    nxt_chr = ft_strchr(*buffer, '\n');
+    if (nxt_chr == NULL)
+    {
+	tmp = *cache;
+	*cache = ft_strjoin(tmp, *buffer);
+	free_all(&tmp, buffer);
+	return (0);
+    }
+    tmp = ft_strndup(*buffer, nxt_chr - *buffer + 1);
+    *result = ft_strjoin(*cache, tmp);
+    free_all(cache, &tmp);
+    *cache = ft_strndup(nxt_chr + 1, ft_strlen(nxt_chr + 1));
+    free(*buffer);
+    return (1);
+}
+
 char	*get_next_line(int fd)
 {
-    static char	*res;
+    static char	*cache;
     char	*buffer;
-    char    	*tmp;
-    char    	*value;
-    ssize_t 	size;
-    char	*sub_str;
-    
-    if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE < 1)
-	return (NULL);
+    char	*result;
+    size_t	read_size;
+
+    if (cache && ft_strchr(cache, '\n'))
+    {
+	buffer = cache;
+	cache = (char *)ft_calloc(1, sizeof(char));
+	make_new_line(&cache, &buffer, &result);
+	return (result);
+    }
     while (1)
     {
-	if (!res)
-	{
-	    res = (char *)ft_calloc(1, sizeof(char));
-	    if (!res)
-		return (res);
-	}
-    	buffer = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-    	if (!buffer)
-	{
-	    free(res);
-	    res = NULL;
-    	    return (buffer);
-	}
-    	size = read(fd, buffer, BUFFER_SIZE);
-    	if (size == -1)
-    	{
-    	    free_all(&buffer, &res);
-	    return (NULL);
-	}
-	if (size == 0)
+	buffer = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (read(fd, buffer, 0) == -1 || BUFFER_SIZE < 1)
 	{
 	    free(buffer);
-	    buffer = NULL;
-	    if (ft_strlen(res))
-	    {
-		value = ft_strjoin(res, "\n");
-		if (!value)
-		{
-		    free(res);
-		    res = NULL;
-		    return (value);
-		}
-		free(res);
-		res = NULL;
-		return (value);
-	    }
-	    free(res);
-	    res = NULL;
 	    return (NULL);
 	}
-	tmp = res;
-	if (size == BUFFER_SIZE)
+	read_size = read(fd, buffer, BUFFER_SIZE);
+	if (cache == NULL)
+	    cache = (char *)ft_calloc(1, sizeof(char));
+	if (read_size < BUFFER_SIZE)
 	{
-	    if (find_ed_chr(buffer) == BUFFER_SIZE)
+	    buffer[read_size] = '\0';
+	    if (make_new_line(&cache, &buffer, &result) == 0)
 	    {
-		res = ft_strjoin(tmp, buffer);
-		if (!res)
-		{
-		    free_all(&buffer, &tmp);
-		    return (res);
-		}
-		free_all(&buffer, &tmp);
-		continue ;
+		result = cache;
+		cache = NULL;
+		return (result);
 	    }
-	    else
-	    {
-		sub_str = ft_substr(buffer, 0, find_ed_chr(buffer));
-		if (!sub_str)
-		{
-		    free_all(&buffer, &tmp);
-		    return (sub_str);
-		}
-	        value = ft_strjoin(tmp, sub_str);
-		if (!value)
-		{
-		    free_all(&buffer, &tmp);
-		    free(sub_str);
-		    sub_str = NULL;
-		    return (value);
-	        }
-		free_all(&tmp, &sub_str);
-		res = ft_substr(buffer, find_ed_chr(buffer) + 1, BUFFER_SIZE - find_ed_chr(buffer) - 1);
-		if (!res)
-		{
-		    free_all(&buffer, &value);
-		    return (res);
-		}
-		free(buffer);
-		buffer = NULL;
-		return (value);
-	    }
+	    return (result);
 	}
-	else
-	{
-	    sub_str = ft_substr(buffer, 0, size);
-	    if (!sub_str)
-	    {
-	        free_all(&buffer, &tmp);
-	        return (sub_str);
-	    }
-	    value = ft_strjoin(tmp, sub_str);
-	    if (!value)
-	    {
-		free_all(&buffer, &tmp);
-		free(sub_str);
-		sub_str = NULL;
-		return (value);
-	    }
-	    free_all(&tmp, &sub_str);
-	    free(buffer);
-	    buffer = NULL;
-	    res = NULL;
-	    tmp = value;
-	    /*
-	    value = ft_strjoin(tmp, "\n");
-	    if (!value)
-	    {
-		free(tmp);
-		tmp = NULL;
-		return (value);
-	    }
-	    free(tmp);
-	    tmp = NULL;
-	    */
-	    return (value);
-	}
+	if (make_new_line(&cache, &buffer, &result) == 0)
+	    continue;
+	return (result);
     }
-    return (value);
 }
 /*
 #include <fcntl.h>
@@ -168,14 +99,11 @@ char	*get_next_line(int fd)
 int main(void)
 {
     int fd = open("test.txt", O_RDONLY);
-    char *str = get_next_line(fd);
-    printf("%s", str);
-    free(str);
-    str = NULL;
-    for (int i = 0; i < 3; i++)
+    char *str;
+    for (int i = 0; i < 6; i++)
     {
 	str = get_next_line(fd);
-	printf("%s\n", str);
+	printf("%s", str);
 	if (str)
 	{
 	    free(str);
