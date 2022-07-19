@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/17 03:28:01 by wonyang           #+#    #+#             */
+/*   Created: 2022/07/19 20:15:28 by wonyang           #+#    #+#             */
 /*   Updated: 2022/07/19 20:25:01 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*make_new_line_sub(char **cache, char buffer[], char *nxt_chr)
 {
@@ -94,20 +94,20 @@ char	*low_read(char **cache, char buffer[])
 
 char	*get_next_line(int fd)
 {
-	static char	*cache;
+	static char	*cache[10240];
 	char		buffer[BUFFER_SIZE + 1];
 	char		*result;
 	size_t		read_size;
 
 	if (read(fd, buffer, 0) == -1 || BUFFER_SIZE < 1)
 		return (NULL);
-	if (cache && ft_strchr(cache, '\n'))
+	if (cache[fd] && ft_strchr(cache[fd], '\n'))
 	{
 		buffer[0] = '\0';
-		ft_strlcat(buffer, cache, ft_strlen(cache) + 1);
-		free(cache);
-		cache = NULL;
-		make_new_line(&cache, buffer, &result);
+		ft_strlcat(buffer, cache[fd], ft_strlen(cache[fd]) + 1);
+		free(cache[fd]);
+		cache[fd] = NULL;
+		make_new_line(&(cache[fd]), buffer, &result);
 		return (result);
 	}
 	while (1)
@@ -115,8 +115,8 @@ char	*get_next_line(int fd)
 		read_size = read(fd, buffer, BUFFER_SIZE);
 		buffer[read_size] = '\0';
 		if (read_size < BUFFER_SIZE)
-			return (low_read(&cache, buffer));
-		if (make_new_line(&cache, buffer, &result) == 1)
+			return (low_read(&(cache[fd]), buffer));
+		if (make_new_line(&(cache[fd]), buffer, &result) == 1)
 			return (result);
 	}
 }
