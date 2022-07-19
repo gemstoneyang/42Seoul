@@ -6,40 +6,11 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 03:23:05 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/18 19:21:47 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/19 20:03:26 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-void	*ft_memset(void *ptr, int value, size_t len)
-{
-	unsigned char	*dst;
-	unsigned char	ch;
-	size_t			i;
-
-	dst = (unsigned char *)ptr;
-	ch = (unsigned char)value;
-	i = 0;
-	while (i < len)
-	{
-		*dst = ch;
-		dst++;
-		i++;
-	}
-	return (ptr);
-}
-
-void	*ft_calloc(size_t num, size_t size)
-{
-	void	*p;
-
-	p = malloc(num * size);
-	if (!p)
-		return (p);
-	ft_memset(p, 0, num * size);
-	return (p);
-}
 
 size_t	ft_strlen(const char *str)
 {
@@ -76,11 +47,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	len;
 	char	*str;
-	
+
 	len = ft_strlen(s1) + ft_strlen(s2) + 1;
-	str = (char *)ft_calloc(len, sizeof(char));
+	str = (char *)malloc(len * sizeof(char));
 	if (!str)
 		return (str);
+	str[0] = '\0';
 	ft_strlcat(str, s1, len);
 	ft_strlcat(str, s2, len);
 	return (str);
@@ -112,12 +84,12 @@ char	*ft_strndup(const char *str, size_t len)
 
 	s = (char *)malloc(sizeof(char) * (len + 1));
 	if (!s)
-	    return (s);
+		return (s);
 	i = 0;
 	while (i < len)
 	{
-	    s[i] = str[i];
-	    i++;
+		s[i] = str[i];
+		i++;
 	}
 	s[i] = '\0';
 	return (s);
