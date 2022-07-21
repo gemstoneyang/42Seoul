@@ -5,118 +5,108 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 20:15:28 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/19 20:25:01 by wonyang          ###   ########.fr       */
+/*   Created: 2022/07/21 15:44:23 by wonyang           #+#    #+#             */
+/*   Updated: 2022/07/22 00:58:37 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-char	*make_new_line_sub(char **cache, char buffer[], char *nxt_chr)
+char	*ft_read_file(int fd, char *cache)
 {
-	char	*tmp;
-	char	*result;
+	char	*buffer;
+	ssize_t	read_byte;
 
-	tmp = ft_strndup(buffer, nxt_chr - buffer + 1);
-	if (!tmp)
+	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	if (!buffer)
 		return (NULL);
-	result = ft_strjoin(*cache, tmp);
-	free(tmp);
-	if (!result)
-		return (NULL);
-	free(*cache);
-	if (*(nxt_chr + 1) == '\0')
-		*cache = NULL;
-	else
+	read_byte = 1;
+	while (!ft_strchr(cache, '\n') && read_byte != 0)
 	{
-		*cache = ft_strndup(nxt_chr + 1, ft_strlen(nxt_chr + 1));
-		if (!(*cache))
+		read_byte = read(fd, buffer, BUFFER_SIZE);
+		if (read_byte == -1)
 		{
-			free(result);
+			free(buffer);
 			return (NULL);
 		}
+		buffer[read_byte] = '\0';
+		cache = ft_strjoin(cache, buffer);
 	}
-	return (result);
+	free(buffer);
+	return (cache);
 }
 
-int	make_new_line(char **cache, char buffer[], char **result)
+void	ft_del_node(t_list **list, int fd)
 {
-	char	*tmp;
+	t_list	*node;
 
-	if (*cache == NULL)
-	{
-		*cache = ft_strndup("", 0);
-		if (!*cache)
-		{
-			*result = NULL;
-			return (1);
-		}
-	}
-	if (ft_strchr(buffer, '\n') == NULL)
-	{
-		tmp = *cache;
-		*cache = ft_strjoin(tmp, buffer);
-		free(tmp);
-		if (!(*cache))
-		{
-			*result = NULL;
-			return (1);
-		}
-		return (0);
-	}
-	*result = make_new_line_sub(cache, buffer, ft_strchr(buffer, '\n'));
-	return (1);
+	node = ft_find_node(list, fd);
+	if (node->cache)
+		return ;
+	if ((*list)->fd == node->fd)
+		*list = node->next;
+	if (node->next)
+		node->next->prev = node->prev;
+	if (node->prev)
+		node->prev->next = node->next;
+	free(node);
+	node = NULL;
 }
 
-char	*low_read(char **cache, char buffer[])
+t_list	*ft_find_node(t_list **list, int fd)
 {
-	char	*result;
+	t_list	*node;
+	t_list	*new_node;
 
-	if (ft_strlen(buffer) == 0)
+	if (*list == NULL)
 	{
-		if (*cache == NULL)
-			return (NULL);
-		result = ft_strndup(*cache, ft_strlen(*cache));
-		if (!result)
-			return (NULL);
-		free(*cache);
-		*cache = NULL;
-		return (result);
+		*list = ft_make_node(fd);
+		return (*list);
 	}
-	if (make_new_line(cache, buffer, &result) == 0)
+	node = *list;
+	while (node->next)
 	{
-		result = *cache;
-		*cache = NULL;
-		return (result);
+		if (node->fd == fd)
+			return (node);
+		node = node->next;
 	}
-	return (result);
+	if (node->fd == fd)
+		return (node);
+	new_node = ft_make_node(fd);
+	node->next = new_node;
+	new_node->prev = node;
+	return (new_node);
+}
+
+t_list	*ft_make_node(int fd)
+{
+	t_list	*node;
+
+	node = (t_list *)malloc(sizeof(t_list));
+	node->fd = fd;
+	node->prev = NULL;
+	node->next = NULL;
+	node->cache = NULL;
+	return (node);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*cache[10240];
-	char		buffer[BUFFER_SIZE + 1];
-	char		*result;
-	size_t		read_size;
+	static t_list	*list;
+	t_list			*node;
+	char			*result;
 
-	if (read(fd, buffer, 0) == -1 || BUFFER_SIZE < 1)
+	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	if (cache[fd] && ft_strchr(cache[fd], '\n'))
+	node = ft_find_node(&list, fd);
+	node->cache = ft_read_file(fd, node->cache);
+	if (!node->cache)
 	{
-		buffer[0] = '\0';
-		ft_strlcat(buffer, cache[fd], ft_strlen(cache[fd]) + 1);
-		free(cache[fd]);
-		cache[fd] = NULL;
-		make_new_line(&(cache[fd]), buffer, &result);
-		return (result);
+		ft_del_node(&list, fd);
+		return (NULL);
 	}
-	while (1)
-	{
-		read_size = read(fd, buffer, BUFFER_SIZE);
-		buffer[read_size] = '\0';
-		if (read_size < BUFFER_SIZE)
-			return (low_read(&(cache[fd]), buffer));
-		if (make_new_line(&(cache[fd]), buffer, &result) == 1)
-			return (result);
-	}
+	result = ft_get_line(node->cache);
+	node->cache = ft_update_cache(node->cache);
+	ft_del_node(&list, fd);
+	return (result);
 }
