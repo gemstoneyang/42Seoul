@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 16:25:12 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/24 22:28:42 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/25 02:55:37 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_bool ft_isspecifier(char c);
 t_info	*new_info(void);
 
 int	print_info_persent(void);
+int	print_info_di(t_info *info, va_list ap);
 
 void	update_info_flag(char flag, t_info *info);
 void	update_info_width(char n, t_info *info);

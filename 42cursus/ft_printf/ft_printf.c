@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 16:23:32 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/24 22:49:21 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/25 02:46:40 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@ int	print_info(t_info *info, va_list ap)
 {
 	int	return_size;
 
-	ap = NULL;
 	return_size = 0;
 	if (info->type == '%')
 		return_size += print_info_persent();
+	else if (info->type == 'd' || info->type == 'i')
+		return_size += print_info_di(info, ap);
 	return (return_size);
 }
 
@@ -58,7 +59,6 @@ int	parse_format(char *format, va_list ap)
 	t_info	*info;
 	int		return_size;
 
-	ap = NULL;
 	return_size = 0;
 	while (*format)
 	{
@@ -70,7 +70,10 @@ int	parse_format(char *format, va_list ap)
 			format++;
 		}
 		if (*format)
+		{
 			format = read_format(format + 1, info);
+			print_info(info, ap);
+		}
 		free(info);
 	}
 	return (0);
@@ -87,8 +90,8 @@ int	ft_printf(const char *format, ...)
 	return (return_size);
 }
 
-int main(void)
-{
-	ft_printf("%%");
-	return (0);
-}
+/** int main(void) */
+/** { */
+/**         ft_printf("a%%%%"); */
+/**         return (0); */
+/** } */
