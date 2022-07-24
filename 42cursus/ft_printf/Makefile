@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 18:32:17 by wonyang           #+#    #+#              #
-#    Updated: 2022/07/23 18:33:10 by wonyang          ###   ########.fr        #
+#    Updated: 2022/07/24 22:30:20 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,17 +16,11 @@ LIBFT_LIB	= libft.a
 
 SRCS					= ft_printf.c \
 					  ft_printf_utils.c \
-					  ft_printf_update_info.c
+					  ft_printf_update_info.c \
+					  ft_printf_persent.c
 					  
 
-BNS_SRCS				= ft_printf_bonus.c \
-					  ft_printf_util_bonus.c \
-					  ft_printf_c%_bonus.c \
-					  ft_printf_diu_bonus.c \
-					  ft_printf_diu_util_bonus.c \
-					  ft_printf_xX_bonus.c \
-					  ft_printf_xX_util_bonus.c \
-					  ft_printf_s_bonus.c
+BNS_SRCS				=
 
 OBJS					= $(SRCS:%.c=%.o)
 
