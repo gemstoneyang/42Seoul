@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 02:47:56 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/25 02:53:56 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/26 04:28:03 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 int	print_info_di(t_info *info, va_list ap)
 {
-	int	return_size;
+	int		return_size;
+	int		ap_int;
 	char	*num;
 
-	num = ft_itoa(va_arg(ap, int));
+	ap_int = va_arg(ap, int);
+	num = ft_itoa(ap_int);
 	return_size = ft_strlen(num);
 	ft_putstr_fd(num, 1);
 	free(num);
