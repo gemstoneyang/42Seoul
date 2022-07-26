@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 16:25:12 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/25 02:55:37 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/26 21:54:08 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_info
 	t_bool			period;
 	int				width;
 	int				precision;
-}				t_info;
+}					t_info;
 
 #define True 1
 #define False 0
@@ -41,8 +41,10 @@ t_bool ft_isspecifier(char c);
 
 t_info	*new_info(void);
 
-int	print_info_persent(void);
-int	print_info_di(t_info *info, va_list ap);
+int		print_persent_blank(t_info *info);
+int		print_info_persent(t_info *info);
+
+int		print_info_di(t_info *info, va_list ap);
 
 void	update_info_flag(char flag, t_info *info);
 void	update_info_width(char n, t_info *info);

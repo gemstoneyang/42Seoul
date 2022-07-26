@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 18:32:17 by wonyang           #+#    #+#              #
-#    Updated: 2022/07/24 22:30:20 by wonyang          ###   ########.fr        #
+#    Updated: 2022/07/26 21:55:25 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ LIBFT_LIB	= libft.a
 SRCS					= ft_printf.c \
 					  ft_printf_utils.c \
 					  ft_printf_update_info.c \
-					  ft_printf_persent.c
+					  ft_printf_persent.c \
+					  ft_printf_di.c
 					  
 
 BNS_SRCS				=

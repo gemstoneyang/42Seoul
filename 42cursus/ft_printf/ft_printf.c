@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 16:23:32 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/26 04:28:27 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/26 23:25:27 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	print_info(t_info *info, va_list ap)
 
 	return_size = 0;
 	if (info->type == '%')
-		return_size += print_info_persent(info, ap);
+		return_size += print_info_persent(info);
 	else if (info->type == 'd' || info->type == 'i')
 		return_size += print_info_di(info, ap);
 	return (return_size);
@@ -72,11 +72,11 @@ int	parse_format(char *format, va_list ap)
 		if (*format)
 		{
 			format = read_format(format + 1, info);
-			print_info(info, ap);
+			return_size += print_info(info, ap);
 		}
 		free(info);
 	}
-	return (0);
+	return (return_size);
 }
 
 int	ft_printf(const char *format, ...)
@@ -90,13 +90,11 @@ int	ft_printf(const char *format, ...)
 	return (return_size);
 }
 
-#include <stdio.h>
-
-int main(void)
-{
-	char *str = "hello %5%\n";
-	printf(str);
-	ft_printf(str);
-	/** ft_printf("age : %d years old\n%d seoul\n", 24, 42); */
-	return (0);
-}
+/** #include <stdio.h> */
+/**  */
+/** int main(void) */
+/** { */
+/**     printf("%04d|\n", -14); */
+/**     ft_printf("%04d|\n", -14); */
+/**     return (0); */
+/** } */
