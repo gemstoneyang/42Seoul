@@ -6,11 +6,12 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 16:23:32 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/26 23:25:27 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/28 21:53:37 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 int	print_info(t_info *info, va_list ap)
 {
@@ -90,11 +91,10 @@ int	ft_printf(const char *format, ...)
 	return (return_size);
 }
 
-/** #include <stdio.h> */
-/**  */
 /** int main(void) */
 /** { */
-/**     printf("%04d|\n", -14); */
-/**     ft_printf("%04d|\n", -14); */
+/**     int a = printf("%04d|\n", -14); */
+/**     int b = ft_printf("%04d|\n", -14); */
+/**     printf("%d %d\n", a, b); */
 /**     return (0); */
 /** } */

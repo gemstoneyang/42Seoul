@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 02:47:56 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/26 23:26:05 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/28 21:53:37 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	print_di_num(int val_int)
 		i++;
 	}
 	free(str);
+	if (val_int < 0)
+		i--;
 	return (i);
 }
 
@@ -59,6 +61,8 @@ int	print_di_space(t_info *info, int val_int)
 	str_len = ft_strlen(str);
 	free(str);
 	if (info->plus == True || info->space == True)
+		i++;
+	if (val_int >= 0 && (info->plus == True || info->space == True))
 		i++;
 	while (i < info->width - str_len)
 	{
@@ -81,6 +85,8 @@ int	print_di_zero(t_info *info, int val_int)
 	str_len = ft_strlen(str);
 	free(str);
 	if (info->plus == True || info->space == True)
+		i++;
+	if (val_int >= 0 && (info->plus == True || info->space == True))
 		i++;
 	while (i < info->width - str_len)
 	{
