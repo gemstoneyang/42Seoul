@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 16:23:32 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/28 21:53:37 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/31 02:41:10 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,30 @@ int	ft_printf(const char *format, ...)
 	return (return_size);
 }
 
+/** #include <limits.h> */
+/**  */
 /** int main(void) */
 /** { */
-/**     int a = printf("%04d|\n", -14); */
-/**     int b = ft_printf("%04d|\n", -14); */
-/**     printf("%d %d\n", a, b); */
+/**     int a = printf(" %.2d \n", -1); */
+/**     printf(" %.3d |\n", -11); */
+/**     printf(" %.4d \n", -14); */
+/**     printf(" %.5d \n", -15); */
+/**     printf(" %.6d \n", -16); */
+/**     printf(" %.11d \n", LONG_MAX); */
+/**     printf(" %.13d \n", UINT_MAX); */
+/**     printf(" %.14d \n", ULONG_MAX); */
+/**     printf(" %.15d \n", 9223372036854775807LL); */
+/**     printf(" %.9d %.10d %.11d %.12d %.13d %.14d %.15d\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42); */
+/**     int b = ft_printf(" %.2d \n", -1); */
+/**     ft_printf(" %.3d |\n", -11); */
+/**     ft_printf(" %.4d \n", -14); */
+/**     ft_printf(" %.5d \n", -15); */
+/**     ft_printf(" %.6d \n", -16); */
+/**     ft_printf(" %.11d \n", LONG_MAX); */
+/**     ft_printf(" %.13d \n", UINT_MAX); */
+/**     ft_printf(" %.14d \n", ULONG_MAX); */
+/**     ft_printf(" %.15d \n", 9223372036854775807LL); */
+/**     ft_printf(" %.9d %.10d %.11d %.12d %.13d %.14d %.15d\n", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42); */
+/**     printf("a:%d b:%d\n", a, b); */
 /**     return (0); */
 /** } */

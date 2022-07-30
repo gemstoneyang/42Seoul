@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 16:25:12 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/26 21:54:08 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/31 03:01:33 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,21 @@ typedef struct s_info
 #define True 1
 #define False 0
 
-t_bool ft_isflag(char c);
-t_bool ft_isspecifier(char c);
+t_bool	ft_isflag(char c);
+t_bool	ft_isspecifier(char c);
 
 t_info	*new_info(void);
 
 int		print_persent_blank(t_info *info);
 int		print_info_persent(t_info *info);
 
+int		ft_absnumlen(int num);
+int		ft_blank_size(t_info *info, int num_len);
+
+int		print_di_sign(t_info *info, int val_int);
+int		print_di_num(t_info *info, int val_int);
+int		print_di_space(t_info *info, int val_int);
+int		print_di_zero(t_info *info, int val_int);
 int		print_info_di(t_info *info, va_list ap);
 
 void	update_info_flag(char flag, t_info *info);
