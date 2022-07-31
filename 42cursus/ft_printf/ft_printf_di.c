@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 02:47:56 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/31 16:56:01 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/31 17:57:21 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	print_di_num(t_info *info, int val_int)
 	int		num_len;
 	char	*str;
 
-	num_len = ft_absnumlen(info, val_int);
+	num_len = ft_absnumlen_di(info, val_int);
 	i = -1;
 	while (++i < info->precision - num_len)
 		write(1, "0", 1);
@@ -64,8 +64,8 @@ int	print_di_space(t_info *info, int val_int)
 	if (info->period == FALSE && info->zero == TRUE)
 		return (0);
 	i = 0;
-	num_len = ft_absnumlen(info, val_int);
-	while (i < ft_blank_size(info, num_len, val_int))
+	num_len = ft_absnumlen_di(info, val_int);
+	while (i < ft_blank_size_di(info, num_len, val_int))
 	{
 		write(1, " ", 1);
 		i++;
@@ -81,8 +81,8 @@ int	print_di_zero(t_info *info, int val_int)
 	if (info->period == TRUE || info->zero == FALSE)
 		return (0);
 	i = 0;
-	num_len = ft_absnumlen(info, val_int);
-	while (i < ft_blank_size(info, num_len, val_int))
+	num_len = ft_absnumlen_di(info, val_int);
+	while (i < ft_blank_size_di(info, num_len, val_int))
 	{
 		write(1, "0", 1);
 		i++;

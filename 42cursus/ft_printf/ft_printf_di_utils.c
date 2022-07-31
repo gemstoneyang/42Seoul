@@ -6,13 +6,13 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 02:55:46 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/31 16:58:25 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/31 17:57:21 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_absnumlen(t_info *info, int num)
+int	ft_absnumlen_di(t_info *info, int num)
 {
 	char	*str;
 	int		num_len;
@@ -27,7 +27,7 @@ int	ft_absnumlen(t_info *info, int num)
 	return (num_len - 1);
 }
 
-int	ft_blank_size(t_info *info, int num_len, int val_int)
+int	ft_blank_size_di(t_info *info, int num_len, int val_int)
 {
 	if (info->precision <= num_len)
 	{
