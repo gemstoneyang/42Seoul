@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 16:25:12 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/31 17:57:21 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/31 18:47:06 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,10 @@ t_info	*new_info(void);
 
 int		print_persent_blank(t_info *info);
 int		print_info_persent(t_info *info);
+
+int		print_c_space(t_info *info);
+int		print_c_char(char val_char);
+int		print_info_c(t_info *info, va_list ap);
 
 int		ft_count_length_u(unsigned int n);
 char	*ft_itoa_u(unsigned int n);
