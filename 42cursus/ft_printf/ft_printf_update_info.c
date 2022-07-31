@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 18:30:23 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/23 18:30:36 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/31 16:59:07 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 void	update_info_flag(char flag, t_info *info)
 {
 	if (flag == '-')
-		info->minus = True;
+		info->minus = TRUE;
 	else if (flag == '+')
-		info->plus = True;
+		info->plus = TRUE;
 	else if (flag == ' ')
-		info->space = True;
+		info->space = TRUE;
 	else if (flag == '0')
-		info->zero = True;
+		info->zero = TRUE;
 	else if (flag == '#')
-		info->hash = True;
+		info->hash = TRUE;
 }
 
 void	update_info_width(char n, t_info *info)

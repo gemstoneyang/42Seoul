@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 16:25:12 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/31 03:01:33 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/07/31 16:54:29 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include "libft/libft.h"
 
-typedef int t_bool;
+typedef int	t_bool;
 
 typedef struct s_info
 {
@@ -33,8 +33,8 @@ typedef struct s_info
 	int				precision;
 }					t_info;
 
-#define True 1
-#define False 0
+# define TRUE 1
+# define FALSE 0
 
 t_bool	ft_isflag(char c);
 t_bool	ft_isspecifier(char c);
@@ -44,8 +44,8 @@ t_info	*new_info(void);
 int		print_persent_blank(t_info *info);
 int		print_info_persent(t_info *info);
 
-int		ft_absnumlen(int num);
-int		ft_blank_size(t_info *info, int num_len);
+int		ft_absnumlen(t_info *info, int num);
+int		ft_blank_size(t_info *info, int num_len, int val_int);
 
 int		print_di_sign(t_info *info, int val_int);
 int		print_di_num(t_info *info, int val_int);
