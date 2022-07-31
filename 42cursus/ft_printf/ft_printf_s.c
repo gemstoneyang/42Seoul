@@ -1,52 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_c.c                                      :+:      :+:    :+:   */
+/*   ft_printf_s.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 18:03:50 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/31 19:34:07 by wonyang          ###   ########.fr       */
+/*   Created: 2022/07/31 19:23:37 by wonyang           #+#    #+#             */
+/*   Updated: 2022/07/31 19:47:22 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_c_space(t_info *info)
+int	print_s_str(t_info *info, char *val_str)
 {
 	int	i;
 
 	i = 0;
-	while (i < info->width - 1)
-	{
-		write(1, " ", 1);
-		i++;
-	}
-	return (i);
+	while (info->period == True && i < info->precision == 0)
 }
 
-int	print_c_char(char val_char)
+int	print_info_s(t_info *info, va_list ap)
 {
-	write(1, &val_char, 1);
-	return (1);
-}
-
-int	print_info_c(t_info *info, va_list ap)
-{
-	int	total_size;
-	int	val_char;
+	int		total_size;
+	char	*val_str;
 
 	total_size = 0;
-	val_char = va_arg(ap, int);
+	val_str= va_arg(ap, char *);
 	if (info->minus == TRUE)
 	{
-		total_size += print_c_char(val_char);
-		total_size += print_c_space(info);
+		total_size += print_s_str(info, val_str);
+		total_size += print_s_space(info, val_str);
 	}
 	else
 	{
-		total_size += print_c_space(info);
-		total_size += print_c_char(val_char);
+		total_size += print_s_space(info, val_str);
+		total_size += print_s_zero(info, val_str);
+		total_size += print_s_str(info, val_str);
 	}
-	return (total_size);
 }
