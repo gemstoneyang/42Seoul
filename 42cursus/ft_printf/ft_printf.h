@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 16:25:12 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/01 09:26:48 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/01 16:44:26 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,16 @@ t_info	*new_info(void);
 
 int		print_persent_blank(t_info *info);
 int		print_info_persent(t_info *info);
+
+int		ft_numlen_xx(t_info *info, unsigned int num);
+int		ft_blank_size_xx(t_info *info, int num_len, unsigned int val_int);
+int		ft_count_length_xx(unsigned int n);
+int		ft_decimal_to_hex(t_info *info, unsigned int decimal);
+int		print_xx_hash(t_info *info, unsigned int val_int);
+int		print_xx_num(t_info *info, unsigned int val_int);
+int		print_xx_space(t_info *info, unsigned int val_int);
+int		print_xx_zero(t_info *info, unsigned int val_int);
+int		print_info_xx(t_info *info, va_list ap);
 
 int		ft_strlen_s(t_info *info, char *val_str);
 int		print_s_space(t_info *info, char *val_str);

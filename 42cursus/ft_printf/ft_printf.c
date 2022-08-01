@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 16:23:32 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/01 08:57:44 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/01 16:48:15 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	print_info(t_info *info, va_list ap)
 		return_size += print_info_c(info, ap);
 	else if (info->type == 's')
 		return_size += print_info_s(info, ap);
+	else if (info->type == 'x' || info->type == 'X')
+		return_size += print_info_xx(info, ap);
 	return (return_size);
 }
 
