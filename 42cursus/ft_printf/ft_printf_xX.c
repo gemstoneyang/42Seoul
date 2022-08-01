@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 10:38:16 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/01 16:45:40 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/01 17:16:37 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	print_xx_num(t_info *info, unsigned int val_int)
 		write(1, "0", 1);
 	if (info->period == TRUE && info->precision == 0 && val_int == 0)
 		return (i);
-	j = ft_decimal_to_hex(info, val_int);
+	j = ft_decimal_to_hex_xx(info, val_int);
 	return (i + j);
 }
 

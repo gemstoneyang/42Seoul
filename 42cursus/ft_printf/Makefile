@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 18:32:17 by wonyang           #+#    #+#              #
-#    Updated: 2022/08/01 14:35:18 by wonyang          ###   ########.fr        #
+#    Updated: 2022/08/01 17:15:57 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,9 @@ SRCS					= ft_printf.c \
 					  ft_printf_c.c \
 					  ft_printf_s.c \
 					  ft_printf_xX.c \
-					  ft_printf_xX_utils.c
+					  ft_printf_xX_utils.c \
+					  ft_printf_p.c \
+					  ft_printf_p_utils.c
 					  
 
 BNS_SRCS				=

@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 16:23:32 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/01 16:48:15 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/01 18:26:26 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	print_info(t_info *info, va_list ap)
 		return_size += print_info_s(info, ap);
 	else if (info->type == 'x' || info->type == 'X')
 		return_size += print_info_xx(info, ap);
+	else
+		return_size += print_info_p(info, ap);
 	return (return_size);
 }
 
@@ -97,13 +99,3 @@ int	ft_printf(const char *format, ...)
 	va_end(ap);
 	return (return_size);
 }
-/**  */
-/** #include <stdio.h> */
-/**  */
-/** int main(void) */
-/** { */
-/**     int n; */
-/**     n = ft_printf("%10c|\n", '\0'); */
-/**     printf("%d\n", n); */
-/**     return (0); */
-/** } */

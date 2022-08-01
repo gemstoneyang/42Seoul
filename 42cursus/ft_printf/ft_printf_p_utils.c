@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_xX_utils.c                               :+:      :+:    :+:   */
+/*   ft_printf_p_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 11:00:47 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/01 17:16:25 by wonyang          ###   ########.fr       */
+/*   Created: 2022/08/01 16:59:07 by wonyang           #+#    #+#             */
+/*   Updated: 2022/08/01 18:24:09 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_numlen_xx(t_info *info, unsigned int num)
+int	ft_numlen_p(t_info *info, uintptr_t num)
 {
 	if (num == 0 && info->period == TRUE && info->precision == 0)
 		return (0);
-	return (ft_count_length_xx(num));
+	return (ft_count_length_p(num));
 }
 
-int	ft_blank_size_xx(t_info *info, int num_len, unsigned int val_int)
+int	ft_blank_size_p(t_info *info, int num_len)
 {
 	if (info->precision <= num_len)
-	{
-		if (info->hash == TRUE && val_int != 0)
-			return (info->width - num_len - 2);
-		return (info->width - num_len);
-	}
-	if (info->hash == TRUE && val_int != 0)
-		return (info->width - info->precision - 2);
-	return (info->width - info->precision);
+		return (info->width - num_len - 2);
+	return (info->width - info->precision - 2);
 }
 
-int	ft_count_length_xx(unsigned int n)
+int	ft_count_length_p(uintptr_t n)
 {
 	int	count;
 
@@ -47,7 +41,7 @@ int	ft_count_length_xx(unsigned int n)
 	return (count);
 }
 
-int	ft_decimal_to_hex_xx(t_info *info, unsigned int decimal)
+int	ft_decimal_to_hex_p(uintptr_t decimal)
 {
 	int		len;
 	int		idx;
@@ -56,20 +50,15 @@ int	ft_decimal_to_hex_xx(t_info *info, unsigned int decimal)
 
 	if (decimal == 0)
 		return (write(1, "0", 1));
-	len = ft_count_length_xx(decimal);
-	idx = ft_count_length_xx(decimal) - 1;
+	len = ft_count_length_p(decimal);
+	idx = ft_count_length_p(decimal) - 1;
 	while (decimal > 0)
 	{
 		mod = decimal % 16;
 		if (mod < 10)
 			hexdecimal[idx] = '0' + mod;
 		else
-		{
-			if (info->type == 'x')
-				hexdecimal[idx] = 'a' + (mod - 10);
-			else
-				hexdecimal[idx] = 'A' + (mod - 10);
-		}
+			hexdecimal[idx] = 'a' + (mod - 10);
 		decimal /= 16;
 		idx--;
 	}
