@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 16:25:12 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/01 18:24:09 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/02 09:12:50 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int		ft_blank_size_p(t_info *info, int num_len);
 int		ft_count_length_p(uintptr_t n);
 int		ft_decimal_to_hex_p(uintptr_t decimal);
 int		print_p_0x(void);
-int		print_p_num(t_info *info, uintptr_t val_int);
-int		print_p_space(t_info *info, uintptr_t val_int);
-int		print_p_zero(t_info *info, uintptr_t val_int);
+int		print_p_num(t_info *info, uintptr_t val_ptr);
+int		print_p_space(t_info *info, uintptr_t val_ptr);
+int		print_p_zero(t_info *info, uintptr_t val_ptr);
 int		print_info_p(t_info *info, va_list ap);
 
 int		ft_numlen_xx(t_info *info, unsigned int num);
@@ -94,9 +94,9 @@ void	update_info_flag(char flag, t_info *info);
 void	update_info_width(char n, t_info *info);
 void	update_info_precision(char n, t_info *info);
 
-char	*read_format(char *format, t_info *info);
-
 int		print_info(t_info *info, va_list ap);
+char	*update_flagwidth(char *format, t_info *info);
+char	*update_precispeci(char *format, t_info *info);
 int		parse_format(char *format, va_list ap);
 int		ft_printf(const char *format, ...);
 

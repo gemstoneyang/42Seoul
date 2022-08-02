@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 18:32:17 by wonyang           #+#    #+#              #
-#    Updated: 2022/08/01 17:15:57 by wonyang          ###   ########.fr        #
+#    Updated: 2022/08/02 09:01:27 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,53 +14,42 @@ NAME		= libftprintf.a
 LIBFT		= libft
 LIBFT_LIB	= libft.a
 
-SRCS					= ft_printf.c \
-					  ft_printf_utils.c \
-					  ft_printf_update_info.c \
-					  ft_printf_persent.c \
-					  ft_printf_di.c \
-					  ft_printf_di_utils.c \
-					  ft_printf_u.c \
-					  ft_printf_u_utils.c \
-					  ft_printf_c.c \
-					  ft_printf_s.c \
-					  ft_printf_xX.c \
-					  ft_printf_xX_utils.c \
-					  ft_printf_p.c \
-					  ft_printf_p_utils.c
+SRCS		= ft_printf.c \
+			ft_printf_utils.c \
+			ft_printf_update_info.c \
+			ft_printf_persent.c \
+			ft_printf_di.c \
+			ft_printf_di_utils.c \
+			ft_printf_u.c \
+			ft_printf_u_utils.c \
+			ft_printf_c.c \
+			ft_printf_s.c \
+			ft_printf_xX.c \
+			ft_printf_xX_utils.c \
+			ft_printf_p.c \
+			ft_printf_p_utils.c
 					  
 
-BNS_SRCS				=
-
-OBJS					= $(SRCS:%.c=%.o)
-
-BNS_OBJS				= $(BNS_SRCS:%.c=%.o)
+OBJS		= $(SRCS:%.c=%.o)
 
 LIBC		= ar rc
 
-FLAGS					= -Wall -Wextra -Werror
-
-ifdef WITH_BONUS
-	OBJ_FILES = $(OBJS) $(BNS_OBJS)
-else
-	OBJ_FILES = $(OBJS)
-endif
+FLAGS		= -Wall -Wextra -Werror
 
 all	:	$(NAME)
 
-$(NAME) : $(OBJ_FILES)
+$(NAME) : $(OBJS)
 	make all -C $(LIBFT)/
 	cp $(LIBFT)/$(LIBFT_LIB) $(NAME)
-	$(LIBC) $(NAME) $(OBJ_FILES)
+	$(LIBC) $(NAME) $(OBJS)
 
 %.o			: %.c
 	gcc $(FLAGS) -c $^ -I./ -o $@
 
-bonus :
-	make WITH_BONUS=1 all
+bonus : $(NAME)
 
 clean	:
-		rm -f $(OBJS) $(BNS_OBJS)
+		rm -f $(OBJS)
 		make clean -C $(LIBFT)
 
 fclean	:	clean
