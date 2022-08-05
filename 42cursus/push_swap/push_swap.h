@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:05:14 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/05 02:23:36 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/05 14:32:56 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_stack
 	struct s_stack	*bot;
 	int				count;
 }					t_stack;
-
 
 void	push(t_stack *stack, t_node *node);
 t_node	*pop(t_stack *stack);

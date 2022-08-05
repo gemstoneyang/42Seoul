@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 02:04:41 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/05 02:22:41 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/05 14:29:42 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,12 @@ t_node	*pop(t_stack *stack)
 	stack->count -= 1;
 	top_node = stack->top;
 	stack->top = top_node->next;
+	if (top_node->next)
+	{
+		top_node->next = NULL;
+		stack->top->prev = NULL;
+	}
 	if (stack->count == 0)
 		stack->bot = NULL;
-
+	return (top_node);
 }
