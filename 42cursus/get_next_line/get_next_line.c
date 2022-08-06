@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 01:13:22 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/02 16:12:04 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/06 14:30:09 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_read_file(int fd, char *cache)
 		read_byte = read(fd, buffer, BUFFER_SIZE);
 		if (read_byte == -1)
 		{
-			if (!cache)
+			if (cache)
 				free(cache);
 			free(buffer);
 			return (NULL);
