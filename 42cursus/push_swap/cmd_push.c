@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:12:31 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/06 15:22:50 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/06 16:15:18 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	cmd_push(t_stack *stack_a, t_stack *stack_b)
 
 void	pa(t_stack *stack_a, t_stack *stack_b)
 {
-	write(1, "pa", 2);
+	write(1, "pa\n", 3);
 	if (stack_b->count == 0)
 		return ;
 	cmd_push(stack_a, stack_b);
@@ -30,7 +30,7 @@ void	pa(t_stack *stack_a, t_stack *stack_b)
 
 void	pb(t_stack *stack_a, t_stack *stack_b)
 {
-	write(1, "pb", 2);
+	write(1, "pb\n", 3);
 	if (stack_a->count == 0)
 		return ;
 	cmd_push(stack_b, stack_a);
