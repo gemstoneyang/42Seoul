@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 02:04:41 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/06 15:05:30 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/07 14:15:46 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	push(t_stack *stack, t_node *node)
 	{
 		stack->top = node;
 		stack->bot = node;
+		stack->count += 1;
 		return ;
 	}
 	top_node = stack->top;
@@ -37,6 +38,7 @@ void	pushleft(t_stack *stack, t_node *node)
 	{
 		stack->top = node;
 		stack->bot = node;
+		stack->count += 1;
 		return ;
 	}
 	bot_node = stack->bot;

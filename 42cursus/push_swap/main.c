@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:04:09 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/06 15:59:16 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/07 14:51:40 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	free_arr(char **arr)
 	free(arr);
 }
 
+#include <stdio.h>
+
 void	parse_nums(int argc, char **argv, t_stack *stack)
 {
 	int		i;
@@ -64,8 +66,8 @@ void	parse_nums(int argc, char **argv, t_stack *stack)
 			j++;
 		}
 		i++;
+		free_arr(arr);
 	}
-	free_arr(arr);
 }
 
 int	main(int argc, char *argv[])
@@ -76,5 +78,13 @@ int	main(int argc, char *argv[])
 	stack_a = init_stack();
 	stack_b = init_stack();
 	parse_nums(argc, argv, stack_a);
+	printf("count : %d\n", stack_a->count);
+	t_node	*head = stack_a->top;
+	printf("head : %d\n", stack_a->top->value);
+	while (head)
+	{
+		printf("%d\n", head->value);
+		head = head->next;
+	}
 	return (0);
 }
