@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:04:09 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/07 14:51:40 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/09 16:59:08 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,15 @@ void	parse_nums(int argc, char **argv, t_stack *stack)
 		j = 0;
 		while (arr[j])
 		{
+			if (stack->top)
+			{
+				printf("pushleft start top : %p, %d\n", stack->top, stack->top->value);
+				printf("pushleft start bot : %d\n", stack->bot->value);
+			}
 			pushleft(stack, init_node(ft_atoi(arr[j])));
 			j++;
+			printf("pushleft end top : %p, %d\n", stack->top, stack->top->value);
+			printf("pushleft end bot : %d\n", stack->bot->value);
 		}
 		i++;
 		free_arr(arr);
@@ -78,9 +85,7 @@ int	main(int argc, char *argv[])
 	stack_a = init_stack();
 	stack_b = init_stack();
 	parse_nums(argc, argv, stack_a);
-	printf("count : %d\n", stack_a->count);
 	t_node	*head = stack_a->top;
-	printf("head : %d\n", stack_a->top->value);
 	while (head)
 	{
 		printf("%d\n", head->value);
