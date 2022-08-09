@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 16:23:32 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/02 09:11:22 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/09 13:12:10 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int	parse_format(char *format, va_list ap)
 	while (*format)
 	{
 		info = new_info();
+		if (!info)
+			return (total_size);
 		while (*format && *format != '%')
 		{
 			write(1, format, 1);

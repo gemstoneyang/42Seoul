@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/31 17:14:56 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/31 17:33:59 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/09 13:30:39 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,12 @@ int	print_u_num(t_info *info, unsigned int val_int)
 		write(1, "0", 1);
 	if (info->period == TRUE && info->precision == 0 && val_int == 0)
 		return (i);
-	j = 0;
+	j = -1;
 	str = ft_itoa_u(val_int);
-	while (str[j])
-	{
+	if (!str)
+		return (i);
+	while (str[++j])
 		write(1, str + j, 1);
-		j++;
-	}
 	free(str);
 	if (val_int < 0)
 		j--;

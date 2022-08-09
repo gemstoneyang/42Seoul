@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 16:25:12 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/02 09:12:50 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/09 13:22:28 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int		print_u_space(t_info *info, unsigned int val_int);
 int		print_u_zero(t_info *info, unsigned int val_int);
 int		print_info_u(t_info *info, va_list ap);
 
+int		ft_count_length_di(int n);
 int		ft_absnumlen_di(t_info *info, int num);
 int		ft_blank_size_di(t_info *info, int num_len, int val_int);
 int		print_di_sign(t_info *info, int val_int);

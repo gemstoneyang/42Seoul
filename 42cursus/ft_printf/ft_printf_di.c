@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 02:47:56 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/01 10:54:49 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/09 13:27:44 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,14 @@ int	print_di_num(t_info *info, int val_int)
 		write(1, "0", 1);
 	if (info->period == TRUE && info->precision == 0 && val_int == 0)
 		return (i);
-	j = 0;
+	j = -1;
 	if (val_int < 0)
 		j++;
 	str = ft_itoa(val_int);
-	while (str[j])
-	{
+	if (!str)
+		return (i);
+	while (str[++j])
 		write(1, str + j, 1);
-		j++;
-	}
 	free(str);
 	if (val_int < 0)
 		j--;

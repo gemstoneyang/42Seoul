@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 18:30:52 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/31 16:56:57 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/09 13:10:52 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ t_info	*new_info(void)
 	t_info	*info;
 
 	info = (t_info *)malloc(sizeof(t_info));
+	if (!info)
+		return (NULL);
 	info->type = '\0';
 	info->minus = FALSE;
 	info->plus = FALSE;
