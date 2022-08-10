@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:04:09 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/09 16:59:08 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/10 13:38:08 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_node	*init_node(int val)
 {
 	t_node	*node;
 
-	node = (t_node *)malloc(sizeof(t_node *));
+	node = (t_node *)malloc(sizeof(t_node));
 	node->prev = NULL;
 	node->next = NULL;
 	node->value = val;
@@ -27,7 +27,7 @@ t_stack	*init_stack(void)
 {
 	t_stack	*stack;
 
-	stack = (t_stack *)malloc(sizeof(t_stack *));
+	stack = (t_stack *)malloc(sizeof(t_stack));
 	stack->top = NULL;
 	stack->bot = NULL;
 	stack->count = 0;
@@ -62,15 +62,8 @@ void	parse_nums(int argc, char **argv, t_stack *stack)
 		j = 0;
 		while (arr[j])
 		{
-			if (stack->top)
-			{
-				printf("pushleft start top : %p, %d\n", stack->top, stack->top->value);
-				printf("pushleft start bot : %d\n", stack->bot->value);
-			}
 			pushleft(stack, init_node(ft_atoi(arr[j])));
 			j++;
-			printf("pushleft end top : %p, %d\n", stack->top, stack->top->value);
-			printf("pushleft end bot : %d\n", stack->bot->value);
 		}
 		i++;
 		free_arr(arr);
@@ -80,10 +73,10 @@ void	parse_nums(int argc, char **argv, t_stack *stack)
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
-	t_stack	*stack_b;
+	//t_stack	*stack_b;
 
 	stack_a = init_stack();
-	stack_b = init_stack();
+	//stack_b = init_stack();
 	parse_nums(argc, argv, stack_a);
 	t_node	*head = stack_a->top;
 	while (head)

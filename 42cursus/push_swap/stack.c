@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 02:04:41 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/09 16:59:08 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/10 13:38:50 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,13 @@ void	push(t_stack *stack, t_node *node)
 	stack->count += 1;
 }
 
-#include <stdio.h>
-
 void	pushleft(t_stack *stack, t_node *node)
 {
 	t_node	*bot_node;
 
-	if (stack->top)
-		printf("stack top : %p, %d\n", stack->top, stack->top->value);
 	if (stack->count == 0)
 	{
 		stack->top = node;
-		printf("stack top : %p, %d\n", stack->top, stack->top->value);
 		stack->bot = node;
 		stack->count += 1;
 		return ;
