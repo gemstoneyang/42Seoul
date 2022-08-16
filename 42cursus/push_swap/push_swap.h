@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:05:14 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/09 16:37:20 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/16 21:14:48 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ typedef struct s_stack
 	struct s_node	*bot;
 	int				count;
 }					t_stack;
+
+typedef struct s_data
+{
+	struct s_stack	*stack_a;
+	struct s_stack	*stack_b;
+}					t_data;
 
 void	cmd_rev_rotate(t_stack *stack);
 void	rra(t_stack *stack_a);
@@ -55,8 +61,14 @@ void	pushleft(t_stack *stack, t_node *node);
 t_node	*pop(t_stack *stack);
 t_node	*popleft(t_stack *stack);
 
+void	free_stack(t_stack *stack);
+void	free_data(t_data *data);
+void	error_exit(t_data *data);
+void	normal_exit(t_data *data);
+
 t_node	*init_node(int val);
 t_stack	*init_stack(void);
+t_data	*init_data(void);
 
 void	parse_nums(int argc, char **argv, t_stack *stack);
 void	free_arr(char **arr);
