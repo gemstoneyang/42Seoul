@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 20:29:16 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/16 20:51:56 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/16 23:03:52 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 void	free_stack(t_stack *stack)
 {
 	t_node	*node;
+	t_node	*tmp;
 
 	node = stack->top;
+	tmp = node;
 	while (node)
 	{
-		free(node);
 		node = node->next;
+		free(tmp);
+		tmp = node;
 	}
 	free(stack);
 	return ;
@@ -29,9 +32,9 @@ void	free_stack(t_stack *stack)
 void	free_data(t_data *data)
 {
 	if (data->stack_a)
-		free_stack(stack_a);
+		free_stack(data->stack_a);
 	if (data->stack_b)
-		free_stack(stack_b);
+		free_stack(data->stack_b);
 	free(data);
 }
 

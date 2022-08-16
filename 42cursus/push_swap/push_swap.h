@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:05:14 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/16 21:14:48 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/16 22:53:54 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ t_node	*init_node(int val);
 t_stack	*init_stack(void);
 t_data	*init_data(void);
 
-void	parse_nums(int argc, char **argv, t_stack *stack);
+void	parse_nums(int argc, char **argv, t_data *data);
+void	add_num(char *str, t_data *data);
+int		is_integer(char *str);
 void	free_arr(char **arr);
 
 #endif

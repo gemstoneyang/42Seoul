@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 01:02:51 by wonyang           #+#    #+#              #
-#    Updated: 2022/08/16 21:18:11 by wonyang          ###   ########.fr        #
+#    Updated: 2022/08/16 22:52:59 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS		= main.c \
 			  stack.c \
 			  init_data.c \
 			  error.c \
+			  parse.c \
 			  cmd_swap.c \
 			  cmd_push.c \
 			  cmd_rotate.c \
