@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 01:02:51 by wonyang           #+#    #+#              #
-#    Updated: 2022/08/18 15:40:41 by wonyang          ###   ########.fr        #
+#    Updated: 2022/08/18 16:53:53 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRCS		= mandatory/main.c \
 			  mandatory/cmd_push.c \
 			  mandatory/cmd_rotate.c \
 			  mandatory/cmd_rev_rotate.c \
-			  mandatory/validation.c
+			  mandatory/validation.c \
+			  mandatory/sort.c
 
 OBJS		= $(SRCS:%.c=%.o)
 

@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:05:14 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/18 15:39:41 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/18 15:50:56 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define TRUE 1
 # define FALSE 0
 
-typedef int t_bool;
+typedef int	t_bool;
 
 typedef struct s_node
 {

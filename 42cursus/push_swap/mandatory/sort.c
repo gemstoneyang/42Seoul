@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/05 01:04:09 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/18 15:51:46 by wonyang          ###   ########.fr       */
+/*   Created: 2022/08/18 16:53:06 by wonyang           #+#    #+#             */
+/*   Updated: 2022/08/18 17:22:59 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int	main(int argc, char *argv[])
+void	sort_three_element(t_stack *stack)
 {
-	t_data	*data;
+	int	top;
+	int	mid;
+	int	bot;
 
-	data = init_data();
-	parse_nums(argc, argv, data);
-	validation_data(argc, data);
-	normal_exit(data);
-	return (0);
+	top = stack->top->value;
+	mid = stack->top->next->value;
+	bot = stack->top->next->next->value;
+	if (top < mid && mid > bot && top < bot)
+		ra sa rra
+	else if (top < mid && mid > bot && top > bot)
+		rra
+	else if (top > mid && mid < bot && top < bot)
+		sa
+	else if (top > mid && mid < bot && top > bot)
+		ra
+	else if (top > mid && mid > bot && top > bot)
+		sa rra
 }
