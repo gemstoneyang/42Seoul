@@ -1,28 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/18 17:24:00 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/18 17:28:03 by wonyang          ###   ########.fr       */
+/*   Created: 2022/08/18 22:12:43 by wonyang           #+#    #+#             */
+/*   Updated: 2022/08/18 22:45:31 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	cmd(char *str, t_data *data)
+int	ft_strcmp(char *s1, char *s2)
 {
-	char	**cmd_list;
-	int		i;
+	int	i;
 
-	cmd_list = ft_split(str, ' ');
-	if (cmd_list == NULL)
-		error_exit(data);
 	i = 0;
-	while (cmd_list[i])
+	while (s1[i] != '\0' && s2[i] != '\0')
 	{
-
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
+		i++;
 	}
+	if (s1[i] != '\0')
+		return (s1[i]);
+	if (s2[i] != '\0')
+		return (-s2[i]);
+	return (0);
+}
+
+void	free_split(char **arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }

@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:05:14 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/18 15:50:56 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/18 22:44:30 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,47 +42,66 @@ typedef struct s_data
 	struct s_stack	*stack_b;
 }					t_data;
 
+// cmd_rev_rotate.c
 void	cmd_rev_rotate(t_stack *stack);
-void	rra(t_stack *stack_a);
-void	rrb(t_stack *stack_b);
-void	rrr(t_stack *stack_a, t_stack *stack_b);
+void	rra(t_data *data);
+void	rrb(t_data *data);
+void	rrr(t_data *data);
 
+// cmd_rotate.c
 void	cmd_rotate(t_stack *stack);
-void	ra(t_stack *stack_a);
-void	rb(t_stack *stack_b);
-void	rr(t_stack *stack_a, t_stack *stack_b);
+void	ra(t_data *data);
+void	rb(t_data *data);
+void	rr(t_data *data);
 
-void	cmd_push(t_stack *stack_a, t_stack *stack_b);
-void	pa(t_stack *stack_a, t_stack *stack_b);
-void	pb(t_stack *stack_a, t_stack *stack_b);
+// cmd_push.c
+void	cmd_push(t_data *data);
+void	pa(t_data *data);
+void	pb(t_data *data);
 
+// cmd_swap.c
 void	cmd_swap(t_stack *stack);
-void	sa(t_stack *stack);
-void	sb(t_stack *stack);
-void	ss(t_stack *stack_a, t_stack *stack_b);
+void	sa(t_data *data);
+void	sb(t_data *data);
+void	ss(t_data *data);
 
+// cmd_stack.c
 void	push(t_stack *stack, t_node *node);
 void	pushleft(t_stack *stack, t_node *node);
 t_node	*pop(t_stack *stack);
 t_node	*popleft(t_stack *stack);
 
+// error.c
 void	free_stack(t_stack *stack);
 void	free_data(t_data *data);
 void	error_exit(t_data *data);
 void	normal_exit(t_data *data);
 
+// init_data.c
 t_bool	is_integer(char *str);
 t_node	*init_node(char *str);
 t_stack	*init_stack(void);
 t_data	*init_data(void);
 
+// validation.c
 void	duplicate_validation(t_data *data);
 void	sorted_validation(t_data *data);
 void	validation_data(int argc, t_data *data);
 
+// utils.c
+void	free_split(char **arr);
+int		ft_strcmp(char *s1, char *s2);
+
+// swap.c
+void	cmd_div(char *cmd, t_data *data);
+void	cmd(char *str, t_data *data);
+
+// sort.c
+void	sort_three_element(t_data *data);
+
+// parse.c
 void	parse_nums(int argc, char **argv, t_data *data);
 void	add_num(char *str, t_data *data);
 int		is_integer(char *str);
-void	free_arr(char **arr);
 
 #endif

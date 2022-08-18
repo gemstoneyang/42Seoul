@@ -6,24 +6,11 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:27:48 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/17 21:08:43 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/18 22:45:02 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	free_arr(char **arr)
-{
-	int	i;
-
-	i = 0;
-	while (arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}
 
 void	add_num(char *str, t_data *data)
 {
@@ -40,13 +27,13 @@ void	add_num(char *str, t_data *data)
 		node = init_node(arr[i]);
 		if (!node)
 		{
-			free_arr(arr);
+			free_split(arr);
 			error_exit(data);
 		}
 		pushleft(data->stack_a, node);
 		i++;
 	}
-	free_arr(arr);
+	free_split(arr);
 }
 
 void	parse_nums(int argc, char **argv, t_data *data)
