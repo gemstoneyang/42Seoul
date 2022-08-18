@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 01:02:51 by wonyang           #+#    #+#              #
-#    Updated: 2022/08/16 22:52:59 by wonyang          ###   ########.fr        #
+#    Updated: 2022/08/18 15:40:41 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,15 +14,16 @@ NAME		= push_swap
 LIBFT		= libft
 LIBFT_LIB	= libft.a
 
-SRCS		= main.c \
-			  stack.c \
-			  init_data.c \
-			  error.c \
-			  parse.c \
-			  cmd_swap.c \
-			  cmd_push.c \
-			  cmd_rotate.c \
-			  cmd_rev_rotate.c
+SRCS		= mandatory/main.c \
+			  mandatory/stack.c \
+			  mandatory/init_data.c \
+			  mandatory/error.c \
+			  mandatory/parse.c \
+			  mandatory/cmd_swap.c \
+			  mandatory/cmd_push.c \
+			  mandatory/cmd_rotate.c \
+			  mandatory/cmd_rev_rotate.c \
+			  mandatory/validation.c
 
 OBJS		= $(SRCS:%.c=%.o)
 

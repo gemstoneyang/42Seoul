@@ -6,21 +6,42 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:16:33 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/16 21:29:18 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/17 21:03:31 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*init_node(int val)
+t_bool	is_integer(char *str)
+{
+	int		n;
+	char	*res;
+
+	n = ft_atoi(str);
+	res = ft_itoa(n);
+	if (!res)
+		return (FALSE);
+	if (ft_strncmp(str, res, ft_strlen(str)) != 0)
+	{
+		free(res);
+		return (FALSE);
+	}
+	free(res);
+	return (TRUE);
+}
+
+t_node	*init_node(char *str)
 {
 	t_node	*node;
 
+	if (is_integer(str) == FALSE)
+		return (NULL);
 	node = (t_node *)malloc(sizeof(t_node));
-	if (node)
+	if (!node)
+		return (NULL);
 	node->prev = NULL;
 	node->next = NULL;
-	node->value = val;
+	node->value = ft_atoi(str);
 	return (node);
 }
 
