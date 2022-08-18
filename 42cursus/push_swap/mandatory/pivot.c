@@ -1,0 +1,101 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pivot.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/19 02:10:13 by wonyang           #+#    #+#             */
+/*   Updated: 2022/08/19 03:22:35 by wonyang          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+void	sort_array(int *arr, int size)
+{
+	int	i;
+	int	j;
+	int	tmp;
+
+	if (size < 2)
+		return ;
+	i = 0;
+	while (i < size - 1)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (arr[i] > arr[j])
+			{
+				tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+int	*stack_to_array(t_stack *stack)
+{
+	int		*arr;
+	int		i;
+	t_node	*node;
+
+	arr = (int *)malloc(sizeof(int) * stack->count);
+	if (!arr)
+		return (NULL);
+	node = stack->top;
+	i = 0;
+	while (node)
+	{
+		arr[i] = node->value;
+		node = node->next;
+		i++;
+	}
+	return (arr);
+}
+
+int	three_div_low_pivot(t_stack *stack)
+{
+	int	*arr;
+	int	res;
+
+	arr = stack_to_array(stack);
+	if (!arr)
+		return (-1);
+	sort_array(arr, stack->count);
+	res = arr[stack->count / 3];
+	free(arr);
+	return (res);
+}
+
+int	three_div_high_pivot(t_stack *stack)
+{
+	int	*arr;
+	int	res;
+
+	arr = stack_to_array(stack);
+	if (!arr)
+		return (-1);
+	sort_array(arr, stack->count);
+	res = arr[stack->count * 2 / 3];
+	free(arr);
+	return (res);
+}
+
+int	two_div_pivot(t_stack *stack)
+{
+	int	*arr;
+	int	res;
+
+	arr = stack_to_array(stack);
+	if (!arr)
+		return (-1);
+	sort_array(arr, stack->count);
+	res = arr[stack->count / 2];
+	free(arr);
+	return (res);
+}
