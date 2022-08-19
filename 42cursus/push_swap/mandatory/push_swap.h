@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:05:14 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/19 03:40:48 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/19 15:15:55 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	rb(t_data *data);
 void	rr(t_data *data);
 
 // cmd_push.c
-void	cmd_push(t_data *data);
 void	pa(t_data *data);
 void	pb(t_data *data);
 
@@ -110,5 +109,15 @@ void	sort_three_element(t_data *data);
 void	parse_nums(int argc, char **argv, t_data *data);
 void	add_num(char *str, t_data *data);
 int		is_integer(char *str);
+
+// two_div_a_to_b.c
+void	a_to_b(t_data *data, int size);
+void	a_to_b_move(t_data *data, int size, int pivot);
+void	a_to_b_next(t_data *data, int ra_count, int pb_count);
+
+// two_div_b_to_a.c
+void	b_to_a(t_data *data, int size);
+void	b_to_a_move(t_data *data, int size, int pivot);
+void	b_to_a_next(t_data *data, int rb_count, int pa_count);
 
 #endif

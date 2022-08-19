@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 01:02:51 by wonyang           #+#    #+#              #
-#    Updated: 2022/08/19 02:37:24 by wonyang          ###   ########.fr        #
+#    Updated: 2022/08/19 14:51:48 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ SRCS		= mandatory/main.c \
 			  mandatory/sort.c \
 			  mandatory/utils.c \
 			  mandatory/cmd_div.c \
-			  mandatory/pivot.c
+			  mandatory/pivot.c \
+			  mandatory/two_div_a_to_b.c \
+			  mandatory/two_div_b_to_a.c \
 
 OBJS		= $(SRCS:%.c=%.o)
 
