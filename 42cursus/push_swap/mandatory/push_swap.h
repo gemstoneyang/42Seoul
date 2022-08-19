@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:05:14 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/19 15:15:55 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/20 00:55:41 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,10 @@ int		three_div_high_pivot(t_stack *stack);
 int		two_div_pivot(t_stack *stack);
 
 // sort.c
-void	sort_three_element(t_data *data);
+void	sort_two_element_a(t_data *data);
+void	sort_two_element_b(t_data *data);
+void	sort_three_element_a(t_data *data);
+void	sort_three_element_b(t_data *data);
 
 // parse.c
 void	parse_nums(int argc, char **argv, t_data *data);
@@ -119,5 +122,9 @@ void	a_to_b_next(t_data *data, int ra_count, int pb_count);
 void	b_to_a(t_data *data, int size);
 void	b_to_a_move(t_data *data, int size, int pivot);
 void	b_to_a_next(t_data *data, int rb_count, int pa_count);
+
+
+
+void	print_stack(t_data *data);
 
 #endif

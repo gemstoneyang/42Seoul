@@ -6,11 +6,33 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:51:09 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/18 22:51:10 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/20 00:58:05 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
+
+void	print_stack(t_data *data)
+{
+	t_node	*node;
+
+	printf("stack a\n");
+	node = data->stack_a->top;
+	while (node)
+	{
+		printf("%d\n", node->value);
+		node = node->next;
+	}
+	printf("stack b\n");
+	node = data->stack_b->top;
+	while (node)
+	{
+		printf("%d\n", node->value);
+		node = node->next;
+	}
+	printf("\n");
+}
 
 void	cmd_div(char *cmd, t_data *data)
 {
@@ -36,6 +58,7 @@ void	cmd_div(char *cmd, t_data *data)
 		rrb(data);
 	else if (ft_strcmp(cmd, "rrr") == 0)
 		rrr(data);
+	print_stack(data);
 }
 
 void	cmd(char *str, t_data *data)

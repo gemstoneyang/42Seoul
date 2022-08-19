@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 14:49:06 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/19 15:48:53 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/20 00:40:47 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,18 @@ void	b_to_a(t_data *data, int size)
 	if (size == 1)
 	{
 		cmd("pa", data);
+		return ;
+	}
+	if (size == 2)
+	{
+		sort_two_element_b(data);
+		cmd("pa pa", data);
+		return ;
+	}
+	if (size == 3)
+	{
+		sort_three_element_b(data);
+		cmd("pa pa pa", data);
 		return ;
 	}
 	pivot = two_div_pivot(data->stack_b);
@@ -67,6 +79,6 @@ void	b_to_a_next(t_data *data, int rb_count, int pa_count)
 		cmd("rrb", data);
 		i++;
 	}
-	b_to_a(data, rb_count);
 	a_to_b(data, pa_count);
+	b_to_a(data, rb_count);
 }

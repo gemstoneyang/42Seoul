@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:04:09 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/19 14:52:13 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/20 00:57:58 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int argc, char *argv[])
 	parse_nums(argc, argv, data);
 	validation_data(argc, data);
 	a_to_b(data, data->stack_a->count);
+	// print_stack(data);
 	normal_exit(data);
 	return (0);
 }

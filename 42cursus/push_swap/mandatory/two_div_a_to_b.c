@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 14:47:34 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/19 16:34:32 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/20 00:39:48 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@ void	a_to_b(t_data *data, int size)
 
 	if (size == 0 || size == 1)
 		return ;
+	if (size == 2)
+	{
+		sort_two_element_a(data);
+		return ;
+	}
+	if (size == 3)
+	{
+		sort_three_element_a(data);
+		return ;
+	}
 	pivot = two_div_pivot(data->stack_a);
 	if (pivot == -1)
 		error_exit(data);
