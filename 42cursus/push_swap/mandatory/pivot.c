@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 02:10:13 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/19 03:22:35 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/20 21:32:26 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,18 @@ void	sort_array(int *arr, int size)
 	}
 }
 
-int	*stack_to_array(t_stack *stack)
+int	*stack_to_array(t_stack *stack, int size)
 {
 	int		*arr;
 	int		i;
 	t_node	*node;
 
-	arr = (int *)malloc(sizeof(int) * stack->count);
+	arr = (int *)malloc(sizeof(int) * size);
 	if (!arr)
 		return (NULL);
 	node = stack->top;
 	i = 0;
-	while (node)
+	while (i < size)
 	{
 		arr[i] = node->value;
 		node = node->next;
@@ -58,44 +58,30 @@ int	*stack_to_array(t_stack *stack)
 	return (arr);
 }
 
-int	three_div_low_pivot(t_stack *stack)
+int	three_div_low_pivot(t_stack *stack, int size)
 {
 	int	*arr;
 	int	res;
 
-	arr = stack_to_array(stack);
+	arr = stack_to_array(stack, size);
 	if (!arr)
 		return (-1);
-	sort_array(arr, stack->count);
-	res = arr[stack->count / 3];
+	sort_array(arr, size);
+	res = arr[size / 3];
 	free(arr);
 	return (res);
 }
 
-int	three_div_high_pivot(t_stack *stack)
+int	three_div_high_pivot(t_stack *stack, int size)
 {
 	int	*arr;
 	int	res;
 
-	arr = stack_to_array(stack);
+	arr = stack_to_array(stack, size);
 	if (!arr)
 		return (-1);
-	sort_array(arr, stack->count);
-	res = arr[stack->count * 2 / 3];
-	free(arr);
-	return (res);
-}
-
-int	two_div_pivot(t_stack *stack)
-{
-	int	*arr;
-	int	res;
-
-	arr = stack_to_array(stack);
-	if (!arr)
-		return (-1);
-	sort_array(arr, stack->count);
-	res = arr[stack->count / 2];
+	sort_array(arr, size);
+	res = arr[size * 2 / 3];
 	free(arr);
 	return (res);
 }

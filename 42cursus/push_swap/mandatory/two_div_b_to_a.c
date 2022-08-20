@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 14:49:06 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/20 17:04:43 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/20 21:21:56 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	b_to_a(t_data *data, int size)
 	int	low_pivot;
 	int	high_pivot;
 
-	if (size == 0)
+	if (size <= 0)
 		return ;
 	if (size == 1)
 	{
@@ -30,8 +30,8 @@ void	b_to_a(t_data *data, int size)
 		cmd("pa pa", data);
 		return ;
 	}
-	low_pivot = three_div_low_pivot(data->stack_b);
-	high_pivot = three_div_high_pivot(data->stack_b);
+	low_pivot = three_div_low_pivot(data->stack_b, size);
+	high_pivot = three_div_high_pivot(data->stack_b, size);
 	if (low_pivot == -1 || high_pivot == -1)
 		error_exit(data);
 	b_to_a_move(data, size, low_pivot, high_pivot);
