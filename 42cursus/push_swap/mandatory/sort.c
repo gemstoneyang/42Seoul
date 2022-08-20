@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 16:53:06 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/20 01:32:49 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 01:27:43 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,15 @@ void	sort_three_element_a(t_data *data)
 	mid = stack->top->next->value;
 	bot = stack->top->next->next->value;
 	if (top < mid && mid > bot && top < bot)
-		cmd("sa ra", data);
+		cmd("ra sa rra", data);
 	else if (top < mid && mid > bot && top > bot)
-		cmd("rra", data);
+		cmd("ra sa rra sa", data);
 	else if (top > mid && mid < bot && top < bot)
 		cmd("sa", data);
 	else if (top > mid && mid < bot && top > bot)
-		cmd("ra", data);
+		cmd("sa ra sa rra", data);
 	else if (top > mid && mid > bot && top > bot)
-		cmd("sa rra", data);
+		cmd("sa ra sa rra sa", data);
 }
 
 void	sort_three_element_b(t_data *data)
