@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:12:31 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/19 15:15:47 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 02:22:24 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	pa(t_data *data)
 {
 	t_node	*node;
 
-	write(1, "pa\n", 3);
+	add_cmd(data, "pa");
 	if (data->stack_b->count == 0)
 		return ;
 	node = pop(data->stack_b);
@@ -27,10 +27,9 @@ void	pb(t_data *data)
 {
 	t_node	*node;
 
-	write(1, "pb\n", 3);
+	add_cmd(data, "pb");
 	if (data->stack_a->count == 0)
 		return ;
 	node = pop(data->stack_a);
 	push(data->stack_b, node);
-
 }

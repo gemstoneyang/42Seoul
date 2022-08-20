@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:16:33 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/18 21:49:24 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 02:04:47 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ t_data	*init_data(void)
 		error_exit(data);
 	data->stack_a = init_stack();
 	data->stack_b = init_stack();
+	data->cmd_list = NULL;
 	if (!(data->stack_a) || !(data->stack_b))
 		error_exit(data);
 	return (data);

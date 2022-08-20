@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:25:56 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/20 00:52:05 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 02:23:03 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ void	cmd_rev_rotate(t_stack *stack)
 
 void	rra(t_data *data)
 {
-	write(1, "rra\n", 4);
+	add_cmd(data, "rra");
 	cmd_rev_rotate(data->stack_a);
 }
 
 void	rrb(t_data *data)
 {
-	write(1, "rrb\n", 4);
+	add_cmd(data, "rrb");
 	cmd_rev_rotate(data->stack_b);
 }
 
 void	rrr(t_data *data)
 {
-	write(1, "rrr\n", 4);
+	add_cmd(data, "rrr");
 	cmd_rev_rotate(data->stack_a);
 	cmd_rev_rotate(data->stack_b);
 }
