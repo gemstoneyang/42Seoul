@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 01:02:51 by wonyang           #+#    #+#              #
-#    Updated: 2022/08/19 14:51:48 by wonyang          ###   ########.fr        #
+#    Updated: 2022/08/20 17:10:30 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,10 +39,10 @@ all	:		$(NAME)
 
 $(NAME) : 	$(OBJS)
 			make all -C $(LIBFT)/
-			gcc -o $(NAME) $(OBJS) -lft -Llibft
+			cc -o $(NAME) $(OBJS) -lft -Llibft
 
 %.o	: 		%.c
-			gcc $(FLAGS) -c $^ -I./ -o $@
+			cc $(FLAGS) -c $^ -I./ -o $@
 
 clean	:
 			rm -f $(OBJS)

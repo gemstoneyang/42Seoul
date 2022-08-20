@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:05:14 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/20 00:55:41 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/20 16:48:40 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,13 +115,13 @@ int		is_integer(char *str);
 
 // two_div_a_to_b.c
 void	a_to_b(t_data *data, int size);
-void	a_to_b_move(t_data *data, int size, int pivot);
-void	a_to_b_next(t_data *data, int ra_count, int pb_count);
+void	a_to_b_move(t_data *data, int size, int low_pivot, int high_pivot);
+void	a_to_b_next(t_data *data, int ra_count, int rb_count, int pb_count);
 
 // two_div_b_to_a.c
 void	b_to_a(t_data *data, int size);
-void	b_to_a_move(t_data *data, int size, int pivot);
-void	b_to_a_next(t_data *data, int rb_count, int pa_count);
+void	b_to_a_move(t_data *data, int size, int low_pivot, int high_pivot);
+void	b_to_a_next(t_data *data, int ra_count, int rb_count, int pa_count);
 
 
 
