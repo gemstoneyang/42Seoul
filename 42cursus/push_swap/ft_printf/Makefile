@@ -5,53 +5,57 @@
 #                                                     +:+ +:+         +:+      #
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/05 01:02:51 by wonyang           #+#    #+#              #
-#    Updated: 2022/08/21 18:50:00 by wonyang          ###   ########.fr        #
+#    Created: 2022/07/23 18:32:17 by wonyang           #+#    #+#              #
+#    Updated: 2022/08/21 18:50:38 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= push_swap
-PRINTF		= ft_printf
+NAME		= libftprintf.a
+LIBFT		= libft
+LIBFT_LIB	= libft.a
 
-SRCS		= mandatory/main.c \
-			  mandatory/stack.c \
-			  mandatory/init_data.c \
-			  mandatory/error.c \
-			  mandatory/parse.c \
-			  mandatory/cmd_swap.c \
-			  mandatory/cmd_push.c \
-			  mandatory/cmd_rotate.c \
-			  mandatory/cmd_rev_rotate.c \
-			  mandatory/validation.c \
-			  mandatory/sort.c \
-			  mandatory/utils.c \
-			  mandatory/cmd_div.c \
-			  mandatory/pivot.c \
-			  mandatory/two_div_a_to_b.c \
-			  mandatory/two_div_b_to_a.c \
-			  mandatory/cmd_list.c
+SRCS		= ft_printf.c \
+			ft_printf_utils.c \
+			ft_printf_update_info.c \
+			ft_printf_persent.c \
+			ft_printf_di.c \
+			ft_printf_di_utils.c \
+			ft_printf_u.c \
+			ft_printf_u_utils.c \
+			ft_printf_c.c \
+			ft_printf_s.c \
+			ft_printf_xX.c \
+			ft_printf_xX_utils.c \
+			ft_printf_p.c \
+			ft_printf_p_utils.c
 
 OBJS		= $(SRCS:%.c=%.o)
+
+LIBC		= ar rc
 
 FLAGS		= -Wall -Wextra -Werror
 
 all	:		$(NAME)
 
-$(NAME) : 	$(OBJS)
-			make bonus -C $(PRINTF)/
-			cc -o $(NAME) $(OBJS) -lftprintf -L$(PRINTF)
+$(NAME)	: 	$(OBJS)
+			make bonus -C $(LIBFT)/
+			cp $(LIBFT)/$(LIBFT_LIB) $(NAME)
+			$(LIBC) $(NAME) $(OBJS)
 
 %.o	: 		%.c
-			cc $(FLAGS) -c $^ -I./ -o $@
+			gcc $(FLAGS) -c $^ -I./ -o $@
+
+bonus	: 	$(NAME)
 
 clean	:
 			rm -f $(OBJS)
-			make clean -C $(PRINTF)
+			make clean -C $(LIBFT)
 
 fclean	:	clean
 			rm -f $(NAME)
-			make fclean -C $(PRINTF)
+			rm -f $(LIBFT_LIB)
+			make fclean -C $(LIBFT)
 
 re	:		fclean all
 
-.PHONY	:	all clean fclean re
+.PHONY	:	all clean fclean re bonus

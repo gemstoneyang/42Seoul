@@ -6,12 +6,11 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 02:15:36 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 18:07:05 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 18:54:44 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 t_bool	cmd_change(t_list *now_node, char *cmd_a, char *cmd_b, char *cmd_c)
 {	
@@ -82,7 +81,7 @@ void	add_cmd(t_data *data, char *cmd)
 
 void	write_cmd(void *cmd)
 {
-	printf("%s\n", (char *)cmd);
+	ft_printf("%s\n", (char *)cmd);
 }
 
 void	print_cmd(t_data *data)

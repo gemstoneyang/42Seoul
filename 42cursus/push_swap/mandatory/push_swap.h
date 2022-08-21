@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:05:14 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 18:37:55 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 18:56:03 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include "libft/libft.h"
+# include "ft_printf/ft_printf.h"
 
 # define TRUE 1
 # define FALSE 0
@@ -128,7 +128,5 @@ void	cmd_optimization(t_data *data);
 void	add_cmd(t_data *data, char *cmd);
 void	write_cmd(void *cmd);
 void	print_cmd(t_data *data);
-
-void	print_stack(t_data *data);
 
 #endif
