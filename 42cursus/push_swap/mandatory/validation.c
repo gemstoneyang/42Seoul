@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 15:35:31 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/18 15:39:13 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 18:34:37 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	duplicate_validation(t_data *data)
 		while (node)
 		{
 			if (cur_node->value == node->value)
+			{
 				error_exit(data);
+			}
 			node = node->next;
 		}
 		cur_node = cur_node->next;

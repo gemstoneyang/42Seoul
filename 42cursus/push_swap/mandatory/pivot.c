@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 02:10:13 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/20 21:32:26 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 18:37:47 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,28 +58,28 @@ int	*stack_to_array(t_stack *stack, int size)
 	return (arr);
 }
 
-int	three_div_low_pivot(t_stack *stack, int size)
+int	three_div_low_pivot(t_data *data, t_stack *stack, int size)
 {
 	int	*arr;
 	int	res;
 
 	arr = stack_to_array(stack, size);
 	if (!arr)
-		return (-1);
+		error_exit(data);
 	sort_array(arr, size);
 	res = arr[size / 3];
 	free(arr);
 	return (res);
 }
 
-int	three_div_high_pivot(t_stack *stack, int size)
+int	three_div_high_pivot(t_data *data, t_stack *stack, int size)
 {
 	int	*arr;
 	int	res;
 
 	arr = stack_to_array(stack, size);
 	if (!arr)
-		return (-1);
+		error_exit(data);
 	sort_array(arr, size);
 	res = arr[size * 2 / 3];
 	free(arr);

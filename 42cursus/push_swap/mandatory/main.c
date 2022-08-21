@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:04:09 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 18:02:25 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 18:38:52 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,15 @@ int	main(int argc, char *argv[])
 
 	data = init_data();
 	parse_nums(argc, argv, data);
+	/** printf("parse finish\n"); */
 	validation_data(argc, data);
+	/** printf("validation finish\n"); */
 	a_to_b(data, data->stack_a->count);
+	/** printf("swap finish\n"); */
 	cmd_optimization(data);
-	print_cmd(data); // todo!, ft_printf add
+	/** printf("optimization finish\n"); */
+	print_cmd(data);
+	/** printf("print cmd finish\n"); */
 	normal_exit(data);
 	return (0);
 }

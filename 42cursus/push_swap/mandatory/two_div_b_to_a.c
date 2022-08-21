@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 14:49:06 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 01:28:03 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 18:38:33 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,8 @@ void	b_to_a(t_data *data, int size)
 		cmd("pa pa", data);
 		return ;
 	}
-	low_pivot = three_div_low_pivot(data->stack_b, size);
-	high_pivot = three_div_high_pivot(data->stack_b, size);
-	if (low_pivot == -1 || high_pivot == -1)
-		error_exit(data);
+	low_pivot = three_div_low_pivot(data, data->stack_b, size);
+	high_pivot = three_div_high_pivot(data, data->stack_b, size);
 	b_to_a_move(data, size, low_pivot, high_pivot);
 }
 
