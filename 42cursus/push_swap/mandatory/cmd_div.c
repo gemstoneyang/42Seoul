@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:51:09 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 18:56:03 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 20:15:18 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	cmd_div(char *cmd, t_data *data)
 		rrr(data);
 }
 
-void	cmd(char *str, t_data *data)
+int	cmd(char *str, t_data *data)
 {
 	char	**cmd_list;
 	int		i;
@@ -53,4 +53,5 @@ void	cmd(char *str, t_data *data)
 		i++;
 	}
 	free_split(cmd_list);
+	return (i);
 }

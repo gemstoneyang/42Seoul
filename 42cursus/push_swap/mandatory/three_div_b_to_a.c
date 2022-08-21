@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 18:56:49 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 19:17:55 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 20:16:44 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,19 +57,12 @@ void	b_to_a_move(t_data *data, int size, int low_pivot, int high_pivot)
 	{
 		node = data->stack_b->top;
 		if (node->value < low_pivot)
-		{
-			cmd("rb", data);
-			rb_count++;
-		}
+			rb_count += cmd("rb", data);
 		else
 		{
-			cmd("pa", data);
-			pa_count++;
+			pa_count += cmd("pa", data);
 			if (node->value < high_pivot)
-			{
-				cmd("ra", data);
-				ra_count++;
-			}
+				ra_count += cmd("ra", data);
 		}
 		i++;
 	}

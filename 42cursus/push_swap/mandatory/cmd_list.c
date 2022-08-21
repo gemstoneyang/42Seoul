@@ -6,13 +6,13 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 02:15:36 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 20:05:04 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 20:10:14 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_bool	cmd_change(t_list *now_node, char *cmd_a, char *cmd_b, char *cmd_c)
+t_bool	cng(t_list *now_node, char *cmd_a, char *cmd_b, char *cmd_c)
 {	
 	t_list	*next_node;
 	char	*now_cmd;
@@ -44,26 +44,23 @@ void	cmd_optimization(t_data *data)
 	node = data->cmd_list->next;
 	while (node->next)
 	{
-		if (cmd_change(node, "ra", "rb", "rr"))
+		if (cng(node, "ra", "rb", "rr") || cng(node, "rra", "rrb", "rrr"))
 			continue ;
-		else if (cmd_change(node, "rra", "rrb", "rrr"))
+		else if (cng(node, "sa", "sb", "ss"))
 			continue ;
-		else if (cmd_change(node, "sa", "sb", "ss"))
+		else if (cng(node, "sa", "ss", "sb"))
 			continue ;
-		else if (cmd_change(node, "sa", "ss", "sb"))
+		else if (cng(node, "sb", "ss", "sa"))
 			continue ;
-		else if (cmd_change(node, "sb", "ss", "sa"))
+		else if (cng(node, "ra", "rrr", "rrb"))
 			continue ;
-		else if (cmd_change(node, "ra", "rrr", "rrb"))
+		else if (cng(node, "rb", "rrr", "rra"))
 			continue ;
-		else if (cmd_change(node, "rb", "rrr", "rra"))
+		else if (cng(node, "rra", "rr", "rb"))
 			continue ;
-		else if (cmd_change(node, "rra", "rr", "rb"))
+		else if (cng(node, "rrb", "rr", "ra"))
 			continue ;
-		else if (cmd_change(node, "rrb", "rr", "ra"))
-			continue ;
-		else
-			node = node->next;
+		node = node->next;
 	}
 }
 

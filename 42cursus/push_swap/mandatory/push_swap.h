@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:05:14 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 20:02:52 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 20:14:58 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int		ft_strcmp(char *s1, char *s2);
 
 // cmd_div.c
 void	cmd_div(char *cmd, t_data *data);
-void	cmd(char *str, t_data *data);
+int		cmd(char *str, t_data *data);
 
 // pivot.c
 void	sort_array(int *arr, int size);
@@ -125,6 +125,7 @@ void	b_to_a_move(t_data *data, int size, int low_pivot, int high_pivot);
 void	b_to_a_next(t_data *data, int ra_count, int rb_count, int pa_count);
 
 // cmd_list.c
+t_bool	cng(t_list *now_node, char *cmd_a, char *cmd_b, char *cmd_c);
 void	cmd_optimization(t_data *data);
 void	add_cmd(t_data *data, char *cmd);
 void	write_cmd(void *cmd);
