@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 02:15:36 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 02:45:55 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 14:46:44 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,15 @@ void	add_cmd(t_data *data, char *cmd)
 
 void	write_cmd(void *cmd)
 {
-	printf("test\n");
 	printf("%s\n", (char *)cmd);
 }
 
 void	print_cmd(t_data *data)
 {
-	t_list	*list;
-	list = data->cmd_list;
-	write_cmd(list->content);
-	ft_lstiter(data->cmd_list, write_cmd);
+	t_list	*node;
+
+	node = data->cmd_list;
+	if (node)
+		node = node->next;
+	ft_lstiter(node, write_cmd);
 }

@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:04:09 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 02:47:06 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 14:47:06 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char *argv[])
 	validation_data(argc, data);
 	a_to_b(data, data->stack_a->count);
 	print_cmd(data); // todo!, ft_printf add
-	print_stack(data);
 	normal_exit(data);
 	return (0);
 }
