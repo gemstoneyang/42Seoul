@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:05:14 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 20:14:58 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 20:58:09 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	error_exit(t_data *data);
 void	normal_exit(t_data *data);
 
 // init_data.c
-t_bool	is_integer(char *str);
 t_node	*init_node(char *str);
 t_stack	*init_stack(void);
 t_data	*init_data(void);
@@ -89,6 +88,7 @@ void	sorted_validation(t_data *data);
 void	validation_data(int argc, t_data *data);
 
 // utils.c
+t_bool	is_integer(char *str);
 void	free_split(char **arr);
 int		ft_strcmp(char *s1, char *s2);
 
