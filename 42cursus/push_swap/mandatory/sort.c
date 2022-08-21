@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 16:53:06 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 01:27:43 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 19:56:31 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,36 @@ void	sort_three_element_b(t_data *data)
 	mid = stack->top->next->value;
 	bot = stack->top->next->next->value;
 	if (top < mid && mid > bot && top < bot)
-		cmd("rb", data);
+		cmd("sb rb sb rrb", data);
 	else if (top < mid && mid > bot && top > bot)
 		cmd("sb", data);
 	else if (top > mid && mid < bot && top < bot)
-		cmd("rrb", data);
+		cmd("rb sb rrb sb", data);
 	else if (top > mid && mid < bot && top > bot)
-		cmd("sb rb", data);
+		cmd("rb sb rrb", data);
 	else if (top < mid && mid < bot && top < bot)
-		cmd("sb rrb", data);
+		cmd("sb rb sb rrb sb", data);
+}
+
+void	sort_only_three_element(t_data *data)
+{
+	int		top;
+	int		mid;
+	int		bot;
+	t_stack	*stack;
+
+	stack = data->stack_a;
+	top = stack->top->value;
+	mid = stack->top->next->value;
+	bot = stack->top->next->next->value;
+	if (top < mid && mid > bot && top < bot)
+		cmd("sa ra", data);
+	else if (top < mid && mid > bot && top > bot)
+		cmd("rra", data);
+	else if (top > mid && mid < bot && top < bot)
+		cmd("sa", data);
+	else if (top > mid && mid < bot && top > bot)
+		cmd("ra", data);
+	else if (top > mid && mid > bot && top > bot)
+		cmd("sa rra", data);
 }

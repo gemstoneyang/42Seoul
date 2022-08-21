@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:05:14 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 18:56:03 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 19:53:36 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void	sort_two_element_a(t_data *data);
 void	sort_two_element_b(t_data *data);
 void	sort_three_element_a(t_data *data);
 void	sort_three_element_b(t_data *data);
+void	sort_only_three_element(t_data *data);
 
 // parse.c
 void	parse_nums(int argc, char **argv, t_data *data);

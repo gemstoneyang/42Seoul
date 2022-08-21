@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/23 18:32:17 by wonyang           #+#    #+#              #
-#    Updated: 2022/08/21 18:50:38 by wonyang          ###   ########.fr        #
+#    Updated: 2022/08/21 19:36:51 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ $(NAME)	: 	$(OBJS)
 			$(LIBC) $(NAME) $(OBJS)
 
 %.o	: 		%.c
-			gcc $(FLAGS) -c $^ -I./ -o $@
+			cc $(FLAGS) -c $^ -I./ -o $@
 
 bonus	: 	$(NAME)
 
