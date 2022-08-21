@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:05:14 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 19:53:36 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 20:02:52 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include "ft_printf/ft_printf.h"
+# include "libft/libft.h"
 
 # define TRUE 1
 # define FALSE 0

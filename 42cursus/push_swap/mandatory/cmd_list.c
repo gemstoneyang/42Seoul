@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 02:15:36 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 18:54:44 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/08/21 20:05:04 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ void	add_cmd(t_data *data, char *cmd)
 
 void	write_cmd(void *cmd)
 {
-	ft_printf("%s\n", (char *)cmd);
+	write(1, (char *)cmd, ft_strlen((char *)cmd));
+	write(1, "\n", 1);
 }
 
 void	print_cmd(t_data *data)

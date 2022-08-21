@@ -6,12 +6,12 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 01:02:51 by wonyang           #+#    #+#              #
-#    Updated: 2022/08/21 18:57:46 by wonyang          ###   ########.fr        #
+#    Updated: 2022/08/21 20:03:55 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= push_swap
-PRINTF		= ft_printf
+LIBFT		= libft
 
 SRCS		= mandatory/main.c \
 			  mandatory/stack.c \
@@ -38,19 +38,19 @@ FLAGS		= -Wall -Wextra -Werror
 all	:		$(NAME)
 
 $(NAME) : 	$(OBJS)
-			make bonus -C $(PRINTF)/
-			cc -o $(NAME) $(OBJS) -lftprintf -L$(PRINTF)
+			make bonus -C $(LIBFT)/
+			cc -o $(NAME) $(OBJS) -lft -L$(LIBFT)
 
 %.o	: 		%.c
 			cc $(FLAGS) -c $^ -I./ -o $@
 
 clean	:
 			rm -f $(OBJS)
-			make clean -C $(PRINTF)
+			make clean -C $(LIBFT)
 
 fclean	:	clean
 			rm -f $(NAME)
-			make fclean -C $(PRINTF)
+			make fclean -C $(LIBFT)
 
 re	:		fclean all
 
