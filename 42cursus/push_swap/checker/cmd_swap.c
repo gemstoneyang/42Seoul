@@ -1,32 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   cmd_swap.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 01:13:34 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/03 22:07:50 by wonyang          ###   ########.fr       */
+/*   Created: 2022/08/06 15:06:01 by wonyang           #+#    #+#             */
+/*   Updated: 2022/09/03 17:57:59 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "push_swap.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
+static void	swap(t_stack *stack)
+{
+	t_node	*first;
+	t_node	*second;
 
-# include <unistd.h>
-# include <stdlib.h>
+	first = pop(stack);
+	second = pop(stack);
+	push(stack, first);
+	push(stack, second);
+}
 
-size_t	gnl_strlen(char *str);
-char	*gnl_strjoin(char *cache, char *buffer);
-char	*gnl_strchr(char *str, int c);
+void	sa(t_data *data)
+{
+	add_cmd(data, "sa");
+	swap(data->stack_a);
+}
 
-char	*ft_read_file(int fd, char *cache);
-char	*ft_get_line(char *cache);
-char	*ft_update_cache(char *cache);
-char	*get_next_line(int fd);
+void	sb(t_data *data)
+{
+	add_cmd(data, "sb");
+	swap(data->stack_b);
+}
 
-#endif
+void	ss(t_data *data)
+{
+	add_cmd(data, "ss");
+	swap(data->stack_a);
+	swap(data->stack_b);
+}

@@ -6,13 +6,13 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 01:21:04 by wonyang           #+#    #+#             */
-/*   Updated: 2022/07/22 01:21:17 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/03 22:07:12 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *str)
+size_t	gnl_strlen(char *str)
 {
 	size_t	i;
 
@@ -24,13 +24,13 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char *cache, char *buffer)
+char	*gnl_strjoin(char *cache, char *buffer)
 {
 	char	*str;
 	int		i;
 	int		j;
 
-	str = (char *)malloc(ft_strlen(cache) + ft_strlen(buffer) + 1);
+	str = (char *)malloc(gnl_strlen(cache) + gnl_strlen(buffer) + 1);
 	if (!str)
 	{
 		if (cache)
@@ -52,7 +52,7 @@ char	*ft_strjoin(char *cache, char *buffer)
 	return (str);
 }
 
-char	*ft_strchr(char *str, int c)
+char	*gnl_strchr(char *str, int c)
 {
 	char	ch;
 	size_t	i;
@@ -114,7 +114,7 @@ char	*ft_update_cache(char *cache)
 		free(cache);
 		return (NULL);
 	}
-	str = (char *)malloc((ft_strlen(cache) - i + 1) * sizeof(char));
+	str = (char *)malloc((gnl_strlen(cache) - i + 1) * sizeof(char));
 	if (!str)
 	{
 		free(cache);

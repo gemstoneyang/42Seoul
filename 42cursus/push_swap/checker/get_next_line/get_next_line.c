@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 01:13:22 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/03 17:45:52 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/03 22:07:50 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_read_file(int fd, char *cache)
 		return (NULL);
 	}
 	read_byte = 1;
-	while (!ft_strchr(cache, '\n') && read_byte != 0)
+	while (!gnl_strchr(cache, '\n') && read_byte != 0)
 	{
 		read_byte = read(fd, buffer, BUFFER_SIZE);
 		if (read_byte == -1)
@@ -35,7 +35,7 @@ char	*ft_read_file(int fd, char *cache)
 			return (NULL);
 		}
 		buffer[read_byte] = '\0';
-		cache = ft_strjoin(cache, buffer);
+		cache = gnl_strjoin(cache, buffer);
 	}
 	free(buffer);
 	return (cache);

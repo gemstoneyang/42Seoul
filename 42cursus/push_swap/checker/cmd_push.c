@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   cmd_push.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 01:13:34 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/03 22:07:50 by wonyang          ###   ########.fr       */
+/*   Created: 2022/08/06 15:12:31 by wonyang           #+#    #+#             */
+/*   Updated: 2022/08/21 02:22:24 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "push_swap.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
+void	pa(t_data *data)
+{
+	t_node	*node;
 
-# include <unistd.h>
-# include <stdlib.h>
+	add_cmd(data, "pa");
+	if (data->stack_b->count == 0)
+		return ;
+	node = pop(data->stack_b);
+	push(data->stack_a, node);
+}
 
-size_t	gnl_strlen(char *str);
-char	*gnl_strjoin(char *cache, char *buffer);
-char	*gnl_strchr(char *str, int c);
+void	pb(t_data *data)
+{
+	t_node	*node;
 
-char	*ft_read_file(int fd, char *cache);
-char	*ft_get_line(char *cache);
-char	*ft_update_cache(char *cache);
-char	*get_next_line(int fd);
-
-#endif
+	add_cmd(data, "pb");
+	if (data->stack_a->count == 0)
+		return ;
+	node = pop(data->stack_a);
+	push(data->stack_b, node);
+}
