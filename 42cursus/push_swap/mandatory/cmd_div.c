@@ -6,13 +6,13 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:51:09 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 20:15:18 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/03 17:57:01 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	cmd_div(char *cmd, t_data *data)
+static void	cmd_div(char *cmd, t_data *data)
 {
 	if (ft_strcmp(cmd, "sa") == 0)
 		sa(data);

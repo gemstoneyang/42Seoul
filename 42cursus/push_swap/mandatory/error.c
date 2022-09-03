@@ -6,13 +6,13 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 20:29:16 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 14:45:24 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/03 17:58:44 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_list(t_list *list)
+static void	free_list(t_list *list)
 {
 	t_list	*now;
 	t_list	*nxt;
@@ -28,7 +28,7 @@ void	free_list(t_list *list)
 	free(now);
 }
 
-void	free_stack(t_stack *stack)
+static void	free_stack(t_stack *stack)
 {
 	t_node	*node;
 	t_node	*tmp;
@@ -45,7 +45,7 @@ void	free_stack(t_stack *stack)
 	return ;
 }
 
-void	free_data(t_data *data)
+static void	free_data(t_data *data)
 {
 	if (data->stack_a)
 		free_stack(data->stack_a);

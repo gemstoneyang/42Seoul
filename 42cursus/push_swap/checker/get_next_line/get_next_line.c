@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 01:13:22 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/06 14:30:09 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/03 17:45:52 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ char	*ft_read_file(int fd, char *cache)
 
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
+	{
+		free(cache);
 		return (NULL);
+	}
 	read_byte = 1;
 	while (!ft_strchr(cache, '\n') && read_byte != 0)
 	{

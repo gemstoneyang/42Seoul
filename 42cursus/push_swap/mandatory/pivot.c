@@ -6,13 +6,13 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 02:10:13 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 19:50:50 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/03 18:03:09 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_array(int *arr, int size)
+static void	sort_array(int *arr, int size)
 {
 	int	i;
 	int	j;
@@ -38,7 +38,7 @@ void	sort_array(int *arr, int size)
 	}
 }
 
-int	*stack_to_array(t_stack *stack, int size)
+static int	*stack_to_array(t_stack *stack, int size)
 {
 	int		*arr;
 	int		i;

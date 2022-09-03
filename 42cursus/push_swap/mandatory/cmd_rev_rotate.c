@@ -6,13 +6,13 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:25:56 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 19:44:09 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/03 17:57:31 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	cmd_rev_rotate(t_stack *stack)
+static void	cmd_rev_rotate(t_stack *stack)
 {
 	t_node	*node;
 

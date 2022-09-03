@@ -6,28 +6,13 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:16:33 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 20:56:46 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/03 18:25:51 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*init_node(char *str)
-{
-	t_node	*node;
-
-	if (is_integer(str) == FALSE)
-		return (NULL);
-	node = (t_node *)malloc(sizeof(t_node));
-	if (!node)
-		return (NULL);
-	node->prev = NULL;
-	node->next = NULL;
-	node->value = ft_atoi(str);
-	return (node);
-}
-
-t_stack	*init_stack(void)
+static t_stack	*init_stack(void)
 {
 	t_stack	*stack;
 

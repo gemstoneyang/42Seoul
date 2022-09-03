@@ -6,13 +6,13 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 02:15:36 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 20:10:14 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/03 18:06:08 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_bool	cng(t_list *now_node, char *cmd_a, char *cmd_b, char *cmd_c)
+static t_bool	cng(t_list *now_node, char *cmd_a, char *cmd_b, char *cmd_c)
 {	
 	t_list	*next_node;
 	char	*now_cmd;
@@ -76,7 +76,7 @@ void	add_cmd(t_data *data, char *cmd)
 	ft_lstadd_back(&list, node);
 }
 
-void	write_cmd(void *cmd)
+static void	write_cmd(void *cmd)
 {
 	write(1, (char *)cmd, ft_strlen((char *)cmd));
 	write(1, "\n", 1);

@@ -6,11 +6,14 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/21 18:56:49 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 20:16:44 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/03 18:05:42 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	b_to_a_move(t_data *data, int size, int low_pivot, int high_pivot);
+static void	b_to_a_next(t_data *data, int ra_count, int rb_count, int pa_count);
 
 void	b_to_a(t_data *data, int size)
 {
@@ -41,7 +44,7 @@ void	b_to_a(t_data *data, int size)
 	b_to_a_move(data, size, low_pivot, high_pivot);
 }
 
-void	b_to_a_move(t_data *data, int size, int low_pivot, int high_pivot)
+static void	b_to_a_move(t_data *data, int size, int low_pivot, int high_pivot)
 {
 	int		i;
 	int		ra_count;
@@ -69,7 +72,7 @@ void	b_to_a_move(t_data *data, int size, int low_pivot, int high_pivot)
 	b_to_a_next(data, ra_count, rb_count, pa_count);
 }
 
-void	b_to_a_next(t_data *data, int ra_count, int rb_count, int pa_count)
+static void	b_to_a_next(t_data *data, int ra_count, int rb_count, int pa_count)
 {
 	int	i;
 

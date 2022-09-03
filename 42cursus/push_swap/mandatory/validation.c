@@ -6,13 +6,13 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 15:35:31 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/21 18:34:37 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/03 18:09:44 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	duplicate_validation(t_data *data)
+static void	duplicate_validation(t_data *data)
 {
 	t_node	*node;
 	t_node	*cur_node;
@@ -24,16 +24,14 @@ void	duplicate_validation(t_data *data)
 		while (node)
 		{
 			if (cur_node->value == node->value)
-			{
 				error_exit(data);
-			}
 			node = node->next;
 		}
 		cur_node = cur_node->next;
 	}
 }
 
-void	sorted_validation(t_data *data)
+static void	sorted_validation(t_data *data)
 {
 	t_node	*node;
 
