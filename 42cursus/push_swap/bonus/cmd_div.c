@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:51:09 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/03 17:57:01 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/04 19:20:13 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ static void	cmd_div(char *cmd, t_data *data)
 		rrb(data);
 	else if (ft_strcmp(cmd, "rrr") == 0)
 		rrr(data);
+	else
+		error_exit(data);
 }
 
 int	cmd(char *str, t_data *data)

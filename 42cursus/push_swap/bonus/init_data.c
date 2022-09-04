@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 21:16:33 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/03 18:25:51 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/04 21:40:50 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ t_data	*init_data(void)
 		error_exit(data);
 	data->stack_a = init_stack();
 	data->stack_b = init_stack();
-	data->cmd_list = ft_lstnew(NULL);
-	if (!(data->stack_a) || !(data->stack_b) || !(data->cmd_list))
+	if (!(data->stack_a) || !(data->stack_b))
 		error_exit(data);
 	return (data);
 }

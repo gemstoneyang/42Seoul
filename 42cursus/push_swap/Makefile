@@ -6,11 +6,12 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 01:02:51 by wonyang           #+#    #+#              #
-#    Updated: 2022/08/21 20:03:55 by wonyang          ###   ########.fr        #
+#    Updated: 2022/09/04 21:45:40 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= push_swap
+CH_NAME		= checker
 LIBFT		= libft
 
 SRCS		= mandatory/main.c \
@@ -31,25 +32,48 @@ SRCS		= mandatory/main.c \
 			  mandatory/three_div_b_to_a.c \
 			  mandatory/cmd_list.c
 
+CH_SRCS		= bonus/get_next_line/get_next_line.c \
+			  bonus/get_next_line/get_next_line_utils.c \
+			  bonus/check_result.c \
+			  bonus/cmd_div.c \
+			  bonus/cmd_push.c \
+			  bonus/cmd_rev_rotate.c \
+			  bonus/cmd_rotate.c \
+			  bonus/cmd_swap.c \
+			  bonus/error.c \
+			  bonus/init_data.c \
+			  bonus/main.c \
+			  bonus/parse.c \
+			  bonus/stack.c \
+			  bonus/utils.c \
+			  bonus/validation.c
+
 OBJS		= $(SRCS:%.c=%.o)
+CH_OBJS		= $(CH_SRCS:%.c=%.o)
 
 FLAGS		= -Wall -Wextra -Werror
 
-all	:		$(NAME)
+all	:		$(NAME) $(CH_NAME)
+
+bonus :		$(CH_NAME)
 
 $(NAME) : 	$(OBJS)
 			make bonus -C $(LIBFT)/
 			cc -o $(NAME) $(OBJS) -lft -L$(LIBFT)
 
+$(CH_NAME):	$(CH_OBJS)
+			make bonus -C $(LIBFT)/
+			cc -o $(CH_NAME) $(CH_OBJS) -lft -L$(LIBFT)
+
 %.o	: 		%.c
 			cc $(FLAGS) -c $^ -I./ -o $@
 
 clean	:
-			rm -f $(OBJS)
+			rm -f $(OBJS) $(CH_OBJS)
 			make clean -C $(LIBFT)
 
 fclean	:	clean
-			rm -f $(NAME)
+			rm -f $(NAME) $(CH_NAME)
 			make fclean -C $(LIBFT)
 
 re	:		fclean all

@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 01:13:22 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/04 17:24:16 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/04 19:04:09 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,14 +108,4 @@ ssize_t	get_next_line(char **result, int fd)
 	if (ft_update_cache(&cache) == ERROR)
 		return (free_all(cache, *result));
 	return (SUCCESS);
-}
-
-#include <stdio.h>
-
-int main(void)
-{
-	char	*line;
-
-	ssize_t n = get_next_line(&line, -1);
-	printf("%zd\n", n);
 }

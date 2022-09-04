@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:05:14 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/03 22:04:39 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/04 21:39:02 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct s_data
 {
 	struct s_stack	*stack_a;
 	struct s_stack	*stack_b;
-	struct s_list	*cmd_list;
 }					t_data;
 
 // cmd_rev_rotate.c
@@ -87,29 +86,10 @@ int		ft_strcmp(char *s1, char *s2);
 // cmd_div.c
 int		cmd(char *str, t_data *data);
 
-// pivot.c
-int		three_div_low_pivot(t_data *data, t_stack *stack, int size);
-int		three_div_high_pivot(t_data *data, t_stack *stack, int size);
-
-// sort.c
-void	sort_two_element_a(t_data *data);
-void	sort_two_element_b(t_data *data);
-void	sort_three_element_a(t_data *data);
-void	sort_three_element_b(t_data *data);
-void	sort_only_three_element(t_data *data);
-
 // parse.c
 void	parse_nums(int argc, char **argv, t_data *data);
 
-// three_div_a_to_b.c
-void	a_to_b(t_data *data, int size);
-
-// three_div_b_to_a.c
-void	b_to_a(t_data *data, int size);
-
-// cmd_list.c
-void	cmd_optimization(t_data *data);
-void	add_cmd(t_data *data, char *cmd);
-void	print_cmd(t_data *data);
+// check_result.c
+void	check_result(t_data *data);
 
 #endif

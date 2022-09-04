@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_result.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/05 01:04:09 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/03 22:23:44 by wonyang          ###   ########.fr       */
+/*   Created: 2022/09/04 19:12:11 by wonyang           #+#    #+#             */
+/*   Updated: 2022/09/04 19:18:15 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
+static t_bool	is_sorted(t_data *data)
 {
-	t_data	*data;
-	char	*input_cmd;
+	t_node	*node;
 
-	data = init_data();
-	parse_nums(argc, argv, data);
-	validation_data(argc, data);
-	input_cmd = get_next_line(0);
-	while (input_cmd)
+	node = data->stack_a->top;
+	while (node->next)
 	{
-		cmd(input_cmd, data);
-		free(input_cmd);
-		input_cmd = get_next_line(0);
+		if (node->value > node->next->value)
+			return (FALSE);
+		node = node->next;
 	}
-	if (data->stack_a->count == 3)
-		sort_only_three_element(data);
+	return (TRUE);
+}
+
+void	check_result(t_data *data)
+{
+	if (is_sorted(data) == FALSE || data->stack_b->count != 0)
+		write(1, "KO\n", 3);
 	else
-		a_to_b(data, data->stack_a->count);
-	cmd_optimization(data);
-	print_cmd(data);
+		write(1, "OK\n", 3);
 	normal_exit(data);
-	return (0);
 }

@@ -1,43 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_swap.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 15:06:01 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/03 17:57:59 by wonyang          ###   ########.fr       */
+/*   Created: 2022/08/05 01:04:09 by wonyang           #+#    #+#             */
+/*   Updated: 2022/09/04 21:33:56 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	swap(t_stack *stack)
+int	main(int argc, char *argv[])
 {
-	t_node	*first;
-	t_node	*second;
+	t_data	*data;
+	char	*input_cmd;
 
-	first = pop(stack);
-	second = pop(stack);
-	push(stack, first);
-	push(stack, second);
-}
-
-void	sa(t_data *data)
-{
-	add_cmd(data, "sa");
-	swap(data->stack_a);
-}
-
-void	sb(t_data *data)
-{
-	add_cmd(data, "sb");
-	swap(data->stack_b);
-}
-
-void	ss(t_data *data)
-{
-	add_cmd(data, "ss");
-	swap(data->stack_a);
-	swap(data->stack_b);
+	data = init_data();
+	parse_nums(argc, argv, data);
+	validation_data(argc, data);
+	while (1)
+	{
+		if (get_next_line(&input_cmd, 0) == ERROR)
+			error_exit(data);
+		if (input_cmd == NULL)
+			break ;
+		cmd(input_cmd, data);
+		free(input_cmd);
+	}
+	check_result(data);
+	return (0);
 }

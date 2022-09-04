@@ -1,46 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_rotate.c                                       :+:      :+:    :+:   */
+/*   cmd_push.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/06 15:19:24 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/03 17:57:42 by wonyang          ###   ########.fr       */
+/*   Created: 2022/08/06 15:12:31 by wonyang           #+#    #+#             */
+/*   Updated: 2022/09/04 21:39:02 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	cmd_rotate(t_stack *stack)
+void	pa(t_data *data)
 {
 	t_node	*node;
 
-	node = pop(stack);
-	pushleft(stack, node);
+	if (data->stack_b->count == 0)
+		return ;
+	node = pop(data->stack_b);
+	push(data->stack_a, node);
 }
 
-void	ra(t_data *data)
+void	pb(t_data *data)
 {
-	if (data->stack_a->count < 2)
-		return ;
-	add_cmd(data, "ra");
-	cmd_rotate(data->stack_a);
-}
+	t_node	*node;
 
-void	rb(t_data *data)
-{
-	if (data->stack_b->count < 2)
+	if (data->stack_a->count == 0)
 		return ;
-	add_cmd(data, "rb");
-	cmd_rotate(data->stack_b);
-}
-
-void	rr(t_data *data)
-{
-	if (data->stack_a->count < 2 && data->stack_b->count < 2)
-		return ;
-	add_cmd(data, "rr");
-	cmd_rotate(data->stack_a);
-	cmd_rotate(data->stack_b);
+	node = pop(data->stack_a);
+	push(data->stack_b, node);
 }
