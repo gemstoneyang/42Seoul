@@ -6,52 +6,116 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 01:13:22 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/03 22:07:50 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/04 17:24:16 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_read_file(int fd, char *cache)
+static ssize_t	ft_read_file(int fd, char **cache)
 {
 	char	*buffer;
 	ssize_t	read_byte;
 
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
-	{
-		free(cache);
-		return (NULL);
-	}
+		return (ERROR);
 	read_byte = 1;
-	while (!gnl_strchr(cache, '\n') && read_byte != 0)
+	while (!gnl_strchr(*cache, '\n') && read_byte != 0)
 	{
 		read_byte = read(fd, buffer, BUFFER_SIZE);
 		if (read_byte == -1)
 		{
-			if (cache)
-				free(cache);
 			free(buffer);
-			return (NULL);
+			return (ERROR);
 		}
 		buffer[read_byte] = '\0';
-		cache = gnl_strjoin(cache, buffer);
+		*cache = gnl_strjoin(*cache, buffer);
+		if (*cache == NULL)
+		{
+			free(buffer);
+			return (ERROR);
+		}
 	}
 	free(buffer);
-	return (cache);
+	return (SUCCESS);
 }
 
-char	*get_next_line(int fd)
+static ssize_t	ft_get_line(char **result, char *cache)
+{
+	int		i;
+
+	i = 0;
+	if (!cache[i])
+	{
+		*result = NULL;
+		return (SUCCESS);
+	}
+	while (cache[i] && cache[i] != '\n')
+		i++;
+	*result = (char *)malloc((i + 1) * sizeof(char));
+	if (*result == NULL)
+		return (ERROR);
+	i = 0;
+	while (cache[i] && cache[i] != '\n')
+	{
+		(*result)[i] = cache[i];
+		i++;
+	}
+	(*result)[i] = '\0';
+	return (SUCCESS);
+}
+
+static ssize_t	ft_update_cache(char **cache)
+{
+	int		i;
+	int		j;
+	char	*str;
+
+	i = 0;
+	while ((*cache)[i] && (*cache)[i] != '\n')
+		i++;
+	if (!(*cache)[i] || !(*cache)[i + 1])
+	{
+		free(*cache);
+		*cache = NULL;
+		return (SUCCESS);
+	}
+	str = (char *)malloc((gnl_strlen(*cache) - i + 1) * sizeof(char));
+	if (!str)
+		return (ERROR);
+	i++;
+	j = 0;
+	while ((*cache)[i])
+		str[j++] = (*cache)[i++];
+	str[j] = '\0';
+	free(*cache);
+	*cache = str;
+	return (SUCCESS);
+}
+
+ssize_t	get_next_line(char **result, int fd)
 {
 	static char	*cache;
-	char		*result;
 
-	if (fd < 0 || BUFFER_SIZE < 1)
-		return (NULL);
-	cache = ft_read_file(fd, cache);
-	if (!cache)
-		return (NULL);
-	result = ft_get_line(cache);
-	cache = ft_update_cache(cache);
-	return (result);
+	*result = NULL;
+	if (read(fd, NULL, 0) == ERROR || BUFFER_SIZE < 1)
+		return (free_all(cache, *result));
+	if (ft_read_file(fd, &cache) == ERROR)
+		return (free_all(cache, *result));
+	if (ft_get_line(result, cache) == ERROR)
+		return (free_all(cache, *result));
+	if (ft_update_cache(&cache) == ERROR)
+		return (free_all(cache, *result));
+	return (SUCCESS);
+}
+
+#include <stdio.h>
+
+int main(void)
+{
+	char	*line;
+
+	ssize_t n = get_next_line(&line, -1);
+	printf("%zd\n", n);
 }

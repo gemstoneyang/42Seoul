@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 01:13:34 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/03 22:07:50 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/04 17:24:01 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,17 @@
 #  define BUFFER_SIZE 42
 # endif
 
+# define SUCCESS 0
+# define ERROR -1
+
 # include <unistd.h>
 # include <stdlib.h>
 
 size_t	gnl_strlen(char *str);
 char	*gnl_strjoin(char *cache, char *buffer);
 char	*gnl_strchr(char *str, int c);
+ssize_t	free_all(char *cache, char *result);
 
-char	*ft_read_file(int fd, char *cache);
-char	*ft_get_line(char *cache);
-char	*ft_update_cache(char *cache);
-char	*get_next_line(int fd);
+ssize_t	get_next_line(char **result, int fd);
 
 #endif

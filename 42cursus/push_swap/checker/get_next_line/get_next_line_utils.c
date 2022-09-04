@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 01:21:04 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/03 22:07:12 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/04 17:19:57 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,59 +72,11 @@ char	*gnl_strchr(char *str, int c)
 	return (NULL);
 }
 
-char	*ft_get_line(char *cache)
+ssize_t	free_all(char *cache, char *result)
 {
-	int		i;
-	char	*str;
-
-	i = 0;
-	if (!cache[i])
-		return (NULL);
-	while (cache[i] && cache[i] != '\n')
-		i++;
-	str = (char *)malloc((i + 2) * sizeof(char));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (cache[i] && cache[i] != '\n')
-	{
-		str[i] = cache[i];
-		i++;
-	}
-	if (cache[i] == '\n')
-	{
-		str[i] = cache[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
-}
-
-char	*ft_update_cache(char *cache)
-{
-	int		i;
-	int		j;
-	char	*str;
-
-	i = 0;
-	while (cache[i] && cache[i] != '\n')
-		i++;
-	if (!cache[i] || !cache[i + 1])
-	{
+	if (cache)
 		free(cache);
-		return (NULL);
-	}
-	str = (char *)malloc((gnl_strlen(cache) - i + 1) * sizeof(char));
-	if (!str)
-	{
-		free(cache);
-		return (NULL);
-	}
-	i++;
-	j = 0;
-	while (cache[i])
-		str[j++] = cache[i++];
-	str[j] = '\0';
-	free(cache);
-	return (str);
+	if (result)
+		free(result);
+	return (ERROR);
 }
