@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 15:35:31 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/04 19:11:32 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/07 10:59:30 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,9 @@ static void	duplicate_validation(t_data *data)
 	}
 }
 
-static void	sorted_validation(t_data *data)
-{
-	t_node	*node;
-
-	node = data->stack_a->top;
-	while (node->next)
-	{
-		if (node->value > node->next->value)
-			return ;
-		node = node->next;
-	}
-	normal_exit(data);
-}
-
 void	validation_data(int argc, t_data *data)
 {
 	if (argc < 2)
 		normal_exit(data);
 	duplicate_validation(data);
-	sorted_validation(data);
 }
