@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 01:02:51 by wonyang           #+#    #+#              #
-#    Updated: 2022/09/04 21:45:40 by wonyang          ###   ########.fr        #
+#    Updated: 2022/09/11 23:18:07 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,13 +53,13 @@ CH_OBJS		= $(CH_SRCS:%.c=%.o)
 
 FLAGS		= -Wall -Wextra -Werror
 
-all	:		$(NAME) $(CH_NAME)
-
-bonus :		$(CH_NAME)
-
 $(NAME) : 	$(OBJS)
 			make bonus -C $(LIBFT)/
 			cc -o $(NAME) $(OBJS) -lft -L$(LIBFT)
+
+all	:		$(NAME) $(CH_NAME)
+
+bonus :		$(CH_NAME)
 
 $(CH_NAME):	$(CH_OBJS)
 			make bonus -C $(LIBFT)/

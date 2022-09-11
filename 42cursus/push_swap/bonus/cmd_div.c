@@ -6,13 +6,13 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:51:09 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/11 23:11:43 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/11 23:25:24 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-static void	cmd_div(char *cmd, t_data *data)
+static int	cmd_div(char *cmd, t_data *data)
 {
 	if (ft_strcmp(cmd, "sa") == 0)
 		sa(data);
@@ -37,7 +37,8 @@ static void	cmd_div(char *cmd, t_data *data)
 	else if (ft_strcmp(cmd, "rrr") == 0)
 		rrr(data);
 	else
-		error_exit(data);
+		return (ERROR);
+	return (SUCCESS);
 }
 
 int	cmd(char *str, t_data *data)
@@ -47,13 +48,17 @@ int	cmd(char *str, t_data *data)
 
 	cmd_list = ft_split(str, ' ');
 	if (cmd_list == NULL)
-		error_exit(data);
+		return (ERROR);
 	i = 0;
 	while (cmd_list[i])
 	{
-		cmd_div(cmd_list[i], data);
+		if (cmd_div(cmd_list[i], data) == ERROR)
+		{
+			free_split(cmd_list);
+			return (ERROR);
+		}
 		i++;
 	}
 	free_split(cmd_list);
-	return (i);
+	return (SUCCESS);
 }

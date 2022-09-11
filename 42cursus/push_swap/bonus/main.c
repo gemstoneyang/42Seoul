@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:04:09 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/11 23:11:43 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/11 23:25:03 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ int	main(int argc, char *argv[])
 			error_exit(data);
 		if (input_cmd == NULL)
 			break ;
-		cmd(input_cmd, data);
+		if (cmd(input_cmd, data) == ERROR)
+		{
+			free(input_cmd);
+			error_exit(data);
+		}
 		free(input_cmd);
 	}
 	check_result(data);
