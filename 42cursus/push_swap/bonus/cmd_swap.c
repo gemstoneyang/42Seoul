@@ -6,11 +6,11 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:06:01 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/04 21:39:02 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/11 23:11:43 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 static void	swap(t_stack *stack)
 {
@@ -25,16 +25,22 @@ static void	swap(t_stack *stack)
 
 void	sa(t_data *data)
 {
+	if (data->stack_a->count < 2)
+		return ;
 	swap(data->stack_a);
 }
 
 void	sb(t_data *data)
 {
+	if (data->stack_b->count < 2)
+		return ;
 	swap(data->stack_b);
 }
 
 void	ss(t_data *data)
 {
+	if (data->stack_a->count < 2 && data->stack_b->count < 2)
+		return ;
 	swap(data->stack_a);
 	swap(data->stack_b);
 }

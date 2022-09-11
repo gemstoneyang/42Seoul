@@ -6,11 +6,11 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 02:04:41 by wonyang           #+#    #+#             */
-/*   Updated: 2022/08/10 13:38:50 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/11 23:11:43 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	push(t_stack *stack, t_node *node)
 {

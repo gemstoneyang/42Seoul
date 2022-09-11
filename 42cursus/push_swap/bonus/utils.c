@@ -6,11 +6,11 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:12:43 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/03 18:00:06 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/11 23:11:43 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 t_bool	is_integer(char *str)
 {

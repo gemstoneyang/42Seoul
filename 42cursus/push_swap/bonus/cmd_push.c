@@ -6,11 +6,11 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:12:31 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/04 21:39:02 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/11 23:11:43 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	pa(t_data *data)
 {

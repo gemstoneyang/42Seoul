@@ -6,11 +6,11 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 01:04:09 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/07 10:58:12 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/11 23:11:43 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 int	main(int argc, char *argv[])
 {
