@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:19:24 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/03 17:57:42 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/12 15:49:13 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	rb(t_data *data)
 
 void	rr(t_data *data)
 {
-	if (data->stack_a->count < 2 && data->stack_b->count < 2)
+	if (data->stack_a->count < 2 || data->stack_b->count < 2)
 		return ;
 	add_cmd(data, "rr");
 	cmd_rotate(data->stack_a);

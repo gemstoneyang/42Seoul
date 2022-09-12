@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:06:01 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/11 22:24:40 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/12 15:47:46 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	sb(t_data *data)
 
 void	ss(t_data *data)
 {
-	if (data->stack_a->count < 2 && data->stack_b->count < 2)
+	if (data->stack_a->count < 2 || data->stack_b->count < 2)
 		return ;
 	add_cmd(data, "ss");
 	swap(data->stack_a);
