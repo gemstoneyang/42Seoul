@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/18 22:12:43 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/11 23:11:43 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/09/13 20:45:50 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_bool	is_integer(char *str)
 	res = ft_itoa(n);
 	if (!res)
 		return (FALSE);
+	if (*str == '+')
+		str++;
 	if (ft_strcmp(str, res) != 0)
 	{
 		free(res);

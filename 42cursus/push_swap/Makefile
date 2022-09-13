@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 01:02:51 by wonyang           #+#    #+#              #
-#    Updated: 2022/09/12 15:38:02 by wonyang          ###   ########.fr        #
+#    Updated: 2022/09/13 20:42:04 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ CH_SRCS		= bonus/get_next_line/get_next_line.c \
 OBJS		= $(SRCS:%.c=%.o)
 CH_OBJS		= $(CH_SRCS:%.c=%.o)
 
-FLAGS		= -Wall -Werror -Wextra -fsanitize=address -g3
+FLAGS		= -Wall -Werror -Wextra
 
 $(NAME) : 	$(OBJS)
 			make bonus -C $(LIBFT)/
