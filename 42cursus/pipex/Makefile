@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/09/28 21:55:09 by wonyang          ###   ########.fr        #
+#    Updated: 2022/10/02 16:09:35 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS		= test.c
 
 OBJS		= $(SRCS:%.c=%.o)
 
-FLAGS		= -Wall -Werror -Wextra
+FLAGS		= -Wall -Werror -Wextra -g3 -fsanitize=address
 
 $(NAME) : 	$(OBJS)
 			make bonus -C $(LIBFT)/

@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 21:33:28 by wonyang           #+#    #+#             */
-/*   Updated: 2022/09/28 22:25:42 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/10/02 16:39:45 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	main(int argc, char **argv, char **envp)
 	char	**new_argv;
 	char	**new_envp = envp;
 	char	**paths;
+	char	*new_path;
+	char	*cmd_dir;
 
 	argc = 1;
 	while (*new_envp)
@@ -27,16 +29,18 @@ int	main(int argc, char **argv, char **envp)
 			break ;
 		new_envp++;
 	}
-	paths = ft_split(*new_envp, ':');
+	paths = ft_split((*new_envp)+5, ':');
+	new_argv = ft_split(argv[1], ' ');
+	cmd_dir = ft_strjoin("/", new_argv[0]);
 	while (*paths)
 	{
-		if (access(*paths, X_OK) == 0)
+		new_path = ft_strjoin(*paths, cmd_dir);
+		if (access(new_path, X_OK) == 0)
 			break;
 		paths++;
+		free(new_path);
 	}
-	new_argv = ft_split(argv[1], ' ');
-	if (execve(*paths, new_argv, envp) == -1)
+	if (execve(new_path, new_argv, envp) == -1)
 		perror("execve error");
-	printf("%s\n", argv[1]);
 	return (0);
 }
