@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_freesplit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 21:33:28 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/03 20:21:35 by wonyang          ###   ########.fr       */
+/*   Created: 2022/10/03 19:48:36 by wonyang           #+#    #+#             */
+/*   Updated: 2022/10/03 20:21:06 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-int	main(int argc, char **argv, char **envp)
+void	ft_freesplit(char **str)
 {
-	argc = 1;
-	run_execve(argv[1], envp);
-	return (0);
+	int		i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		str[i] = NULL;
+		i++;
+	}
+	free(str);
 }

@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 21:33:28 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/03 20:21:35 by wonyang          ###   ########.fr       */
+/*   Created: 2022/10/03 19:43:20 by wonyang           #+#    #+#             */
+/*   Updated: 2022/10/03 20:21:18 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char **argv, char **envp)
+char	**parse_cmd(char *cmd)
 {
-	argc = 1;
-	run_execve(argv[1], envp);
-	return (0);
+	char	**cmd_argv;
+
+	cmd_argv = ft_split(cmd, ' ');
+	if (!cmd_argv)
+		return (NULL);
+	return (cmd_argv);
 }

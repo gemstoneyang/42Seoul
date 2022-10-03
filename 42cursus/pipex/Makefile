@@ -6,18 +6,22 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/10/02 16:09:35 by wonyang          ###   ########.fr        #
+#    Updated: 2022/10/03 20:16:59 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= pipex
 LIBFT		= libft
 
-SRCS		= test.c
+SRCS		= test.c \
+			  parse_path.c \
+			  utils.c \
+			  exit.c \
+			  execve.c \
 
 OBJS		= $(SRCS:%.c=%.o)
 
-FLAGS		= -Wall -Werror -Wextra -g3 -fsanitize=address
+FLAGS		= -Wall -Werror -Wextra
 
 $(NAME) : 	$(OBJS)
 			make bonus -C $(LIBFT)/
@@ -29,12 +33,12 @@ all	:		$(NAME) $(CH_NAME)
 			cc $(FLAGS) -c $^ -I./ -o $@
 
 clean	:
-			rm -f $(OBJS) $(CH_OBJS)
+			rm -f $(OBJS)
 			make clean -C $(LIBFT)
 
 fclean	:	
 			make clean
-			rm -f $(NAME) $(CH_NAME)
+			rm -f $(NAME)
 			make fclean -C $(LIBFT)
 
 re	:		

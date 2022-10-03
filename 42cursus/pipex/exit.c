@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 21:33:28 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/03 20:21:35 by wonyang          ###   ########.fr       */
+/*   Created: 2022/10/03 18:01:25 by wonyang           #+#    #+#             */
+/*   Updated: 2022/10/03 18:08:35 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char **argv, char **envp)
+void	error_exit(char *msg)
 {
-	argc = 1;
-	run_execve(argv[1], envp);
-	return (0);
+	if (write(2, msg, ft_strlen(msg)) == -1)
+		perror("write error");
+	exit(1);
 }

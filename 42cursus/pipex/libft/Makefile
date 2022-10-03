@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.k>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/09 03:04:43 by wonyang           #+#    #+#              #
-#    Updated: 2022/08/02 16:14:47 by wonyang          ###   ########.fr        #
+#    Updated: 2022/10/03 19:50:33 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,8 @@ SRCS = ft_memset.c \
 	   ft_putchar_fd.c \
 	   ft_putstr_fd.c \
 	   ft_putendl_fd.c \
-	   ft_putnbr_fd.c
+	   ft_putnbr_fd.c \
+	   ft_freesplit.c
 
 SRCS_BONUS = ft_lstnew.c \
 			 ft_lstadd_front.c \

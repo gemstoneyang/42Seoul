@@ -1,20 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   execve.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 21:33:28 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/03 20:21:35 by wonyang          ###   ########.fr       */
+/*   Created: 2022/10/03 20:12:54 by wonyang           #+#    #+#             */
+/*   Updated: 2022/10/03 20:18:25 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char **argv, char **envp)
+int	run_execve(char *cmd, char **envp)
 {
-	argc = 1;
-	run_execve(argv[1], envp);
+	char	**cmd_argv;
+	char	*path;
+
+	cmd_argv = parse_cmd(cmd);
+	if (!cmd_argv)
+		return (-1);
+	path = make_cmd_path(cmd_argv[0], envp);
+	if (!path)
+	{
+		ft_freesplit(cmd_argv);
+		cmd_argv = NULL;
+		return (-1);
+	}
+	if (execve(path, cmd_argv, envp) == -1)
+	{
+		ft_freesplit(cmd_argv);
+		cmd_argv = NULL;
+		free(path);
+		path = NULL;
+		perror("execve error");
+		return (-1);
+	}
 	return (0);
 }
