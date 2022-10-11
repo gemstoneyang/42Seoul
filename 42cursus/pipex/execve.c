@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:12:54 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/11 19:15:43 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/10/11 22:57:29 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ int	run_execve(char *cmd, char **envp)
 		path = NULL;
 		perror_exit("execve error");
 	}
-	return (0);
+	return (-1);
 }
