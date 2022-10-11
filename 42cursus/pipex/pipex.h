@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:05:24 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/03 20:18:00 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/10/11 19:28:46 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		run_execve(char *cmd, char **envp);
 char	**parse_cmd(char *cmd);
 
 // exit.c
+void	perror_exit(char *msg);
 void	error_exit(char *msg);
 
 #endif
