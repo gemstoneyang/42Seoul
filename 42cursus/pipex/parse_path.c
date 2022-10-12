@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:05:12 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/03 20:06:27 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/10/12 18:05:15 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ char	*make_cmd_path(char *cmd_name, char **envp)
 	char	*path;
 	int		i;
 
+	if (access(cmd_name, X_OK) == 0)
+		return (cmd_name);
 	path_list = parse_paths(envp);
 	if (!path_list)
 		return (NULL);

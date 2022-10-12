@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:05:24 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/11 19:28:46 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/10/12 19:20:38 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <sys/wait.h>
 # include "libft/libft.h"
 
 // parse_path.c

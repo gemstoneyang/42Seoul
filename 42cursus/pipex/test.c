@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 21:33:28 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/11 22:54:34 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/10/12 19:12:25 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,20 +66,26 @@ pid_t	fork_child(int *before_fd, char *cmd, char **envp)
 
 int	main(int argc, char **argv, char **envp)
 {
+	int		status;
 	int		infile_fd;
 	int		outfile_fd;
 	int		before_fd;
+	int		res;
 
+	res = 0;
+	status = 0;
 	if (argc < 5)
 		error_exit("argument error");
 	char	*outfile = argv[argc - 1];
 
 	infile_fd = open(argv[1], O_RDONLY);
 	if (infile_fd == -1)
-		perror_exit("open error");
+	{
+		perror("open error");
+		return (0);
+	}
 	
 	before_fd = infile_fd;
-	printf("before_fd = %d\n", before_fd);
 	int	i = 2;
 	pid_t	*child_pids = (pid_t *)malloc(sizeof(pid_t) * argc);
 	outfile_fd = open(outfile, O_WRONLY | O_CREAT | O_TRUNC, 0644);
@@ -95,9 +101,12 @@ int	main(int argc, char **argv, char **envp)
 	i = 2;
 	while (i < argc - 1)
 	{
-		waitpid(child_pids[i], NULL, WNOHANG);
+		waitpid(child_pids[i], &status, WNOHANG); //error handling
+		printf("status : %d\n", status);
+		if (status != 0)
+			res = status;
 		i++;
 	}
 
-	return (0);
+	return (res);
 }

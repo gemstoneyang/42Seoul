@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:12:54 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/11 22:57:29 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/10/12 19:11:48 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@ int	run_execve(char *cmd, char **envp)
 	{
 		ft_freesplit(cmd_argv);
 		cmd_argv = NULL;
-		return (-1);
+		perror("command not found");
+		exit(127);
 	}
 	if (execve(path, cmd_argv, envp) == -1)
 	{
 		ft_freesplit(cmd_argv);
 		cmd_argv = NULL;
-		free(path);
+		if (!path)
+			free(path);
 		path = NULL;
 		perror_exit("execve error");
 	}
