@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 21:33:28 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/12 21:14:15 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/10/14 17:33:26 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,26 +79,29 @@ int	main(int argc, char **argv, char **envp)
 	int		outfile_fd;
 	int		before_fd;
 	int		res;
+	int		infile_error;
 
+	infile_error = 0;
 	res = 0;
 	status = 0;
 	if (argc < 5)
 		error_exit("argument error");
 	char	*outfile = argv[argc - 1];
 
-	infile_fd = open(argv[1], O_RDONLY);
-	if (infile_fd == -1)
+	if (access(argv[1], R_OK) == -1)
 	{
-		perror("open error");
-		return (0);
+		perror("infile open error");
+		infile_fd = open("tmp", O_RDONLY | O_CREAT | O_TRUNC, 0644);
+		infile_error = 1;
 	}
-	
+	else
+		infile_fd = open(argv[1], O_RDONLY);
 	before_fd = infile_fd;
 	int	i = 2;
 	pid_t	*child_pids = (pid_t *)malloc(sizeof(pid_t) * argc);
 	outfile_fd = open(outfile, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (outfile_fd == -1)
-		perror_exit("open error");
+		perror_exit("outfile open error");
 	while (i < argc - 2)
 	{
 		child_pids[i] = fork_child(&before_fd, argv[i], envp);
@@ -114,6 +117,8 @@ int	main(int argc, char **argv, char **envp)
 		res = status / 256;
 		i++;
 	}
+	if (infile_error == 1)
+		unlink("tmp");
 
 	return (res);
 }
