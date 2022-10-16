@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:05:12 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/12 18:05:15 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/10/16 17:29:30 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,33 +57,42 @@ static int	chech_path(char **path)
 	return (0);
 }
 
-char	*make_cmd_path(char *cmd_name, char **envp)
+static int	make_path(char **path_list, char *cmd_name, char **path)
 {
-	char	**path_list;
-	char	*path;
 	int		i;
 
-	if (access(cmd_name, X_OK) == 0)
-		return (cmd_name);
-	path_list = parse_paths(envp);
-	if (!path_list)
-		return (NULL);
 	i = 0;
-	path = NULL;
 	while (path_list[i])
 	{
-		path = join_cmd_path(path_list[i], cmd_name);
-		if (!path)
+		*path = join_cmd_path(path_list[i], cmd_name);
+		if (!(*path))
 		{
 			ft_freesplit(path_list);
 			path_list = NULL;
-			return (NULL);
+			return (-1);
 		}
-		if (chech_path(&path) == 1)
-			break ;
+		if (chech_path(path) == 1)
+			return (0);
 		i++;
 	}
+	return (0);
+}
+
+int	make_cmd_path(char *cmd_name, char **path, char **envp)
+{
+	char	**path_list;
+
+	if (access(cmd_name, X_OK) == 0)
+	{
+		*path = cmd_name;
+		return (0);
+	}
+	path_list = parse_paths(envp);
+	if (!path_list)
+		return (-1);
+	if (make_path(path_list, cmd_name, path) == -1)
+		return (-1);
 	ft_freesplit(path_list);
 	path_list = NULL;
-	return (path);
+	return (0);
 }
