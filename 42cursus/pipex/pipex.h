@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:05:24 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/16 17:39:36 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/10/16 20:56:34 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <sys/wait.h>
 # include "libft/libft.h"
+# include "get_next_line/get_next_line.h"
 
 # define DUMMY_FILE "3ee2fea1-310e-4f54-9483-3227209e0e68"
 
@@ -38,5 +39,8 @@ void	error_exit(char *msg);
 // fork.c
 pid_t	last_fork(int in_fd, int out_fd, char *cmd, char **envp);
 pid_t	fork_child(int *before_fd, char *cmd, char **envp);
+
+// here_doc.c
+int		here_doc(char *limiter);
 
 #endif

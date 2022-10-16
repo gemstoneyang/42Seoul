@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/10/16 17:18:43 by wonyang          ###   ########.fr        #
+#    Updated: 2022/10/16 20:51:41 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,12 @@ SRCS		= main.c \
 			  exit.c \
 			  execve.c \
 			  fork.c \
+			  heredoc.c \
 
-OBJS		= $(SRCS:%.c=%.o)
+GNL			= get_next_line/get_next_line.c \
+			  get_next_line/get_next_line_utils.c \
+
+OBJS		= $(SRCS:%.c=%.o) $(GNL:%.c=%.o)
 
 FLAGS		= -Wall -Werror -Wextra
 

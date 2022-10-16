@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.k>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:22:09 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/03 19:48:07 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/10/16 20:43:23 by wonyang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 void		ft_freesplit(char **str);
+int			ft_strcmp(char *s1, char *s2);
 
 #endif
