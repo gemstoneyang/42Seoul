@@ -6,18 +6,18 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 18:06:42 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/16 21:06:41 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/10/26 01:07:20 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	here_doc(char *limiter)
+void	here_doc(char *limiter)
 {
 	char	*line;
 	int		fd;
 
-	fd = open(DUMMY_FILE, O_RDWR | O_CREAT | O_TRUNC, 0644);
+	fd = open(DUMMY_FILE, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
 		perror_exit("heredoc open error", 1);
 	while (1)
@@ -35,7 +35,10 @@ int	here_doc(char *limiter)
 		}
 		if (write(fd, line, ft_strlen(line)) == -1)
 			perror_exit("write error", 1);
+		if (write(fd, "\n", 1) == -1)
+			perror_exit("write error", 1);
 		free(line);
 	}
-	return (fd);
+	if (close(fd) == -1)
+		perror_exit("heredoc close error", 1);
 }

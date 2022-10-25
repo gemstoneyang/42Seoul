@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:05:24 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/16 20:56:34 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/10/26 01:05:11 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ pid_t	last_fork(int in_fd, int out_fd, char *cmd, char **envp);
 pid_t	fork_child(int *before_fd, char *cmd, char **envp);
 
 // here_doc.c
-int		here_doc(char *limiter);
+void	here_doc(char *limiter);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 21:33:28 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/16 21:15:00 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/10/26 01:06:17 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	fork_proc(int fd, int argc, char **argv, char **envp, pid_t *pids)
 	i = 2;
 	if (ft_strcmp(argv[1], "here_doc") == 0)
 		i++;
-	while (i < argc - 2) // 얘 왜 -2?
+	while (i < argc - 2)
 	{
 		pids[count] = fork_child(&before_fd, argv[i], envp);
 		i++;
@@ -83,11 +83,13 @@ int	main(int argc, char **argv, char **envp)
 	pid_t	*child_pids;
 	int		in_fd;
 
-	printf("%d\n", argc);
 	if (argc < 5)
 		error_exit("argument error");
 	if (ft_strcmp(argv[1], "here_doc") == 0)
-		in_fd = here_doc(argv[2]);
+	{
+		here_doc(argv[2]);
+		in_fd = infile_fd(DUMMY_FILE);
+	}
 	else
 		in_fd = infile_fd(argv[1]);
 	child_pids = (pid_t *)malloc(sizeof(pid_t) * argc);
