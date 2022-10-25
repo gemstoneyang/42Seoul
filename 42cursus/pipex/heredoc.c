@@ -6,20 +6,34 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 18:06:42 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/26 01:07:20 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/10/26 02:32:28 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	here_doc(char *limiter)
+static int	here_doc_open(void)
 {
-	char	*line;
-	int		fd;
+	int	fd;
 
 	fd = open(DUMMY_FILE, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd == -1)
 		perror_exit("heredoc open error", 1);
+	return (fd);
+}
+
+static void	here_doc_close(int fd)
+{
+	if (close(fd) == -1)
+		perror_exit("heredoc close error", 1);
+}
+
+char	*here_doc(char *limiter)
+{
+	char	*line;
+	int		fd;
+
+	fd = here_doc_open();
 	while (1)
 	{
 		if (write(0, "pipe heredoc> ", 14) == -1)
@@ -39,6 +53,6 @@ void	here_doc(char *limiter)
 			perror_exit("write error", 1);
 		free(line);
 	}
-	if (close(fd) == -1)
-		perror_exit("heredoc close error", 1);
+	here_doc_close(fd);
+	return (DUMMY_FILE);
 }
