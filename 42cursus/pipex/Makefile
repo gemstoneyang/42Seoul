@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/10/16 20:51:41 by wonyang          ###   ########.fr        #
+#    Updated: 2022/10/28 13:51:16 by wonyang          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ LIBFT		= libft
 
 SRCS		= main.c \
 			  parse_path.c \
-			  utils.c \
 			  exit.c \
 			  execve.c \
 			  fork.c \

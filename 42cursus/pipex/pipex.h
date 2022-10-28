@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:05:24 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/26 02:33:05 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/10/28 13:53:33 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@ int		make_cmd_path(char *cmd_name, char **path, char **envp);
 
 // execve.c
 int		run_execve(char *cmd, char **envp);
-
-// utils.c
-char	**parse_cmd(char *cmd);
 
 // exit.c
 void	perror_exit(char *msg, int code);

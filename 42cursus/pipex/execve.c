@@ -6,11 +6,21 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 20:12:54 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/16 17:12:41 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/10/28 13:51:24 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+static char	**parse_cmd(char *cmd)
+{
+	char	**cmd_argv;
+
+	cmd_argv = ft_split(cmd, ' ');
+	if (!cmd_argv)
+		return (NULL);
+	return (cmd_argv);
+}
 
 int	run_execve(char *cmd, char **envp)
 {
