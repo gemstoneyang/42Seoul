@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/10/28 13:51:16 by wonyang          ###   ########seoul.kr   #
+#    Updated: 2022/10/29 18:36:16 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ $(NAME) : 	$(OBJS)
 			make bonus -C $(LIBFT)/
 			cc $(FLAGS) -o $(NAME) $(OBJS) -lft -L$(LIBFT)
 
-all	:		$(NAME) $(CH_NAME)
+all	:		$(NAME)
 
 %.o	: 		%.c
 			cc $(FLAGS) -c $^ -I./ -o $@
