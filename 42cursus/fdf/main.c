@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:22:41 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/29 21:19:35 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/05 22:26:02 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@ int		create_argb(int a, int r, int g, int b)
 	return (a << 24 | r << 16 | g << 8 | b);
 }
 
+int	main(int argc, char **argv)
+{
+	argc = (int)argc;
+	parse_map(argv[1]);
+	return (0);
+}
+
+/*
 int	main(void)
 {
 	void	*mlx;
@@ -82,3 +90,4 @@ int	main(void)
 
 	mlx_loop(mlx);
 }
+*/

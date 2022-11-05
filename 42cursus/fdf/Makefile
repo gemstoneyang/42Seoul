@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/10/29 19:46:17 by wonyang          ###   ########seoul.kr   #
+#    Updated: 2022/11/05 22:21:47 by wonyang          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ MLX_LIB		= libmlx.dylib
 
 SRCS		= main.c \
 			  exit.c \
+			  map.c \
 
 GNL_SRCS	= $(GNL)/get_next_line.c \
 			  $(GNL)/get_next_line_utils.c \
