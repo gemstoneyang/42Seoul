@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:22:41 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/05 22:26:02 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/09 14:54:38 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int		create_argb(int a, int r, int g, int b)
 
 int	main(int argc, char **argv)
 {
-	argc = (int)argc;
+	if (argc != 2)
+		error_exit("argument error");
 	parse_map(argv[1]);
 	return (0);
 }
