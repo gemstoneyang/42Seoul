@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 21:56:18 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/09 14:55:55 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/09 22:47:59 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <fcntl.h>
 #include "get_next_line/get_next_line.h"
 #include "fdf.h"
-#include "libft/libft.h"
 
 void	check_map_name(char *map_name)
 {
@@ -37,6 +36,46 @@ void	check_map_name(char *map_name)
 	ft_freesplit(split);
 }
 
+int	count_width(char *col)
+{
+	int		width;
+	char	**split;
+
+	split = ft_split(col, ' ');
+	if (!split)
+		error_exit("split error");
+	width = 0;
+	while (split[width])
+		width++;
+	ft_freesplit(split);
+	return (width);
+}
+t_map   *parse_map_info(char *map_name)
+{
+	int		fd;
+    char    *line;
+	int		height;
+	int		width;
+
+	width = 0;
+	height = 0;
+    fd = ft_open(map_name);
+    while (1)
+    {
+        if (get_next_line(&line, fd) == -1)
+        {
+            ft_close(fd);
+            error_exit("gnl error");
+        }
+        if (!line)
+            break ;
+		if (width == 0)
+			width = count_width(line)
+		height++;
+    }
+	ft_close(fd);
+}
+
 void	parse_map(char *map_name)
 {
     char    *line;
@@ -44,12 +83,12 @@ void	parse_map(char *map_name)
     int     fd;
 
 	check_map_name(map_name);
-    fd = open(map_name, O_RDONLY); // todo
+    fd = ft_open(map_name);
     while (1)
     {
         if (get_next_line(&line, fd) == -1)
         {
-            close(fd); // todo
+            ft_close(fd);
             error_exit("gnl error");
         }
         if (!line)
@@ -63,3 +102,4 @@ void	parse_map(char *map_name)
     }
     close(fd); // todo
 }
+
