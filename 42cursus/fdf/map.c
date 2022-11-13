@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 21:56:18 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/09 22:47:59 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/14 00:58:15 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "get_next_line/get_next_line.h"
 #include "fdf.h"
 
-void	check_map_name(char *map_name)
+static void	check_map_name(char *map_name)
 {
 	char	**split;
 	int		count;
@@ -36,7 +36,7 @@ void	check_map_name(char *map_name)
 	ft_freesplit(split);
 }
 
-int	count_width(char *col)
+static int	count_width(char *col)
 {
 	int		width;
 	char	**split;
@@ -50,39 +50,30 @@ int	count_width(char *col)
 	ft_freesplit(split);
 	return (width);
 }
+
+static t_map	*init_map_info(void)
+{
+	t_map	*map_info;
+
+	map_info = (t_map *)malloc(sizeof(t_map));
+	if (!map_info)
+		error_exit("malloc error");
+	map_info->height = 0;
+	map_info->width = 0;
+	map_info->dot_list = ft_lstnew(NULL);
+	if (!(map_info->dot_list))
+		error_exit("malloc error");
+	return (map_info);
+}
+
 t_map   *parse_map_info(char *map_name)
 {
 	int		fd;
     char    *line;
-	int		height;
-	int		width;
-
-	width = 0;
-	height = 0;
-    fd = ft_open(map_name);
-    while (1)
-    {
-        if (get_next_line(&line, fd) == -1)
-        {
-            ft_close(fd);
-            error_exit("gnl error");
-        }
-        if (!line)
-            break ;
-		if (width == 0)
-			width = count_width(line)
-		height++;
-    }
-	ft_close(fd);
-}
-
-void	parse_map(char *map_name)
-{
-    char    *line;
-    char    **split;
-    int     fd;
+	t_map	*map_info;
 
 	check_map_name(map_name);
+	map_info = init_map_info();
     fd = ft_open(map_name);
     while (1)
     {
@@ -93,13 +84,10 @@ void	parse_map(char *map_name)
         }
         if (!line)
             break ;
-        split = ft_split(line, ' ');
-        while (*split)
-        {
-            printf("%s\n", *split);
-            split++;
-        }
+		if (map_info->width == 0)
+			map_info->width = count_width(line);
+		map_info->height++;
     }
-    close(fd); // todo
+	ft_close(fd);
+	return (map_info);
 }
-

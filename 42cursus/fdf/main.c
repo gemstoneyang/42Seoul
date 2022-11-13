@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:22:41 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/09 14:54:38 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/14 02:38:53 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,20 @@ int	main(int argc, char **argv)
 {
 	if (argc != 2)
 		error_exit("argument error");
-	parse_map(argv[1]);
+	t_map *map_info;
+	map_info = parse_map_info(argv[1]);
+	parse_map(map_info, argv[1]);
+
+	printf("width : %d, height : %d\n", map_info->width, map_info->height);
+	t_list *node;
+	t_dot *dot;
+	node = map_info->dot_list->next;
+	while (node)
+	{
+		dot = (t_dot *)(node->content);
+		printf("x: %d, y: %d, z: %d, color: %s\n", dot->x, dot->y, dot->z, dot->color);
+		node = node->next;
+	}
 	return (0);
 }
 
@@ -39,7 +52,6 @@ int	main(void)
 	win = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, "test");
 	win = (void *)win;
 	void	*image = mlx_new_image(mlx, 1000, 1000);
-	int	bit_per_pixel1 = 0;
 	int	size_line1 = 0;
 	int endian1 = 0;
 	char	*ptr = mlx_get_data_addr(image, &bit_per_pixel1, &size_line1, &endian1);

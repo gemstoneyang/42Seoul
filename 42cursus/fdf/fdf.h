@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/09 17:00:30 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/14 02:36:58 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,20 @@ typedef struct s_map
 
 typedef struct s_dot
 {
-    int x;
-    int y;
-    int z;
+    int 	x;
+    int 	y;
+    int 	z;
+	char	*color;
 }	t_dot;
 
 // map.c
-void    parse_map(char *map_name);
+void    parse_map(t_map *map_info, char *map_name);
+t_map   *parse_map_info(char *map_name);
+
+// parse.c
 
 // ftcntl.c
-int		ft_open(const char *path)
+int		ft_open(const char *path);
 void	ft_close(int fd);
 
 // exit.c
