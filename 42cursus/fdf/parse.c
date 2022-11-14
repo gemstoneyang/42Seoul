@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 00:57:19 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/14 02:43:01 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/14 22:58:18 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ static void	parse_line(t_map *map_info, char *line, int x)
 			if (!color_split)
 				error_exit("split error");
 			z = ft_atoi(color_split[0]); // todo
-			node = ft_lstnew((void *)init_dot(x, y, z, color_split[1])); // todo
+			node = ft_lstnew((void *)init_dot(x, y, z, ft_strdup(color_split[1]))); // todo
+			t_dot *dot;
+			dot = (t_dot *)(node->content);
 			if (!node)
 				error_exit("list malloc error");
 			ft_lstadd_back(&(map_info->dot_list), node);
