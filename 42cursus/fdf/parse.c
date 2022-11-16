@@ -6,13 +6,13 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 00:57:19 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/16 14:17:17 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/16 15:39:01 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <fcntl.h>
-#include "get_next_line/get_next_line.h"
+#include "get_next_line.h"
 #include "fdf.h"
 
 static t_dot	*init_dot(int x, int y, int z, char *color)
