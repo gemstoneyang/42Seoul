@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 21:56:18 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/14 00:58:15 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/16 14:19:10 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,28 +66,28 @@ static t_map	*init_map_info(void)
 	return (map_info);
 }
 
-t_map   *parse_map_info(char *map_name)
+t_map	*parse_map_info(char *map_name)
 {
 	int		fd;
-    char    *line;
+	char	*line;
 	t_map	*map_info;
 
 	check_map_name(map_name);
 	map_info = init_map_info();
-    fd = ft_open(map_name);
-    while (1)
-    {
-        if (get_next_line(&line, fd) == -1)
-        {
-            ft_close(fd);
-            error_exit("gnl error");
-        }
-        if (!line)
-            break ;
+	fd = ft_open(map_name);
+	while (1)
+	{
+		if (get_next_line(&line, fd) == -1)
+		{
+			ft_close(fd);
+			error_exit("gnl error");
+		}
+		if (!line)
+			break ;
 		if (map_info->width == 0)
 			map_info->width = count_width(line);
 		map_info->height++;
-    }
+	}
 	ft_close(fd);
 	return (map_info);
 }

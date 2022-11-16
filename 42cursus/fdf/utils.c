@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftcntl.c                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 15:02:30 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/16 14:23:16 by wonyang          ###   ########seoul.kr  */
+/*   Created: 2022/11/16 13:54:19 by wonyang           #+#    #+#             */
+/*   Updated: 2022/11/16 13:59:06 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <unistd.h>
-#include "fdf.h"
+#include <stdlib.h>
+#include "libft.h"
 
-int	ft_open(const char *path)
+int	is_integer(char *str)
 {
-	int	fd;
+	int		n;
+	char	*res;
 
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
-		perror_exit("open error", 1);
-	return (fd);
-}
-
-void	ft_close(int fd)
-{
-	if (close(fd) == -1)
-		perror_exit("close error", 1);
+	n = ft_atoi(str);
+	res = ft_itoa(n);
+	if (!res)
+		return (0);
+	if (ft_strcmp(str, res) != 0)
+	{
+		free(res);
+		return (0);
+	}
+	free(res);
+	return (1);
 }
