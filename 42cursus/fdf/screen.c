@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:55:42 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/16 15:53:17 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/16 22:53:49 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	print_dot(t_mlx *mlx, int x, int y)
 {
 	char	*dst;
 
+	if (mlx->win_height <= y || mlx->win_width <= x || x < 0 || y < 0)
+		return ;
 	dst = mlx->ptr + (y * (mlx->lsize) + x * (mlx->bit) / 8);
 	*(unsigned int *)dst = create_argb(0, 255, 255, 255);
 }

@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/16 15:47:36 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/16 21:40:31 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ t_mlx	*init_mlx(int width, int height);
 void	print_dot(t_mlx *mlx, int x, int y);
 
 // bresenham.c
-void	print_line(t_mlx *mlx, int ax, int ay, int bx, int by);
-
+void	print_line(t_mlx *mlx, t_dot a, t_dot b);
 
 // exit.c
 void	perror_exit(char *msg, int code);

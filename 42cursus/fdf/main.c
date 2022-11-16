@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:22:41 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/16 15:53:40 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/16 23:11:43 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	parse_map(map_info, argv[1]);
 
 	t_mlx	*mlx;
-	mlx = init_mlx(map_info->width * 100, map_info->height * 100);
+	mlx = init_mlx(1000, 1000);
 	
 	t_list *node;
 	t_dot *dot;
@@ -40,8 +40,16 @@ int	main(int argc, char **argv)
 		// printf("x: %d, y: %d, z: %d, color: %s\n", dot->x, dot->y, dot->z, dot->color);
 		node = node->next;
 	}
-	print_line(mlx, 100, 100, 300, 300);
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 100, 100);
+	t_dot a, b;
+	a.x = 100;
+	a.y = 300;
+	b.x = 300;
+	b.y = 100;
+	// print_dot(mlx, a.x, a.y);
+	// print_dot(mlx, b.x, b.y);
+
+	print_line(mlx, a, b);
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 	mlx_loop(mlx->mlx);
 
 	return (0);
