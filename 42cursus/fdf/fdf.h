@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/20 16:50:50 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/20 18:09:27 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ typedef struct s_mlx
 	char	*ptr;
 }	t_mlx;
 
+typedef struct s_info
+{
+	int	xscale;
+	int yscale;
+	int	xstart;
+	int ystart;
+}	t_info;
+
 // map.c
 t_map	*parse_map_info(char *map_name);
 
@@ -51,9 +59,14 @@ void	parse_map(t_map *map_info, char *map_name);
 // screen.c
 t_mlx	*init_mlx(int width, int height);
 void	print_dot(t_mlx *mlx, int x, int y);
+void	print_screen(t_mlx *mlx, t_map *map, t_info *info);
 
 // bresenham.c
 void	print_line(t_mlx *mlx, t_dot a, t_dot b);
+
+// filter.c
+t_info	*init_info(void);
+t_dot	dot(t_dot *dot, t_info *info);
 
 // exit.c
 void	perror_exit(char *msg, int code);

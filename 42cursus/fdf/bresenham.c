@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:36:51 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/16 23:12:51 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/20 18:03:25 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	small_gradient(t_mlx *mlx, t_dot a, t_dot b, t_dot d)
 	w = update_weight(a, b);
 	while (x != b.x || y != b.y)
 	{
-		print_dot(mlx, x, y);
+		print_dot(mlx, y, x);
 		if (p < 0)
 		{
 			p = p + 2 * d.y;
@@ -73,7 +73,7 @@ static void	big_gradient(t_mlx *mlx, t_dot a, t_dot b, t_dot d)
 	w = update_weight(a, b);
 	while (x != b.x || y != b.y)
 	{
-		print_dot(mlx, x, y);
+		print_dot(mlx, y, x);
 		if (p < 0)
 		{
 			p = p + 2 * d.x;
