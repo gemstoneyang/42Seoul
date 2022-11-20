@@ -6,11 +6,10 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 00:57:19 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/16 15:39:01 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/20 16:49:36 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <fcntl.h>
 #include "get_next_line.h"
 #include "fdf.h"
@@ -19,9 +18,7 @@ static t_dot	*init_dot(int x, int y, int z, char *color)
 {
 	t_dot	*dot;
 
-	dot = (t_dot *)malloc(sizeof(t_dot));
-	if (!dot)
-		error_exit("malloc error");
+	dot = (t_dot *)ft_malloc(sizeof(t_dot));
 	dot->x = x;
 	dot->y = y;
 	dot->z = z;
@@ -32,7 +29,6 @@ static t_dot	*init_dot(int x, int y, int z, char *color)
 static void	parse_dot(t_map *map_info, char *dot, int x, int y)
 {
 	char	**split;
-	t_list	*node;
 	int		z;
 
 	split = ft_split(dot, ',');
@@ -41,10 +37,7 @@ static void	parse_dot(t_map *map_info, char *dot, int x, int y)
 	if (is_integer(split[0]) == 0)
 		error_exit("map value error");
 	z = ft_atoi(split[0]);
-	node = ft_lstnew((void *)init_dot(x, y, z, ft_strdup(split[1])));
-	if (!node)
-		error_exit("list malloc error");
-	ft_lstadd_back(&(map_info->dot_list), node);
+	(map_info->matrix)[x][y] = init_dot(x, y, z, ft_strdup(split[1]));
 	ft_freesplit(split);
 }
 

@@ -6,13 +6,12 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 21:56:18 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/16 14:19:10 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/20 16:48:49 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <fcntl.h>
-#include "get_next_line/get_next_line.h"
+#include "get_next_line.h"
 #include "fdf.h"
 
 static void	check_map_name(char *map_name)
@@ -55,15 +54,26 @@ static t_map	*init_map_info(void)
 {
 	t_map	*map_info;
 
-	map_info = (t_map *)malloc(sizeof(t_map));
-	if (!map_info)
-		error_exit("malloc error");
+	map_info = (t_map *)ft_malloc(sizeof(t_map));
 	map_info->height = 0;
 	map_info->width = 0;
-	map_info->dot_list = ft_lstnew(NULL);
-	if (!(map_info->dot_list))
-		error_exit("malloc error");
+	map_info->matrix = NULL;
 	return (map_info);
+}
+
+static void	init_map_matrix(t_map *map)
+{
+	t_dot	***matrix;
+	int		i;
+
+	i = 0;
+	matrix = (t_dot ***)ft_malloc(sizeof(t_dot **) * map->height);
+	while (i < map->height)
+	{
+		matrix[i] = (t_dot **)ft_malloc(sizeof(t_dot *) * map->width);
+		i++;
+	}
+	map->matrix = matrix;
 }
 
 t_map	*parse_map_info(char *map_name)
@@ -89,5 +99,6 @@ t_map	*parse_map_info(char *map_name)
 		map_info->height++;
 	}
 	ft_close(fd);
+	init_map_matrix(map_info);
 	return (map_info);
 }

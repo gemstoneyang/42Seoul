@@ -6,11 +6,10 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:55:42 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/16 22:53:49 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/20 16:49:31 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "fdf.h"
 #include "mlx.h"
 
@@ -33,9 +32,7 @@ t_mlx	*init_mlx(int width, int height)
 {
 	t_mlx	*m;
 
-	m = (t_mlx *)malloc(sizeof(t_mlx));
-	if (!m)
-		error_exit("malloc error");
+	m = (t_mlx *)ft_malloc(sizeof(t_mlx));
 	m->mlx = mlx_init();
 	m->win = mlx_new_window(m->mlx, width, height, "test");
 	m->img = mlx_new_image(m->mlx, width, height);

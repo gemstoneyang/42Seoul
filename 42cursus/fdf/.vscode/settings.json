@@ -3,6 +3,7 @@
 	"files.associations": {
 		"get_next_line.h": "c",
 		"fcntl.h": "c",
-		"mlx.h": "c"
+		"mlx.h": "c",
+		"__node_handle": "c"
 	}
 }

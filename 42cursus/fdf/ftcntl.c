@@ -6,12 +6,13 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:02:30 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/16 14:23:16 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/20 16:28:25 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <unistd.h>
+#include <stdlib.h>
 #include "fdf.h"
 
 int	ft_open(const char *path)
@@ -28,4 +29,14 @@ void	ft_close(int fd)
 {
 	if (close(fd) == -1)
 		perror_exit("close error", 1);
+}
+
+void	*ft_malloc(size_t size)
+{
+	void	*ptr;
+
+	ptr = malloc(size);
+	if (!ptr)
+		error_exit("malloc error");
+	return (ptr);
 }
