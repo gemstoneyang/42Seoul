@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/11/20 17:56:52 by wonyang          ###   ########seoul.kr   #
+#    Updated: 2022/11/22 17:46:04 by wonyang          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS		= main.c \
 			  screen.c \
 			  bresenham.c \
 			  filter.c \
+			  rotate.c \
 
 GNL_SRCS	= $(GNL)/get_next_line.c \
 			  $(GNL)/get_next_line_utils.c \

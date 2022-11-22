@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filter.c                                           :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 17:47:05 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/22 17:46:47 by wonyang          ###   ########seoul.kr  */
+/*   Created: 2022/11/22 17:26:40 by wonyang           #+#    #+#             */
+/*   Updated: 2022/11/22 17:41:45 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "fdf.h"
 
-t_info	*init_info(void)
+t_dot	rotate_x(t_dot dot, double theta)
 {
-	t_info 	*info;
+	t_dot	new_dot;
 
-	info = (t_info *)ft_malloc(sizeof(t_info));
-	info->xscale = 50;
-	info->yscale = 50;
-	info->xstart = 100;
-	info->ystart = 100;
-	return (info);
-}
-
-t_dot	dot(t_dot *dot, t_info *info)
-{
-	t_dot	res;
-
-	res.x = info->xstart + info->xscale * dot->x;
-	res.y = info->ystart + info->yscale * dot->y;
-	res = rotate_x(res, 45);
-	return (res);
+	new_dot.x = dot.x;
+	new_dot.y = dot.y * cos(theta) - dot.z * sin(theta);
+	new_dot.z = dot.y * sin(theta) + dot.z * cos(theta);
+	return (new_dot);
 }

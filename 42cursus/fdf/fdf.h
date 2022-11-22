@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/20 18:09:27 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/22 17:46:13 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,8 @@ int		is_integer(char *str);
 int		ft_open(const char *path);
 void	ft_close(int fd);
 void	*ft_malloc(size_t size);
+
+// rotate.c
+t_dot	rotate_x(t_dot dot, double theta);
 
 #endif
