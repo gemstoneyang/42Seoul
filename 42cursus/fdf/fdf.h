@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/22 17:46:13 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/23 18:17:43 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ typedef struct s_info
 {
 	int	xscale;
 	int yscale;
+	int	zscale;
 	int	xstart;
 	int ystart;
+	int zstart;
 }	t_info;
 
 // map.c
@@ -82,5 +84,8 @@ void	*ft_malloc(size_t size);
 
 // rotate.c
 t_dot	rotate_x(t_dot dot, double theta);
+t_dot	rotate_y(t_dot dot, double theta);
+t_dot	rotate_z(t_dot dot, double theta);
+t_dot	isometric(t_dot dot);
 
 #endif
