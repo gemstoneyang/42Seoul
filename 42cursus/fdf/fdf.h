@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/23 18:17:43 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/29 23:11:25 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ typedef struct s_info
 	int	zscale;
 	int	xstart;
 	int ystart;
-	int zstart;
 }	t_info;
 
 // map.c
@@ -67,7 +66,7 @@ void	print_screen(t_mlx *mlx, t_map *map, t_info *info);
 void	print_line(t_mlx *mlx, t_dot a, t_dot b);
 
 // filter.c
-t_info	*init_info(void);
+t_info	*init_info(t_mlx *mlx, t_map *map);
 t_dot	dot(t_dot *dot, t_info *info);
 
 // exit.c

@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:22:41 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/29 23:04:59 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/29 23:41:18 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	mlx = init_mlx(1500, 1000);
 
 	t_info *info;
-	info = init_info();
+	info = init_info(mlx, map_info);
 	
 	print_screen(mlx, map_info, info);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
