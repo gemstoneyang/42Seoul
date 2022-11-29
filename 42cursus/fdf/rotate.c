@@ -6,15 +6,13 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 17:26:40 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/23 18:22:06 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/29 23:07:26 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define _USE_MATH_DEFINES
 #include <math.h>
 #include "fdf.h"
-
-#include <stdio.h>
+#define _USE_MATH_DEFINES
 
 t_dot	rotate_x(t_dot dot, double theta)
 {
@@ -56,8 +54,8 @@ t_dot	isometric(t_dot dot)
 {
 	t_dot	new_dot;
 
-	new_dot.x = 2 * (dot.y - dot.x);
-	new_dot.y = dot.x + dot.y - dot.z;
+	new_dot.x = 2 * (dot.y + dot.x);
+	new_dot.y = dot.y - dot.x - dot.z;
 	new_dot.z = dot.z;
 	return (new_dot);
 }

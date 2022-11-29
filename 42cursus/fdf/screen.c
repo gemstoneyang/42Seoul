@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:55:42 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/23 16:29:42 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/29 23:05:42 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,11 @@ void	print_screen(t_mlx *mlx, t_map *map, t_info *info)
 			if (j != map->width - 1)
 			{
 				dot2 = (map->matrix)[i][j + 1];
-				// print_dot(mlx, dot(dot1, info).x, dot(dot1, info).y);
-				// print_dot(mlx, dot(dot2, info).x, dot(dot2, info).y);
 				print_line(mlx, dot(dot1, info), dot(dot2, info));
 			}
 			if (i != map->height - 1)
 			{
 				dot2 = (map->matrix)[i + 1][j];
-				// print_dot(mlx, dot(dot1, info).x, dot(dot1, info).y);
-				// print_dot(mlx, dot(dot2, info).x, dot(dot2, info).y);
 				print_line(mlx, dot(dot1, info), dot(dot2, info));
 			}
 		}

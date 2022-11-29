@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/11/22 17:46:04 by wonyang          ###   ########seoul.kr   #
+#    Updated: 2022/11/29 22:06:33 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,10 +52,10 @@ $(MLX_LIB):
 clean	:
 			rm -f $(OBJS)
 			make clean -C $(LIBFT)
-			make clean -C $(MLX)
 
 fclean	:	
 			make clean
+			make clean -C $(MLX)
 			rm -f $(NAME)
 			rm -f $(MLX_LIB)
 			make fclean -C $(LIBFT)
