@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/29 23:11:25 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/30 16:54:51 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_map
 {
 	int		height;
 	int		width;
-	t_dot	***matrix;
+	t_dot	**matrix;
 }	t_map;
 
 typedef struct s_mlx
@@ -67,7 +67,7 @@ void	print_line(t_mlx *mlx, t_dot a, t_dot b);
 
 // filter.c
 t_info	*init_info(t_mlx *mlx, t_map *map);
-t_dot	dot(t_dot *dot, t_info *info);
+t_dot	dot(t_dot dot, t_info *info);
 
 // exit.c
 void	perror_exit(char *msg, int code);

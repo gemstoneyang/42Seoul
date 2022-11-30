@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 00:57:19 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/23 16:09:32 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/30 18:18:17 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 #include "get_next_line.h"
 #include "fdf.h"
 
-static t_dot	*init_dot(int x, int y, int z, char *color)
+static t_dot	init_dot(int x, int y, int z, char *color)
 {
-	t_dot	*dot;
+	t_dot	dot;
 
-	dot = (t_dot *)ft_malloc(sizeof(t_dot));
-	dot->x = x;
-	dot->y = y;
-	dot->z = z;
-	dot->color = color;
+	dot.x = x;
+	dot.y = y;
+	dot.z = z;
+	dot.color = color;
 	return (dot);
 }
 

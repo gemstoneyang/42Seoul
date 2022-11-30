@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:55:42 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/29 23:05:42 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/11/30 18:33:58 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,13 @@ void	print_dot(t_mlx *mlx, int x, int y)
 	*(unsigned int *)dst = create_argb(0, 255, 255, 255);
 }
 
+#include <stdio.h>
 void	print_screen(t_mlx *mlx, t_map *map, t_info *info)
 {
 	int		i;
 	int		j;
-	t_dot	*dot1;
-	t_dot	*dot2;
+	t_dot	dot1;
+	t_dot	dot2;
 
 	i = 0;
 	while (i < map->height)
