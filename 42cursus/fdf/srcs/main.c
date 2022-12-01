@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:22:41 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/30 18:16:28 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/01 20:57:38 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	main(int argc, char **argv)
 
 	parse_map(map, argv[1]);
 	write(1, "map_parse init\n", 15);
-
 
 	t_mlx	*mlx;
 	mlx = init_mlx(1500, 1000);

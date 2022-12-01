@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 17:47:05 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/01 20:25:55 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/01 20:57:12 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ t_dot	dot(t_dot dot, t_info *info)
 	res = isometric(res);
 	res.x += info->xstart;
 	res.y += info->ystart;
+	res.color = dot.color;
 	return (res);
 }

@@ -6,16 +6,38 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:55:42 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/01 20:39:41 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/01 21:08:50 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "mlx.h"
+#include "libft.h"
 
 static int	create_argb(int a, int r, int g, int b)
 {
 	return (a << 24 | r << 16 | g << 8 | b);
+}
+#include <stdio.h>
+static int	hex_to_int(char *hex)
+{
+	int	i;
+	int	res;
+
+	if (!hex || ft_strlen(hex) != 8)
+		return (create_argb(0, 255, 255, 255));
+	i = 2;
+	res = 0;
+	while (hex[i])
+	{
+		res <<= 4;
+		if (ft_isdigit(hex[i]))
+			res += hex[i] - '0';
+		else
+			res += ft_tolower(hex[i]) - 'a' + 10;
+		i++;
+	}
+	return (res);
 }
 
 void	print_dot(t_mlx *mlx, t_dot dot)
@@ -28,7 +50,7 @@ void	print_dot(t_mlx *mlx, t_dot dot)
 	if (dot.color == NULL)
 		*(unsigned int *)dst = create_argb(0, 255, 255, 255);
 	else
-		*(unsigned int *)dst = (int)dot.color;
+		*(unsigned int *)dst = hex_to_int(dot.color);
 }
 
 #include <stdio.h>

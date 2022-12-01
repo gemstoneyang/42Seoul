@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:36:51 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/01 20:34:27 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/01 21:01:16 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static t_dot	change_coor(t_dot tmp, int dx, int dy)
 
 	res.x = tmp.x + dx;
 	res.y = tmp.y + dy;
+	res.color = tmp.color;
 	return (res);
 }
 
@@ -41,8 +42,7 @@ static void	small_gradient(t_mlx *mlx, t_dot a, t_dot b, t_dot d)
 	t_dot	w;
 	t_dot	tmp;
 
-	tmp.x = a.x;
-	tmp.y = a.y;
+	tmp = a;
 	p = 2 * d.y - d.x;
 	w = update_weight(a, b);
 	while (tmp.x != b.x || tmp.y != b.y)
@@ -68,8 +68,7 @@ static void	big_gradient(t_mlx *mlx, t_dot a, t_dot b, t_dot d)
 	t_dot	w;
 	t_dot	tmp;
 
-	tmp.x = a.x;
-	tmp.y = a.y;
+	tmp = a;
 	p = 2 * d.x - d.y;
 	w = update_weight(a, b);
 	while (tmp.x != b.x || tmp.y != b.y)
