@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/12/01 20:19:43 by wonyang          ###   ########.fr        #
+#    Updated: 2022/12/01 20:21:09 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ fclean	:
 			make clean
 			make clean -C $(MLX)
 			rm -f $(NAME)
-			rm -f $(MLX_LIB)
+			rm -f $(SRC_DIR)/$(MLX_LIB)
 			make fclean -C $(LIBFT)
 
 re	:		
