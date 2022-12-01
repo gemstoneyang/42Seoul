@@ -6,15 +6,16 @@
 #    By: wonyang <wonyang@student.42seoul.k>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/09 03:04:43 by wonyang           #+#    #+#              #
-#    Updated: 2022/10/16 20:44:39 by wonyang          ###   ########.fr        #
+#    Updated: 2022/12/01 19:37:17 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
+HEADER = libft.h
 
 CC = cc
 RM = rm -rf
-CLFAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 SRCS = ft_memset.c \
 	   ft_bzero.c \
@@ -76,9 +77,9 @@ endif
 all : $(NAME)
 
 .c.o:
-	$(CC) $(CLFAGS) -c $< -o $(<:.c=.o)
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-$(NAME) : $(OBJ_FILES)
+$(NAME) : $(OBJ_FILES) $(HEADER)
 	ar crs $(NAME) $(OBJ_FILES)
 
 bonus :

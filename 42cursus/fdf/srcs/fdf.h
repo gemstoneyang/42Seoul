@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/30 16:54:51 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/01 20:18:40 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ typedef struct s_mlx
 typedef struct s_info
 {
 	int	xscale;
-	int yscale;
+	int	yscale;
 	int	zscale;
 	int	xstart;
-	int ystart;
+	int	ystart;
 }	t_info;
 
 // map.c

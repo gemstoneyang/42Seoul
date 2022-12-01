@@ -6,15 +6,25 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/11/29 22:06:33 by wonyang          ###   ########.fr        #
+#    Updated: 2022/12/01 20:19:43 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= fdf
+FDF_HEADER	= fdf.h
 LIBFT		= libft
+LIBFT_HEADER = libft.h
+LIBFT_LIB	= $(LIBFT)/libft.a
 GNL			= get_next_line
+GNL_HEADER	= get_next_line.h
 MLX			= mlx
+MLX_HEADER	= mlx.h
 MLX_LIB		= libmlx.dylib
+SRC_DIR		= srcs
+
+HEADERS		= $(GNL)/$(GNL_HEADER) \
+			  $(MLX)/$(MLX_HEADER) \
+			  $(LIBFT)/$(LIBFT_HEADER) \
 
 SRCS		= main.c \
 			  exit.c \
@@ -27,27 +37,31 @@ SRCS		= main.c \
 			  filter.c \
 			  rotate.c \
 
-GNL_SRCS	= $(GNL)/get_next_line.c \
-			  $(GNL)/get_next_line_utils.c \
+GNL_SRCS	= get_next_line.c \
+			  get_next_line_utils.c \
 
-OBJS		= $(SRCS:%.c=%.o) $(GNL_SRCS:%.c=%.o)
+MANDATORY_SRCS = $(addprefix $(SRC_DIR)/, $(SRCS)) $(addprefix $(GNL)/, $(GNL_SRCS))
 
-FLAGS		= -Wall -Werror -Wextra
+OBJS		= $(MANDATORY_SRCS:%.c=%.o)
 
-$(NAME) : 	$(OBJS) $(MLX_LIB)
-			make bonus -C $(LIBFT)/
-			cc $(FLAGS) -o $(NAME) $(OBJS) -lft -L$(LIBFT) -lmlx -L$(MLX)
+CFLAGS		= -Wall -Werror -Wextra
+
+$(NAME) : 	$(OBJS) $(LIBFT_LIB) $(MLX_LIB) $(HEADERS) $(SRC_DIR)/$(FDF_HEADER)
+			cc $(CFLAGS) -o $(NAME) $(OBJS) -lft -L$(LIBFT) -lmlx -L$(MLX)
 
 all	:		$(NAME)
 
 bonus:		all
 
+$(LIBFT_LIB):
+			make bonus -C $(LIBFT)/
+
 $(MLX_LIB):	
 			make -C $(MLX)/
-			cp $(MLX)/$(MLX_LIB) .
+			cp $(MLX)/$(MLX_LIB) ./$(SRC_DIR)
 
 %.o	: 		%.c
-			cc $(FLAGS) -c $^ -I./ -I$(MLX) -I$(LIBFT) -I$(GNL) -o $@
+			cc $(CFLAGS) -c $^ -I./ -I$(MLX) -I$(LIBFT) -I$(GNL) -o $@
 
 clean	:
 			rm -f $(OBJS)
