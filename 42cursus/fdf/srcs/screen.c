@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:55:42 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/01 21:08:50 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/01 22:02:18 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	create_argb(int a, int r, int g, int b)
 {
 	return (a << 24 | r << 16 | g << 8 | b);
 }
-#include <stdio.h>
+
 static int	hex_to_int(char *hex)
 {
 	int	i;
