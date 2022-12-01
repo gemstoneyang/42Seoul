@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/12/01 20:21:09 by wonyang          ###   ########.fr        #
+#    Updated: 2022/12/01 20:24:16 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ $(LIBFT_LIB):
 
 $(MLX_LIB):	
 			make -C $(MLX)/
-			cp $(MLX)/$(MLX_LIB) ./$(SRC_DIR)
+			cp $(MLX)/$(MLX_LIB) .
 
 %.o	: 		%.c
 			cc $(CFLAGS) -c $^ -I./ -I$(MLX) -I$(LIBFT) -I$(GNL) -o $@
@@ -71,7 +71,7 @@ fclean	:
 			make clean
 			make clean -C $(MLX)
 			rm -f $(NAME)
-			rm -f $(SRC_DIR)/$(MLX_LIB)
+			rm -f $(MLX_LIB)
 			make fclean -C $(LIBFT)
 
 re	:		

@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.k>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/09 03:04:43 by wonyang           #+#    #+#              #
-#    Updated: 2022/12/01 19:37:17 by wonyang          ###   ########.fr        #
+#    Updated: 2022/12/01 20:22:26 by wonyang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ endif
 
 all : $(NAME)
 
-.c.o:
+%.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME) : $(OBJ_FILES) $(HEADER)
