@@ -6,17 +6,20 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:36:51 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/30 18:33:46 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/01 20:34:27 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "fdf.h"
 
-static void	change_coor(int *x, int *y, int dx, int dy)
+static t_dot	change_coor(t_dot tmp, int dx, int dy)
 {
-	*x += dx;
-	*y += dy;
+	t_dot	res;
+
+	res.x = tmp.x + dx;
+	res.y = tmp.y + dy;
+	return (res);
 }
 
 static t_dot	update_weight(t_dot a, t_dot b)
@@ -34,58 +37,56 @@ static t_dot	update_weight(t_dot a, t_dot b)
 
 static void	small_gradient(t_mlx *mlx, t_dot a, t_dot b, t_dot d)
 {
-	int		x;
-	int		y;
 	int		p;
 	t_dot	w;
+	t_dot	tmp;
 
-	x = a.x;
-	y = a.y;
+	tmp.x = a.x;
+	tmp.y = a.y;
 	p = 2 * d.y - d.x;
 	w = update_weight(a, b);
-	while (x != b.x || y != b.y)
+	while (tmp.x != b.x || tmp.y != b.y)
 	{
-		print_dot(mlx, x, y);
+		print_dot(mlx, tmp);
 		if (p < 0)
 		{
 			p = p + 2 * d.y;
-			change_coor(&x, &y, w.x, 0);
+			tmp = change_coor(tmp, w.x, 0);
 		}
 		else
 		{
 			p = p + 2 * (d.y - d.x);
-			change_coor(&x, &y, w.x, w.y);
+			tmp = change_coor(tmp, w.x, w.y);
 		}
 	}
-	print_dot(mlx, x, y);
+	print_dot(mlx, tmp);
 }
 
 static void	big_gradient(t_mlx *mlx, t_dot a, t_dot b, t_dot d)
 {
-	int		x;
-	int		y;
 	int		p;
 	t_dot	w;
+	t_dot	tmp;
 
-	x = a.x;
-	y = a.y;
+	tmp.x = a.x;
+	tmp.y = a.y;
 	p = 2 * d.x - d.y;
 	w = update_weight(a, b);
-	while (x != b.x || y != b.y)
+	while (tmp.x != b.x || tmp.y != b.y)
 	{
-		print_dot(mlx, x, y);
+		print_dot(mlx, tmp);
 		if (p < 0)
 		{
 			p = p + 2 * d.x;
-			change_coor(&x, &y, 0, w.y);
+			tmp = change_coor(tmp, 0, w.y);
 		}
 		else
 		{
 			p = p + 2 * (d.x - d.y);
-			change_coor(&x, &y, w.x, w.y);
+			tmp = change_coor(tmp, w.x, w.y);
 		}
 	}
-	print_dot(mlx, x, y);
+	print_dot(mlx, tmp);
 }
 
 void	print_line(t_mlx *mlx, t_dot a, t_dot b)

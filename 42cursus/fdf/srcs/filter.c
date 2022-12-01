@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 17:47:05 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/30 18:36:09 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/01 20:25:55 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_info	*init_info(t_mlx *mlx, t_map *map)
 	info->yscale = 1;
 	info->zscale = 3;
 
-	info->xstart = 000;
+	info->xstart = -300;
 	info->ystart = 700;
 	return (info);
 }

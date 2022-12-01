@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:55:42 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/30 18:33:58 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/01 20:39:41 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,17 @@ static int	create_argb(int a, int r, int g, int b)
 	return (a << 24 | r << 16 | g << 8 | b);
 }
 
-void	print_dot(t_mlx *mlx, int x, int y)
+void	print_dot(t_mlx *mlx, t_dot dot)
 {
 	char	*dst;
 
-	if (mlx->win_height <= y || mlx->win_width <= x || x < 0 || y < 0)
+	if (mlx->win_y <= dot.y || mlx->win_x <= dot.x || dot.x < 0 || dot.y < 0)
 		return ;
-	dst = mlx->ptr + (y * (mlx->lsize) + x * (mlx->bit) / 8);
-	*(unsigned int *)dst = create_argb(0, 255, 255, 255);
+	dst = mlx->ptr + (dot.y * (mlx->lsize) + dot.x * (mlx->bit) / 8);
+	if (dot.color == NULL)
+		*(unsigned int *)dst = create_argb(0, 255, 255, 255);
+	else
+		*(unsigned int *)dst = (int)dot.color;
 }
 
 #include <stdio.h>
@@ -66,8 +69,8 @@ t_mlx	*init_mlx(int width, int height)
 	m->mlx = mlx_init();
 	m->win = mlx_new_window(m->mlx, width, height, "fdf");
 	m->img = mlx_new_image(m->mlx, width, height);
-	m->win_width = width;
-	m->win_height = height;
+	m->win_x = width;
+	m->win_y = height;
 	m->bit = 0;
 	m->lsize = 0;
 	m->end = 0;

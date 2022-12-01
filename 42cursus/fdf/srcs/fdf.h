@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/01 20:18:40 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/01 20:39:08 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ typedef struct s_mlx
 	void	*mlx;
 	void	*win;
 	void	*img;
-	int		win_width;
-	int		win_height;
+	int		win_x;
+	int		win_y;
 	int		bit;
 	int		lsize;
 	int		end;
@@ -59,7 +59,7 @@ void	parse_map(t_map *map_info, char *map_name);
 
 // screen.c
 t_mlx	*init_mlx(int width, int height);
-void	print_dot(t_mlx *mlx, int x, int y);
+void	print_dot(t_mlx *mlx, t_dot dot);
 void	print_screen(t_mlx *mlx, t_map *map, t_info *info);
 
 // bresenham.c
