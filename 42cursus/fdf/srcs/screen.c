@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 14:55:42 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/01 22:02:18 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/01 22:03:57 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	print_dot(t_mlx *mlx, t_dot dot)
 		*(unsigned int *)dst = hex_to_int(dot.color);
 }
 
-#include <stdio.h>
 void	print_screen(t_mlx *mlx, t_map *map, t_info *info)
 {
 	int		i;
