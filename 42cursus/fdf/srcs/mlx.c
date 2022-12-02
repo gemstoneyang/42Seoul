@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/29 18:22:41 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/02 18:18:38 by wonyang          ###   ########seoul.kr  */
+/*   Created: 2022/12/02 18:36:07 by wonyang           #+#    #+#             */
+/*   Updated: 2022/12/02 18:37:35 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "fdf.h"
+#include "mlx.h"
 
-int	main(int argc, char **argv)
+t_mlx	*init_mlx(int width, int height)
 {
-	t_param param;
+	t_mlx	*m;
 
-	if (argc != 2)
-		error_exit("argument error");
-	param.map = parse_map_info(argv[1]);
-	parse_map(param.map, argv[1]);
-	param.mlx = init_mlx(1920, 1080);
-	param.info = init_info(param.mlx, param.map);
-	print_screen(param.mlx, param.map, param.info);
-	mlx_hook(param.mlx->win, 2, 1L<<0, hooks, &param);
-	mlx_loop(param.mlx->mlx);
-	return (0);
+	m = (t_mlx *)ft_malloc(sizeof(t_mlx));
+	m->mlx = mlx_init();
+	m->win = mlx_new_window(m->mlx, width, height, "fdf");
+	m->img = mlx_new_image(m->mlx, width, height);
+	m->win_x = width;
+	m->win_y = height;
+	m->bit = 0;
+	m->lsize = 0;
+	m->end = 0;
+	m->ptr = mlx_get_data_addr(m->img, &(m->bit), &(m->lsize), &(m->end));
+	return (m);
 }

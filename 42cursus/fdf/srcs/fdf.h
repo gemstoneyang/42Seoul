@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/01 20:39:08 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/02 18:37:16 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,30 @@ typedef struct s_info
 	int	ystart;
 }	t_info;
 
+typedef struct s_param
+{
+	t_map	*map;
+	t_mlx	*mlx;
+	t_info	*info;
+}	t_param;
+
+enum	e_keycode
+{
+	KEY_ESC = 53,
+	KEY_UP = 126,
+	KEY_DOWN = 125
+};
+
 // map.c
 t_map	*parse_map_info(char *map_name);
 
 // parse.c
 void	parse_map(t_map *map_info, char *map_name);
 
-// screen.c
+// mlx.c
 t_mlx	*init_mlx(int width, int height);
+
+// screen.c
 void	print_dot(t_mlx *mlx, t_dot dot);
 void	print_screen(t_mlx *mlx, t_map *map, t_info *info);
 
@@ -80,6 +96,9 @@ int		is_integer(char *str);
 int		ft_open(const char *path);
 void	ft_close(int fd);
 void	*ft_malloc(size_t size);
+
+// hoos.c
+int		hooks(int keycode, t_param *param);
 
 // rotate.c
 t_dot	rotate_x(t_dot dot, double theta);

@@ -5,6 +5,7 @@
 		"fcntl.h": "c",
 		"mlx.h": "c",
 		"__node_handle": "c",
-		"fdf.h": "c"
+		"fdf.h": "c",
+		"locale": "c"
 	}
 }
