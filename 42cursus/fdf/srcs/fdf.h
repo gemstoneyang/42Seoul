@@ -6,13 +6,13 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/02 18:37:16 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/03 14:11:19 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# include "libft/libft.h"
+# include "libft.h"
 
 typedef struct s_dot
 {
@@ -61,15 +61,13 @@ typedef struct s_param
 enum	e_keycode
 {
 	KEY_ESC = 53,
-	KEY_UP = 126,
-	KEY_DOWN = 125
 };
 
 // map.c
 t_map	*parse_map_info(char *map_name);
 
 // parse.c
-void	parse_map(t_map *map_info, char *map_name);
+t_map	*parse_map(char *map_name);
 
 // mlx.c
 t_mlx	*init_mlx(int width, int height);
@@ -97,7 +95,7 @@ int		ft_open(const char *path);
 void	ft_close(int fd);
 void	*ft_malloc(size_t size);
 
-// hoos.c
+// hooks.c
 int		hooks(int keycode, t_param *param);
 
 // rotate.c

@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:36:07 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/02 18:37:35 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/03 13:03:26 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,14 @@ t_mlx	*init_mlx(int width, int height)
 
 	m = (t_mlx *)ft_malloc(sizeof(t_mlx));
 	m->mlx = mlx_init();
+	if (m->mlx == NULL)
+		error_exit("mlx init error");
 	m->win = mlx_new_window(m->mlx, width, height, "fdf");
+	if (m->win == NULL)
+		error_exit("mlx window error");
 	m->img = mlx_new_image(m->mlx, width, height);
+	if (m->img == NULL)
+		error_exit("mlx image error");
 	m->win_x = width;
 	m->win_y = height;
 	m->bit = 0;

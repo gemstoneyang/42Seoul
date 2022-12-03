@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 00:57:19 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/30 18:18:17 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/03 14:10:27 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,16 @@ static void	parse_line(t_map *map_info, char *line, int y)
 	ft_freesplit(split);
 }
 
-void	parse_map(t_map *map_info, char *map_name)
+t_map	*parse_map(char *map_name)
 {
+	t_map	*map;
 	char	*line;
 	int		fd;
 	int		y;
 
-	y = 0;
+	map = parse_map_info(map_name);
 	fd = ft_open(map_name);
+	y = 0;
 	while (1)
 	{
 		if (get_next_line(&line, fd) == -1)
@@ -74,8 +76,9 @@ void	parse_map(t_map *map_info, char *map_name)
 		}
 		if (!line)
 			break ;
-		parse_line(map_info, line, y);
+		parse_line(map, line, y);
 		y++;
 	}
 	ft_close(fd);
+	return (map);
 }

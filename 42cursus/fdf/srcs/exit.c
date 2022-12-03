@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 18:01:25 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/29 19:41:29 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/03 14:24:34 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "libft.h"
+
+void	free_all(t_param *param)
+{
+	
+}
 
 void	perror_exit(char *msg, int code)
 {

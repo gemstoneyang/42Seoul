@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:22:41 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/02 18:18:38 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/03 14:10:22 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 int	main(int argc, char **argv)
 {
-	t_param param;
+	t_param	p;
 
 	if (argc != 2)
 		error_exit("argument error");
-	param.map = parse_map_info(argv[1]);
-	parse_map(param.map, argv[1]);
-	param.mlx = init_mlx(1920, 1080);
-	param.info = init_info(param.mlx, param.map);
-	print_screen(param.mlx, param.map, param.info);
-	mlx_hook(param.mlx->win, 2, 1L<<0, hooks, &param);
-	mlx_loop(param.mlx->mlx);
+	p.mlx = init_mlx(1920, 1080);
+	p.map = parse_map(argv[1]);
+	p.info = init_info(p.mlx, p.map);
+	print_screen(p.mlx, p.map, p.info);
+	mlx_put_image_to_window(p.mlx->mlx, p.mlx->win, p.mlx->img, 0, 0);
+	mlx_key_hook(p.mlx->win, hooks, &p);
+	mlx_loop(p.mlx->mlx);
 	return (0);
 }

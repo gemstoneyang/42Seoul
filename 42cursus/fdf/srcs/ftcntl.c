@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 15:02:30 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/20 16:28:25 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/03 14:17:07 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void	*ft_malloc(size_t size)
 
 	ptr = malloc(size);
 	if (!ptr)
-		error_exit("malloc error");
+		perror_exit("malloc error");
 	return (ptr);
 }
