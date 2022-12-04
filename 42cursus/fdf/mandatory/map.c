@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 21:56:18 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/04 14:13:33 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 18:13:17 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ t_map	*parse_map_info(char *map_name)
 			break ;
 		if (map_info->width == 0)
 			map_info->width = count_width(line);
+		free(line);
 		map_info->height++;
 	}
 	ft_close(fd);

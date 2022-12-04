@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:05:24 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/04 14:18:00 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 18:13:04 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static void	free_all(t_param *param)
 		free((param->map->matrix)[i]);
 		i++;
 	}
+	free(param->map->matrix);
 	free(param->map);
 	free(param->info);
 	free(param->mlx);
