@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 15:48:27 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/04 15:48:28 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 17:50:16 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,11 @@ t_dot	dot(t_dot dot, t_info *info)
 	res.x = info->xscale * dot.x;
 	res.y = info->yscale * dot.y;
 	res.z = info->zscale * dot.z;
-	res = isometric(res);
+	if (info->projection == 0)
+		res = isometric(res);
+	res = rotate_x(res, info->xtheta);
+	res = rotate_y(res, info->ytheta);
+	res = rotate_z(res, info->ztheta);
 	res.x += info->xstart;
 	res.y += info->ystart;
 	res.color = dot.color;

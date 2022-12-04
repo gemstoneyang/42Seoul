@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/12/04 15:54:30 by wonyang          ###   ########seoul.kr   #
+#    Updated: 2022/12/04 17:39:32 by wonyang          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ B_SRCS		= main_bonus.c \
 			  rotate_bonus.c \
 			  hooks_bonus.c \
 			  init_bonus.c \
+			  control_bonus.c \
 
 G_SRCS		= get_next_line.c \
 			  get_next_line_utils.c \

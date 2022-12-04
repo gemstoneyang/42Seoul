@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:36:07 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/04 15:47:34 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 17:49:47 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,12 @@ t_info	*init_info(t_mlx *mlx, t_map *map)
 	info->xscale = scale;
 	info->yscale = scale;
 	info->zscale = scale;
+	info->xtheta = 0;
+	info->ytheta = 0;
+	info->ztheta = 0;
 	info->xstart = 200 - map->width;
 	info->ystart = 600 + map->height / 2;
+	info->projection = 0;
 	return (info);
 }
 

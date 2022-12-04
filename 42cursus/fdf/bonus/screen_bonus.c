@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 15:48:19 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/04 15:48:20 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 17:10:53 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,26 @@ static int	hex_to_int(char *hex)
 		i++;
 	}
 	return (res);
+}
+
+void	fill_black(t_mlx *mlx)
+{
+	char	*dst;
+	int		i;
+	int		j;
+
+	i = 0;
+	while (i < mlx->win_y)
+	{
+		j = 0;
+		while (j < mlx->win_x)
+		{
+			dst = mlx->ptr + (i * (mlx->lsize) + j * (mlx->bit) / 8);
+			*(unsigned int *)dst = create_argb(0, 0, 0, 0);
+			j++;
+		}
+		i++;
+	}
 }
 
 void	print_dot(t_mlx *mlx, t_dot dot)
