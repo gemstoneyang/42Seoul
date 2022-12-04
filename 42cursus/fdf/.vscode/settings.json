@@ -8,6 +8,8 @@
 		"fdf.h": "c",
 		"locale": "c",
 		"libft.h": "c",
-		"system_error": "c"
+		"system_error": "c",
+		"math.h": "c",
+		"fdf_bonus.h": "c"
 	}
 }

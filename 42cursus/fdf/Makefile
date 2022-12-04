@@ -6,13 +6,11 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/12/04 14:47:09 by wonyang          ###   ########seoul.kr   #
+#    Updated: 2022/12/04 15:54:30 by wonyang          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= fdf
-FDF_HEADER	= fdf.h
-BONUS_HEADER = fdf_bonus.h
 LIBFT		= libft
 LIBFT_HEADER = libft.h
 LIBFT_LIB	= $(LIBFT)/libft.a
@@ -23,6 +21,7 @@ MLX_HEADER	= mlx.h
 MLX_LIB		= libmlx.dylib
 MANDATORY_DIR = mandatory
 BONUS_DIR	= bonus
+CFLAGS		= -Wall -Werror -Wextra
 
 HEADERS		= $(GNL)/$(GNL_HEADER) \
 			  $(MLX)/$(MLX_HEADER) \
@@ -46,23 +45,35 @@ B_SRCS		= main_bonus.c \
 			  hooks_bonus.c \
 			  init_bonus.c \
 
-GNL_SRCS	= get_next_line.c \
+G_SRCS		= get_next_line.c \
 			  get_next_line_utils.c \
 
-MANDATORY_SRCS = $(addprefix $(MANDATORY_DIR)/, $(M_SRCS)) $(addprefix $(GNL)/, $(GNL_SRCS))
-
-BONUS_SRCS = $(addprefix $(BONUS_DIR)/, $(B_SRCS)) $(addprefix $(GNL)/, $(GNL_SRCS))
+MANDATORY_SRCS	= $(addprefix $(MANDATORY_DIR)/, $(M_SRCS))
+BONUS_SRCS		= $(addprefix $(BONUS_DIR)/, $(B_SRCS))
+GNL_SRCS		= $(addprefix $(GNL)/, $(G_SRCS))
 
 OBJS		= $(MANDATORY_SRCS:%.c=%.o)
+BONUS_OBJS	= $(BONUS_SRCS:%.c=%.o)
+GNL_OBJS	= $(GNL_SRCS:%.c=%.o)
 
-CFLAGS		= -Wall -Werror -Wextra
+ifdef WITH_BONUS
+	OBJ_FILES = $(BONUS_OBJS)
+	DELETE_FILES = $(OBJS)
+	FDF_HEADER = $(BONUS_DIR)/fdf_bonus.h
+else
+	OBJ_FILES = $(OBJS)
+	DELETE_FILES = $(BONUS_OBJS)
+	FDF_HEADER	= $(MANDATORY_DIR)/fdf.h
+endif
 
-$(NAME) : 	$(OBJS) $(LIBFT_LIB) $(MLX_LIB) $(HEADERS) $(MANDATORY_DIR)/$(FDF_HEADER)
-			cc $(CFLAGS) -o $(NAME) $(OBJS) -lft -L$(LIBFT) -lmlx -L$(MLX)
+$(NAME) : 	$(OBJ_FILES) $(GNL_OBJS) $(LIBFT_LIB) $(MLX_LIB) $(HEADERS) $(FDF_HEADER)
+			@rm -f $(DELETE_FILES)
+			cc $(CFLAGS) -o $(NAME) $(OBJ_FILES) $(GNL_OBJS) -lft -L$(LIBFT) -lmlx -L$(MLX)
 
 all	:		$(NAME)
 
-bonus:		all
+bonus:
+			@make WITH_BONUS=1 all
 
 $(LIBFT_LIB):
 			make bonus -C $(LIBFT)/
@@ -75,7 +86,7 @@ $(MLX_LIB):
 			cc $(CFLAGS) -c $^ -I./ -I$(MLX) -I$(LIBFT) -I$(GNL) -o $@
 
 clean	:
-			rm -f $(OBJS)
+			rm -f $(OBJS) $(BONUS_OBJS) $(GNL_OBJS)
 			make clean -C $(LIBFT)
 
 fclean	:	

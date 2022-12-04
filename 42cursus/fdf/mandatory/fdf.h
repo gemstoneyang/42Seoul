@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/04 14:30:32 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 15:49:06 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,6 @@ void	print_line(t_mlx *mlx, t_dot a, t_dot b);
 int		hooks(int keycode, t_param *param);
 
 // rotate.c
-t_dot	rotate_x(t_dot dot, double theta);
-t_dot	rotate_y(t_dot dot, double theta);
-t_dot	rotate_z(t_dot dot, double theta);
 t_dot	isometric(t_dot dot);
 t_dot	dot(t_dot dot, t_info *info);
 

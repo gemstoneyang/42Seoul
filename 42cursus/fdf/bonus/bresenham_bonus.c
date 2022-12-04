@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bresenham.c                                        :+:      :+:    :+:   */
+/*   bresenham_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:36:51 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/04 13:20:31 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 15:47:20 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "fdf.h"
+#include "fdf_bonus.h"
 #include "libft.h"
 
 static t_dot	change_coor(t_dot tmp, int dx, int dy)

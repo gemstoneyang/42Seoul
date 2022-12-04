@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks.c                                            :+:      :+:    :+:   */
+/*   hooks_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 17:05:24 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/04 14:18:00 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 15:47:29 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "fdf.h"
+#include "fdf_bonus.h"
 #include "mlx.h"
 
 static void	free_all(t_param *param)

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   fdf_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/04 14:30:32 by wonyang          ###   ########seoul.kr  */
+/*   Created: 2022/12/04 15:46:34 by wonyang           #+#    #+#             */
+/*   Updated: 2022/12/04 15:47:03 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#ifndef FDF_BONUS_H
+# define FDF_BONUS_H
 
 typedef struct s_dot
 {
@@ -62,27 +62,27 @@ enum	e_keycode
 	KEY_ESC = 53,
 };
 
-// map.c
+// map_bonus.c
 t_map	*parse_map_info(char *map_name);
 
-// parse.c
+// parse_bonus.c
 t_map	*parse_map(char *map_name);
 
-// init.c
+// init_bonus.c
 t_info	*init_info(t_mlx *mlx, t_map *map);
 t_mlx	*init_mlx(int width, int height);
 
-// screen.c
+// screen_bonus.c
 void	print_dot(t_mlx *mlx, t_dot dot);
 void	print_screen(t_mlx *mlx, t_map *map, t_info *info);
 
-// bresenham.c
+// bresenham_bonus.c
 void	print_line(t_mlx *mlx, t_dot a, t_dot b);
 
-// hooks.c
+// hooks_bonus.c
 int		hooks(int keycode, t_param *param);
 
-// rotate.c
+// rotate_bonus.c
 t_dot	rotate_x(t_dot dot, double theta);
 t_dot	rotate_y(t_dot dot, double theta);
 t_dot	rotate_z(t_dot dot, double theta);

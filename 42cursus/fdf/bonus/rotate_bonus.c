@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   rotate_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 17:26:40 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/04 14:29:32 by wonyang          ###   ########seoul.kr  */
+/*   Created: 2022/12/04 15:48:27 by wonyang           #+#    #+#             */
+/*   Updated: 2022/12/04 15:48:28 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "fdf.h"
+#include "fdf_bonus.h"
 #define _USE_MATH_DEFINES
 
 t_dot	rotate_x(t_dot dot, double theta)
