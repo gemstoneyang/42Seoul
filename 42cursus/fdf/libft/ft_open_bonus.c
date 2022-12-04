@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_open_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 17:18:23 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/04 13:13:55 by wonyang          ###   ########seoul.kr  */
+/*   Created: 2022/12/04 14:09:15 by wonyang           #+#    #+#             */
+/*   Updated: 2022/12/04 14:15:41 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <fcntl.h>
 #include "libft.h"
 
-char	*ft_strdup(const char *str)
+int	ft_open(const char *path)
 {
-	char	*s;
-	int		i;
+	int	fd;
 
-	if (!str)
-		return (NULL);
-	i = ft_strlen(str);
-	s = (char *)malloc(sizeof(char) * (i + 1));
-	if (!s)
-		return (s);
-	i = 0;
-	while (str[i])
-	{
-		s[i] = str[i];
-		i++;
-	}
-	s[i] = '\0';
-	return (s);
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		ft_perror_exit("open error", 1);
+	return (fd);
 }

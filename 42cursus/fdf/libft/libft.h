@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wonyang <wonyang@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 14:22:09 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/16 20:43:23 by wonyang          ###   ########.fr       */
+/*   Updated: 2022/12/04 14:11:38 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdlib.h>
+# include <stddef.h>
 
 typedef struct s_list
 {
@@ -73,5 +73,12 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 void		ft_freesplit(char **str);
 int			ft_strcmp(char *s1, char *s2);
+int			ft_isinteger(char *str);
+int			ft_abs(int i);
+void		ft_perror_exit(char *msg, int code);
+void		ft_error_exit(char *msg);
+int			ft_open(const char *path);
+void		ft_close(int fd);
+void		*ft_malloc(size_t size);
 
 #endif

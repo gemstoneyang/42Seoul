@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_abs_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:42:30 by wonyang           #+#    #+#             */
-/*   Updated: 2022/10/16 20:42:56 by wonyang          ###   ########.fr       */
+/*   Created: 2022/12/04 13:18:49 by wonyang           #+#    #+#             */
+/*   Updated: 2022/12/04 13:20:22 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_strcmp(char *s1, char *s2)
+int	ft_abs(int i)
 {
-	int	i;
-
-	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0')
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	if (s1[i] != '\0')
-		return (s1[i]);
-	if (s2[i] != '\0')
-		return (-s2[i]);
-	return (0);
+	if (i > 0)
+		return (i);
+	return (-i);
 }

@@ -6,12 +6,13 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 15:36:51 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/01 21:01:16 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 13:20:31 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "fdf.h"
+#include "libft.h"
 
 static t_dot	change_coor(t_dot tmp, int dx, int dy)
 {
@@ -92,8 +93,8 @@ void	print_line(t_mlx *mlx, t_dot a, t_dot b)
 {
 	t_dot	d;
 
-	d.x = abs(a.x - b.x);
-	d.y = abs(a.y - b.y);
+	d.x = ft_abs(a.x - b.x);
+	d.y = ft_abs(a.y - b.y);
 	if (d.x && (double)d.y / (double)d.x <= 1)
 		small_gradient(mlx, a, b, d);
 	else

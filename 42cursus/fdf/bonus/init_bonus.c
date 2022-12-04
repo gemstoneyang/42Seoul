@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filter.c                                           :+:      :+:    :+:   */
+/*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 17:47:05 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/03 13:51:16 by wonyang          ###   ########seoul.kr  */
+/*   Created: 2022/12/02 18:36:07 by wonyang           #+#    #+#             */
+/*   Updated: 2022/12/04 14:29:18 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <math.h>
+#include "mlx.h"
+#include "libft.h"
 
 static int	max(int a, int b)
 {
@@ -36,16 +37,25 @@ t_info	*init_info(t_mlx *mlx, t_map *map)
 	return (info);
 }
 
-t_dot	dot(t_dot dot, t_info *info)
+t_mlx	*init_mlx(int width, int height)
 {
-	t_dot	res;
+	t_mlx	*m;
 
-	res.x = info->xscale * dot.x;
-	res.y = info->yscale * dot.y;
-	res.z = info->zscale * dot.z;
-	res = isometric(res);
-	res.x += info->xstart;
-	res.y += info->ystart;
-	res.color = dot.color;
-	return (res);
+	m = (t_mlx *)ft_malloc(sizeof(t_mlx));
+	m->mlx = mlx_init();
+	if (m->mlx == NULL)
+		ft_error_exit("mlx init error");
+	m->win = mlx_new_window(m->mlx, width, height, "fdf");
+	if (m->win == NULL)
+		ft_error_exit("mlx window error");
+	m->img = mlx_new_image(m->mlx, width, height);
+	if (m->img == NULL)
+		ft_error_exit("mlx image error");
+	m->win_x = width;
+	m->win_y = height;
+	m->bit = 0;
+	m->lsize = 0;
+	m->end = 0;
+	m->ptr = mlx_get_data_addr(m->img, &(m->bit), &(m->lsize), &(m->end));
+	return (m);
 }

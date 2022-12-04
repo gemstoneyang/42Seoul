@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wonyang <wonyang@student.42seoul.k>        +#+  +:+       +#+         #
+#    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/09 03:04:43 by wonyang           #+#    #+#              #
-#    Updated: 2022/12/01 20:22:26 by wonyang          ###   ########.fr        #
+#    Updated: 2022/12/04 14:11:28 by wonyang          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,8 +51,6 @@ SRCS = ft_memset.c \
 	   ft_putstr_fd.c \
 	   ft_putendl_fd.c \
 	   ft_putnbr_fd.c \
-	   ft_freesplit.c \
-	   ft_strcmp.c \
 
 SRCS_BONUS = ft_lstnew.c \
 			 ft_lstadd_front.c \
@@ -62,7 +60,17 @@ SRCS_BONUS = ft_lstnew.c \
 			 ft_lstdelone.c \
 			 ft_lstclear.c \
 			 ft_lstiter.c \
-			 ft_lstmap.c
+			 ft_lstmap.c \
+			 ft_freesplit_bonus.c \
+			 ft_strcmp_bonus.c \
+			 ft_isinteger_bonus.c \
+			 ft_abs_bonus.c \
+			 ft_perror_exit_bonus.c \
+			 ft_error_exit_bonus.c \
+			 ft_open_bonus.c \
+			 ft_close_bonus.c \
+			 ft_malloc_bonus.c \
+			 
 
 OBJS = $(SRCS:.c=.o)
 

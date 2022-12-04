@@ -6,13 +6,13 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 21:56:18 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/30 16:49:52 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 14:13:33 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include "get_next_line.h"
 #include "fdf.h"
+#include "libft.h"
+#include "get_next_line.h"
 
 static void	check_map_name(char *map_name)
 {
@@ -21,16 +21,16 @@ static void	check_map_name(char *map_name)
 
 	split = ft_split(map_name, '.');
 	if (!split)
-		error_exit("split error");
+		ft_error_exit("split error");
 	count = 0;
 	while (split[count])
 		count++;
 	if (count == 0)
-		error_exit("map name error");
+		ft_error_exit("map name error");
 	if (ft_strcmp(split[count - 1], "fdf") != 0)
 	{
 		ft_freesplit(split);
-		error_exit("map name error");
+		ft_error_exit("map name error");
 	}
 	ft_freesplit(split);
 }
@@ -42,7 +42,7 @@ static int	count_width(char *col)
 
 	split = ft_split(col, ' ');
 	if (!split)
-		error_exit("split error");
+		ft_error_exit("split error");
 	width = 0;
 	while (split[width])
 		width++;
@@ -90,7 +90,7 @@ t_map	*parse_map_info(char *map_name)
 		if (get_next_line(&line, fd) == -1)
 		{
 			ft_close(fd);
-			error_exit("gnl error");
+			ft_error_exit("gnl error");
 		}
 		if (!line)
 			break ;

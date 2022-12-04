@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_malloc_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 17:18:23 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/04 13:13:55 by wonyang          ###   ########seoul.kr  */
+/*   Created: 2022/12/04 14:11:05 by wonyang           #+#    #+#             */
+/*   Updated: 2022/12/04 14:16:15 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strdup(const char *str)
+void	*ft_malloc(size_t size)
 {
-	char	*s;
-	int		i;
+	void	*ptr;
 
-	if (!str)
-		return (NULL);
-	i = ft_strlen(str);
-	s = (char *)malloc(sizeof(char) * (i + 1));
-	if (!s)
-		return (s);
-	i = 0;
-	while (str[i])
-	{
-		s[i] = str[i];
-		i++;
-	}
-	s[i] = '\0';
-	return (s);
+	ptr = malloc(size);
+	if (!ptr)
+		ft_perror_exit("malloc error", 1);
+	return (ptr);
 }

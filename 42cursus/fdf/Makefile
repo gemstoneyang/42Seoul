@@ -6,12 +6,13 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/12/02 18:37:45 by wonyang          ###   ########seoul.kr   #
+#    Updated: 2022/12/04 14:47:09 by wonyang          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= fdf
 FDF_HEADER	= fdf.h
+BONUS_HEADER = fdf_bonus.h
 LIBFT		= libft
 LIBFT_HEADER = libft.h
 LIBFT_LIB	= $(LIBFT)/libft.a
@@ -20,35 +21,43 @@ GNL_HEADER	= get_next_line.h
 MLX			= mlx
 MLX_HEADER	= mlx.h
 MLX_LIB		= libmlx.dylib
-SRC_DIR		= srcs
+MANDATORY_DIR = mandatory
+BONUS_DIR	= bonus
 
 HEADERS		= $(GNL)/$(GNL_HEADER) \
 			  $(MLX)/$(MLX_HEADER) \
 			  $(LIBFT)/$(LIBFT_HEADER) \
 
-SRCS		= main.c \
-			  exit.c \
+M_SRCS		= main.c \
 			  map.c \
 			  parse.c \
-			  ftcntl.c \
-			  utils.c \
 			  screen.c \
 			  bresenham.c \
-			  filter.c \
 			  rotate.c \
 			  hooks.c \
-			  mlx.c \
+			  init.c \
+
+B_SRCS		= main_bonus.c \
+			  map_bonus.c \
+			  parse_bonus.c \
+			  screen_bonus.c \
+			  bresenham_bonus.c \
+			  rotate_bonus.c \
+			  hooks_bonus.c \
+			  init_bonus.c \
 
 GNL_SRCS	= get_next_line.c \
 			  get_next_line_utils.c \
 
-MANDATORY_SRCS = $(addprefix $(SRC_DIR)/, $(SRCS)) $(addprefix $(GNL)/, $(GNL_SRCS))
+MANDATORY_SRCS = $(addprefix $(MANDATORY_DIR)/, $(M_SRCS)) $(addprefix $(GNL)/, $(GNL_SRCS))
+
+BONUS_SRCS = $(addprefix $(BONUS_DIR)/, $(B_SRCS)) $(addprefix $(GNL)/, $(GNL_SRCS))
 
 OBJS		= $(MANDATORY_SRCS:%.c=%.o)
 
 CFLAGS		= -Wall -Werror -Wextra
 
-$(NAME) : 	$(OBJS) $(LIBFT_LIB) $(MLX_LIB) $(HEADERS) $(SRC_DIR)/$(FDF_HEADER)
+$(NAME) : 	$(OBJS) $(LIBFT_LIB) $(MLX_LIB) $(HEADERS) $(MANDATORY_DIR)/$(FDF_HEADER)
 			cc $(CFLAGS) -o $(NAME) $(OBJS) -lft -L$(LIBFT) -lmlx -L$(MLX)
 
 all	:		$(NAME)

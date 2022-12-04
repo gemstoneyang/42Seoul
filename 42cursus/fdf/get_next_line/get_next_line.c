@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 01:13:22 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/30 17:43:00 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 13:03:04 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,12 +100,12 @@ ssize_t	get_next_line(char **result, int fd)
 
 	*result = NULL;
 	if (read(fd, NULL, 0) == ERROR || BUFFER_SIZE < 1)
-		return (free_all(cache, *result));
+		return (gnl_free_all(cache, *result));
 	if (ft_read_file(fd, &cache) == ERROR)
-		return (free_all(cache, *result));
+		return (gnl_free_all(cache, *result));
 	if (ft_get_line(result, cache) == ERROR)
-		return (free_all(cache, *result));
+		return (gnl_free_all(cache, *result));
 	if (ft_update_cache(&cache) == ERROR)
-		return (free_all(cache, *result));
+		return (gnl_free_all(cache, *result));
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 01:21:04 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/30 17:43:03 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 13:03:17 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	*gnl_strchr(char *str, int c)
 	return (NULL);
 }
 
-ssize_t	free_all(char *cache, char *result)
+ssize_t	gnl_free_all(char *cache, char *result)
 {
 	if (cache)
 		free(cache);

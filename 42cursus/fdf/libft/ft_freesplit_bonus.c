@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   ft_freesplit_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 18:01:25 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/03 14:24:34 by wonyang          ###   ########seoul.kr  */
+/*   Created: 2022/12/04 13:15:04 by wonyang           #+#    #+#             */
+/*   Updated: 2022/12/04 13:21:42 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include "libft.h"
 
-void	free_all(t_param *param)
+void	ft_freesplit(char **str)
 {
-	
-}
+	int		i;
 
-void	perror_exit(char *msg, int code)
-{
-	perror(msg);
-	exit(code);
-}
-
-void	error_exit(char *msg)
-{
-	if (write(2, msg, ft_strlen(msg)) == -1)
-		perror_exit("write error", 1);
-	if (write(2, "\n", 1) == -1)
-		perror_exit("write error", 1);
-	exit(1);
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		str[i] = NULL;
+		i++;
+	}
+	free(str);
 }

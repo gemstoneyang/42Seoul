@@ -6,13 +6,12 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/03 14:11:19 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 14:30:32 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# include "libft.h"
 
 typedef struct s_dot
 {
@@ -69,7 +68,8 @@ t_map	*parse_map_info(char *map_name);
 // parse.c
 t_map	*parse_map(char *map_name);
 
-// mlx.c
+// init.c
+t_info	*init_info(t_mlx *mlx, t_map *map);
 t_mlx	*init_mlx(int width, int height);
 
 // screen.c
@@ -79,22 +79,6 @@ void	print_screen(t_mlx *mlx, t_map *map, t_info *info);
 // bresenham.c
 void	print_line(t_mlx *mlx, t_dot a, t_dot b);
 
-// filter.c
-t_info	*init_info(t_mlx *mlx, t_map *map);
-t_dot	dot(t_dot dot, t_info *info);
-
-// exit.c
-void	perror_exit(char *msg, int code);
-void	error_exit(char *msg);
-
-// utils.c
-int		is_integer(char *str);
-
-// ftcntl.c
-int		ft_open(const char *path);
-void	ft_close(int fd);
-void	*ft_malloc(size_t size);
-
 // hooks.c
 int		hooks(int keycode, t_param *param);
 
@@ -103,5 +87,6 @@ t_dot	rotate_x(t_dot dot, double theta);
 t_dot	rotate_y(t_dot dot, double theta);
 t_dot	rotate_z(t_dot dot, double theta);
 t_dot	isometric(t_dot dot);
+t_dot	dot(t_dot dot, t_info *info);
 
 #endif

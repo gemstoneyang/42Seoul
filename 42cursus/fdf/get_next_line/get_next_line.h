@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/22 01:13:34 by wonyang           #+#    #+#             */
-/*   Updated: 2022/11/30 18:05:07 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 13:03:10 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 size_t	gnl_strlen(char *str);
 char	*gnl_strjoin(char *cache, char *buffer);
 char	*gnl_strchr(char *str, int c);
-ssize_t	free_all(char *cache, char *result);
+ssize_t	gnl_free_all(char *cache, char *result);
 
 ssize_t	get_next_line(char **result, int fd);
 

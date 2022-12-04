@@ -6,6 +6,8 @@
 		"mlx.h": "c",
 		"__node_handle": "c",
 		"fdf.h": "c",
-		"locale": "c"
+		"locale": "c",
+		"libft.h": "c",
+		"system_error": "c"
 	}
 }

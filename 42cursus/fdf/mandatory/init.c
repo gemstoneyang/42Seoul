@@ -6,12 +6,36 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 18:36:07 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/03 13:03:26 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 14:29:18 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "mlx.h"
+#include "libft.h"
+
+static int	max(int a, int b)
+{
+	if (a < b)
+		return (b);
+	return (a);
+}
+
+t_info	*init_info(t_mlx *mlx, t_map *map)
+{
+	t_info	*info;
+	int		scale;
+
+	mlx = (void *)mlx;
+	info = (t_info *)ft_malloc(sizeof(t_info));
+	scale = max(1, mlx->win_x / map->width / 4);
+	info->xscale = scale;
+	info->yscale = scale;
+	info->zscale = scale;
+	info->xstart = 200 - map->width;
+	info->ystart = 600 + map->height / 2;
+	return (info);
+}
 
 t_mlx	*init_mlx(int width, int height)
 {
@@ -20,13 +44,13 @@ t_mlx	*init_mlx(int width, int height)
 	m = (t_mlx *)ft_malloc(sizeof(t_mlx));
 	m->mlx = mlx_init();
 	if (m->mlx == NULL)
-		error_exit("mlx init error");
+		ft_error_exit("mlx init error");
 	m->win = mlx_new_window(m->mlx, width, height, "fdf");
 	if (m->win == NULL)
-		error_exit("mlx window error");
+		ft_error_exit("mlx window error");
 	m->img = mlx_new_image(m->mlx, width, height);
 	if (m->img == NULL)
-		error_exit("mlx image error");
+		ft_error_exit("mlx image error");
 	m->win_x = width;
 	m->win_y = height;
 	m->bit = 0;

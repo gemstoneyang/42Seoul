@@ -6,19 +6,20 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:22:41 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/03 14:10:22 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/04 14:13:03 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "fdf.h"
+#include "libft.h"
 
 int	main(int argc, char **argv)
 {
 	t_param	p;
 
 	if (argc != 2)
-		error_exit("argument error");
+		ft_error_exit("argument error");
 	p.mlx = init_mlx(1920, 1080);
 	p.map = parse_map(argv[1]);
 	p.info = init_info(p.mlx, p.map);

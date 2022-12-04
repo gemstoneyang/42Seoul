@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_error_exit_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/08 17:18:23 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/04 13:13:55 by wonyang          ###   ########seoul.kr  */
+/*   Created: 2022/12/04 14:07:42 by wonyang           #+#    #+#             */
+/*   Updated: 2022/12/04 14:15:30 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <unistd.h>
 #include "libft.h"
 
-char	*ft_strdup(const char *str)
+void	ft_error_exit(char *msg)
 {
-	char	*s;
-	int		i;
-
-	if (!str)
-		return (NULL);
-	i = ft_strlen(str);
-	s = (char *)malloc(sizeof(char) * (i + 1));
-	if (!s)
-		return (s);
-	i = 0;
-	while (str[i])
-	{
-		s[i] = str[i];
-		i++;
-	}
-	s[i] = '\0';
-	return (s);
+	if (write(2, msg, ft_strlen(msg)) == -1)
+		ft_perror_exit("write error", 1);
+	if (write(2, "\n", 1) == -1)
+		ft_perror_exit("write error", 1);
+	exit(1);
 }
