@@ -4,44 +4,35 @@
 #include <unistd.h>
 #include "philo.h"
 
-// 쓰레드 함수
-void	*test(void *data)
-{
-	int	i;
-	int *a = (int *)data;
+int mails = 0;
+pthread_mutex_t mutex;
 
-	for (i = 0; i < 10; i++)
-	{
-		*a += 1;
-		printf("%d\n", *a);
+void* routine(){
+	for (int i=0;i<1000000;i++){
+		pthread_mutex_lock(&mutex);
+		mails++;
+		pthread_mutex_unlock(&mutex);
 	}
 	return (NULL);
 }
 
-int	main(void)
-{
-	int a = 100;
-	pthread_t thread_t[2];
-	int status;
+int main(){
+	pthread_t p1;
+	pthread_t p2;
 
-	// 쓰레드 생성
-	if (pthread_create(&(thread_t[0]), NULL, test, (void *)&a) < 0)
-	{
-		perror("thread create error: ");
-		exit(0);
-	}
+	pthread_mutex_init(&mutex, NULL);
 
-	// 쓰레드 생성
-	if (pthread_create(&(thread_t[1]), NULL, test, (void *)&a) < 0)
-	{
-		perror("thread create error: ");
-		exit(0);
-	}
+	if (pthread_create(&p1, NULL, &routine, NULL) != 0)
+		return 1;
+	if (pthread_create(&p2, NULL, &routine, NULL) != 0)
+		return 2;
 
-	// 쓰레드가 종료되기를 기다린 후
-	// 쓰레드의 리턴값을 출력한다.
-	pthread_join(thread_t[0], (void **)&status);
-	pthread_join(thread_t[1], (void **)&status);
-	printf("Thread End %d\n", status);
-	return (0);
+	if (pthread_join(p1, NULL) != 0)
+		return 3;
+	if (pthread_join(p2, NULL) != 0)
+		return 4;
+	printf("Number of mails : %d\n", mails);
+
+	pthread_mutex_destroy(&mutex);
+	return 0;
 }
