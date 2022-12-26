@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/12/23 13:34:26 by wonyang          ###   ########seoul.kr   #
+#    Updated: 2022/12/26 18:31:39 by wonyang          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,11 @@ NAME		= philo
 CFLAGS		= -Wall -Werror -Wextra
 
 HEADER		= philo.h
-SRCS		= pthread.c \
+SRCS		= main.c \
+			  libft.c \
+			  ft_isinteger.c \
+			  parse.c \
+
 
 OBJS		= $(SRCS:%.c=%.o)
 

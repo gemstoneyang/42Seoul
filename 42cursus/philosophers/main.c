@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/26 18:29:29 by wonyang          ###   ########seoul.kr  */
+/*   Created: 2022/12/26 16:24:01 by wonyang           #+#    #+#             */
+/*   Updated: 2022/12/26 18:27:37 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include <stdio.h>
+#include "philo.h"
 
-typedef struct s_info
+int	main(int argc, char **argv)
 {
-	int	p_count;
-	int	life_time;
-	int	eat_time;
-	int	sleep_time;
-	int	eat_num;
-}	t_info;
+	t_info	info;
 
-// libft.c
-int	ft_atoi(const char *str);
-
-// ft_isinteger.c
-int	ft_isinteger(char *str);
-
-// parse.c
-int	parse_argument(t_info *info, int argc, char **argv);
-
-#endif
+	if (argc != 5 && argc != 6)
+	{
+		printf("argument count error\n");
+		return (1);
+	}
+	if (parse_argument(&info, argc, argv) == -1)
+	{
+		printf("argument infomation error\n");
+		return (1);
+	}
+	return (0);
+}
