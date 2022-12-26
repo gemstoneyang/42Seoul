@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:52:02 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/26 17:12:45 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/26 20:59:40 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static int	string_to_integer(char *str)
 
 int	parse_argument(t_info *info, int argc, char **argv)
 {
-	info->p_count = string_to_integer(argv[1]);
-	if (info->p_count < 1)
+	info->philo_num = string_to_integer(argv[1]);
+	if (info->philo_num < 1)
 		return (-1);
 	info->life_time = string_to_integer(argv[2]);
 	if (info->life_time < 0)

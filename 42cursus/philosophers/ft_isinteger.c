@@ -6,11 +6,12 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 18:28:29 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/26 18:32:21 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/26 20:47:14 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <string.h>
 #include "philo.h"
 
 static size_t	count_length(long n)
@@ -33,21 +34,12 @@ static size_t	count_length(long n)
 
 static void	*ft_calloc(size_t num, size_t size)
 {
-	unsigned char	*dst;
-	size_t			i;
-	void			*p;
+	void	*p;
 
 	p = malloc(num * size);
 	if (!p)
 		return (p);
-	dst = (unsigned char *)p;
-	i = 0;
-	while (i < num * size)
-	{
-		*dst = 0;
-		dst++;
-		i++;
-	}
+	memset(p, 0, num * size);
 	return (p);
 }
 
