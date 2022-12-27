@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/12/26 18:31:39 by wonyang          ###   ########seoul.kr   #
+#    Updated: 2022/12/27 19:49:29 by wonyang          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,8 @@ SRCS		= main.c \
 			  libft.c \
 			  ft_isinteger.c \
 			  parse.c \
+			  time.c \
+			  init.c \
 
 
 OBJS		= $(SRCS:%.c=%.o)
