@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/28 11:14:38 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/28 11:57:11 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	init_info(t_info *info);
 // time.c
 t_ull	get_time(void);
 void	pass_time(t_ull start_time);
+void	msleep(unsigned int msec);
 
 // print.c
 void	print_log(t_philo *philo, char *msg);
