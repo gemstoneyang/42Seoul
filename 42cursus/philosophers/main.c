@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:24:01 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/27 19:49:50 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/28 11:03:42 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*philo_thread(void *arg)
 	philo = (t_philo *)arg;
 	while (1)
 	{
-		pass_time(philo->arg->start_time);
+		pass_time(philo->info->start_time);
 		printf(" no.%d is running\n", philo->id);
 		usleep(500 * 1000);
 	}
@@ -31,7 +31,6 @@ void	*philo_thread(void *arg)
 int	main(int argc, char **argv)
 {
 	t_info		info;
-	t_arg		arg;
 	t_fork		*fork_arr;
 	t_philo		*philo_arr;
 
@@ -45,11 +44,10 @@ int	main(int argc, char **argv)
 		printf("argument infomation error\n");
 		return (1);
 	}
-
-	arg.dead = 0;
-	arg.start_time = get_time();
+	init_info(&info);
+	
 	fork_arr = init_fork_arr(info.philo_num);
-	philo_arr = init_philo_arr(&arg, fork_arr, info.philo_num);
+	philo_arr = init_philo_arr(&info, fork_arr, info.philo_num);
 	for (int i = 1; i < info.philo_num + 1; i++)
 		pthread_create(&(philo_arr[i].thread), NULL, philo_thread, philo_arr + i);
 	for (int i = 1; i < info.philo_num + 1; i++)

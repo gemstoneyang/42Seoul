@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:41:27 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/27 19:41:57 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/28 11:03:58 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_fork	*init_fork_arr(int n)
 	return (fork_arr);
 }
 
-t_philo	*init_philo_arr(t_arg *arg, t_fork *fork_arr, int n)
+t_philo	*init_philo_arr(t_info *info, t_fork *fork_arr, int n)
 {
 	t_philo	*philo_arr;
 	int		i;
@@ -41,8 +41,14 @@ t_philo	*init_philo_arr(t_arg *arg, t_fork *fork_arr, int n)
 		philo_arr[i].id = i;
 		philo_arr[i].left_fork = fork_arr + i;
 		philo_arr[i].right_fork = fork_arr + (i % n + 1);
-		philo_arr[i].arg = arg;
+		philo_arr[i].info = info;
 		i++;
 	}
 	return (philo_arr);
+}
+
+void	init_info(t_info *info)
+{
+	info->is_dead = 0;
+	info->start_time = get_time();
 }
