@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:41:27 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/28 11:03:58 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/28 11:09:51 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void	init_info(t_info *info)
 {
 	info->is_dead = 0;
 	info->start_time = get_time();
+	pthread_mutex_init(&(info->print_mutex), NULL);
 }
