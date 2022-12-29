@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:24:01 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/28 11:56:55 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 13:55:55 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ void	*philo_thread(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	if (philo->id % 2 == 0)
+		msleep(500);
 	while (1)
 	{
 		print_log(philo, "is running");
-		msleep(500);
+		msleep(1000);
 	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:41:27 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/28 11:09:51 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 14:20:22 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ t_philo	*init_philo_arr(t_info *info, t_fork *fork_arr, int n)
 	while (i < n + 1)
 	{
 		philo_arr[i].id = i;
+		philo_arr[i].last_eat_time = info->start_time;
 		philo_arr[i].left_fork = fork_arr + i;
 		philo_arr[i].right_fork = fork_arr + (i % n + 1);
 		philo_arr[i].info = info;

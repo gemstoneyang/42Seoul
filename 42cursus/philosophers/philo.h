@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 11:52:43 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 14:06:39 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_fork
 typedef struct s_philo
 {
 	int			id;
+	uint64_t	last_eat_time;
 	t_fork		*left_fork;
 	t_fork		*right_fork;
 	pthread_t	thread;
