@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 15:08:18 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 15:28:41 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,9 @@ typedef struct s_arg
 // init.c
 t_fork			*init_fork_arr(int n);
 t_philo			*init_philo_arr(t_info *info, t_fork *fork_arr);
-t_info			*init_info(void);
 pthread_mutex_t	*init_mutex(void);
+
+// arg.c
 int				init_arg(t_arg *arg, int argc, char **argv);
 
 // time.c
@@ -66,13 +67,11 @@ void			msleep(uint64_t msec);
 // print.c
 void			print_log(t_philo *philo, char *msg);
 
-// libft.c
-int				ft_atoi(const char *str);
-
 // ft_isinteger.c
 int				ft_isinteger(char *str);
 
 // parse.c
+int				ft_atoi(const char *str);
 int				parse_argument(t_info *info, int argc, char **argv);
 
 #endif

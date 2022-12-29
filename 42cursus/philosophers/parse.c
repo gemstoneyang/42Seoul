@@ -6,11 +6,38 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:52:02 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/26 20:59:40 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 15:28:09 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	ft_atoi(const char *str)
+{
+	int		i;
+	int		sign;
+	long	res;
+
+	i = 0;
+	sign = 1;
+	res = 0;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' || \
+			str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while ('0' <= str[i] && str[i] <= '9')
+	{
+		res *= 10;
+		res += str[i] - '0';
+		i++;
+	}
+	return (res * sign);
+}
 
 static int	string_to_integer(char *str)
 {
