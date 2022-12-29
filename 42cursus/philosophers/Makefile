@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/12/29 15:25:16 by wonyang          ###   ########seoul.kr   #
+#    Updated: 2022/12/29 16:33:54 by wonyang          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS		= main.c \
 			  init.c \
 			  print.c \
 			  arg.c \
+			  act.c \
 
 
 OBJS		= $(SRCS:%.c=%.o)

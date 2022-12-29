@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 16:17:25 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 16:49:17 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ pthread_mutex_t	*init_mutex(void);
 // arg.c
 int				init_arg(t_arg *arg, int argc, char **argv);
 int				free_arg(t_arg *arg);
+
+// act.c
+int	philo_eat(t_philo *philo);
 
 // time.c
 uint64_t		get_time(void);

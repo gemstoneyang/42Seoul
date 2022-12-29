@@ -6,12 +6,10 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:24:01 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 16:22:10 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 16:51:05 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
 #include "philo.h"
 
 void	*philo_thread(void *arg)
@@ -20,11 +18,10 @@ void	*philo_thread(void *arg)
 
 	philo = (t_philo *)arg;
 	if (philo->id % 2 == 0)
-		msleep(500);
+		msleep(1);
 	while (1)
 	{
-		print_log(philo, "is running");
-		msleep(1000);
+		philo_eat(philo);
 	}
 	return (NULL);
 }
