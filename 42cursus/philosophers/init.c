@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:41:27 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 14:59:01 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 15:10:14 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,19 @@ t_info	*init_info(void)
 	info->start_time = get_time();
 	info->print_mutex = init_mutex();
 	return (info);
+}
+
+#include <stdio.h>
+
+int	init_arg(t_arg *arg, int argc, char **argv)
+{
+	arg->info = init_info();
+	if (parse_argument(arg->info, argc, argv) == -1)
+	{
+		printf("argument infomation error\n");
+		return (-1);
+	}
+	arg->fork_arr = init_fork_arr(arg->info->philo_num);
+	arg->philo_arr = init_philo_arr(arg->info, arg->fork_arr);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 11:08:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 14:08:13 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 15:09:18 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	print_log(t_philo *philo, char *msg)
 {
 	pthread_mutex_t	*print_mutex;
 
-	print_mutex = &(philo->info->print_mutex);
+	print_mutex = philo->info->print_mutex;
 	pthread_mutex_lock(print_mutex);
 	pass_time(philo->info->start_time);
 	printf(" no.%d %s\n", philo->id, msg);
