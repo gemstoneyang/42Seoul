@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:21:38 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 16:06:52 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 16:18:49 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,34 @@ static t_fork	*init_fork_arr(int n)
 	return (NULL);
 }
 
+static t_philo	*init_philo_arr(t_info *info, t_fork *fork_arr)
+{
+	t_philo	*philo_arr;
+	int		i;
+	int		n;
+
+	n = info->philo_num;
+	philo_arr = (t_philo *)malloc(sizeof(t_philo) * (n + 1));
+	if (!philo_arr)
+		return (NULL);
+	i = 1;
+	while (i < n + 1)
+	{
+		philo_arr[i].id = i;
+		philo_arr[i].last_eat_time = get_time();
+		if (philo_arr[i].last_eat_time == 0)
+		{
+			free(philo_arr);
+			return (NULL);
+		}
+		philo_arr[i].left_fork = fork_arr + i;
+		philo_arr[i].right_fork = fork_arr + (i % n + 1);
+		philo_arr[i].info = info;
+		i++;
+	}
+	return (philo_arr);
+}
+
 int	init_arg(t_arg *arg, int argc, char **argv)
 {
 	arg->info = NULL;
@@ -77,6 +105,8 @@ int	init_arg(t_arg *arg, int argc, char **argv)
 	if (!arg->fork_arr)
 		return (-1);
 	arg->philo_arr = init_philo_arr(arg->info, arg->fork_arr);
+	if (!arg->philo_arr)
+		return (-1);
 	arg->error = 0;
 	return (0);
 }
@@ -87,6 +117,8 @@ int	free_arg(t_arg *arg)
 
 	if (!arg->info)
 		return (1);
+	if (arg->philo_arr)
+		free(arg->philo_arr);
 	i = 1;
 	if (arg->fork_arr)
 	{

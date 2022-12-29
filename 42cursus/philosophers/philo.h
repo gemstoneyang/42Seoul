@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 16:06:35 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 16:17:25 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ typedef struct s_arg
 }	t_arg;
 
 // init.c
-t_philo			*init_philo_arr(t_info *info, t_fork *fork_arr);
 pthread_mutex_t	*init_mutex(void);
 
 // arg.c
