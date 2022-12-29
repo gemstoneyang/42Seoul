@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:40:46 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 15:13:11 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 19:42:59 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	msleep(uint64_t msec)
 	now_time = get_time();
 	while (start_time + msec * 1000 > now_time)
 	{
-		usleep(100);
+		usleep(50);
 		now_time = get_time();
 	}
 }

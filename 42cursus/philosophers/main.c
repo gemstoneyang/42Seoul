@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:24:01 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 16:51:05 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 20:06:48 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,13 @@ void	*philo_thread(void *arg)
 		msleep(1);
 	while (1)
 	{
+		philo_take_fork(philo, philo->left_fork);
+		philo_take_fork(philo, philo->right_fork);
 		philo_eat(philo);
+		philo_put_down_fork(philo, philo->right_fork);
+		philo_put_down_fork(philo, philo->left_fork);
+		philo_sleep(philo);
+		philo_think(philo);
 	}
 	return (NULL);
 }
