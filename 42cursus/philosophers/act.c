@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 16:33:44 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 21:21:39 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 21:48:44 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@ int	philo_take_fork(t_philo *philo, t_fork *fork)
 
 int	philo_eat(t_philo *philo)
 {
-	philo->last_eat_time = get_time(); // add mutex
-	philo->eat_count += 1; // add mutex
+	pthread_mutex_lock(philo->time_mutex);
+	philo->last_eat_time = get_time();
+	pthread_mutex_unlock(philo->time_mutex);
+	pthread_mutex_lock(philo->count_mutex);
+	philo->eat_count += 1;
+	pthread_mutex_unlock(philo->count_mutex);
 	print_log(philo, philo->last_eat_time, "is eating");
 	msleep(philo->info->eat_time);
 	return (0);

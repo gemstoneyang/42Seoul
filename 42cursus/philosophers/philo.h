@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 21:20:17 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 21:41:29 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,8 @@ int				ft_isinteger(char *str);
 // parse.c
 int				ft_atoi(const char *str);
 int				parse_argument(t_info *info, int argc, char **argv);
+
+// monitor.c
+void			monitoring(t_arg *arg);
 
 #endif

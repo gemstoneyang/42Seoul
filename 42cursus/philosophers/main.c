@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:24:01 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 21:21:49 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 21:41:51 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(int argc, char **argv)
 	for (int i = 1; i < info->philo_num + 1; i++)
 		pthread_create(&(philo_arr[i].thread), NULL, philo_thread, philo_arr + i);
 	for (int i = 1; i < info->philo_num + 1; i++)
-		pthread_join(philo_arr[i].thread, NULL);
-	
+		pthread_detach(philo_arr[i].thread);
+	monitoring(&arg);
 	return (free_arg(&arg));
 }
