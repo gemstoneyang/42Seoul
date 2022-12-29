@@ -6,11 +6,10 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:21:38 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 16:18:49 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 16:27:11 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "philo.h"
 
@@ -30,7 +29,11 @@ static t_info	*init_info(int argc, char **argv)
 		return (NULL);
 	}
 	if (parse_argument(info, argc, argv) == -1)
+	{
+		pthread_mutex_destroy(info->print_mutex);
+		free(info);
 		return (NULL);
+	}
 	return (info);
 }
 
@@ -44,14 +47,13 @@ static t_fork	*init_fork_arr(int n)
 	if (!fork_arr)
 		return (NULL);
 	error = 0;
-	i = 1;
-	while (i < n + 1)
+	i = 0;
+	while (++i < n + 1)
 	{
 		fork_arr[i].status = 1;
 		fork_arr[i].mutex = init_mutex();
 		if (!(fork_arr[i].mutex))
 			error = 1;
-		i++;
 	}
 	if (!error)
 		return (fork_arr);
@@ -124,7 +126,7 @@ int	free_arg(t_arg *arg)
 	{
 		while (i < arg->info->philo_num)
 		{
-			if(pthread_mutex_destroy(arg->fork_arr[i].mutex) != 0)
+			if (pthread_mutex_destroy(arg->fork_arr[i].mutex) != 0)
 				arg->error = 1;
 			i++;
 		}
@@ -133,5 +135,5 @@ int	free_arg(t_arg *arg)
 	if (pthread_mutex_destroy(arg->info->print_mutex) != 0)
 		arg->error = 1;
 	free(arg->info);
-	return (1);
+	return (arg->error);
 }
