@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 14:06:39 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 14:45:36 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_philo
 
 // init.c
 t_fork		*init_fork_arr(int n);
-t_philo		*init_philo_arr(t_info *info, t_fork *fork_arr, int n);
+t_philo		*init_philo_arr(t_info *info, t_fork *fork_arr);
 void		init_info(t_info *info);
 
 // time.c
