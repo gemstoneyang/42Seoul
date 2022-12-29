@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:40:46 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/28 12:06:16 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 12:18:44 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include "philo.h"
 
-t_ull	get_time(void)
+uint64_t	get_time(void)
 {
 	struct timeval	time;
 
@@ -23,24 +23,24 @@ t_ull	get_time(void)
 	return (time.tv_sec * 1000000 + time.tv_usec);
 }
 
-void	pass_time(t_ull start_time)
+void	pass_time(uint64_t start_time)
 {
-	t_ull	now_time;
+	uint64_t	now_time;
 
 	now_time = get_time();
 	printf("%llu", (now_time - start_time) / 1000);
 }
 
-void	msleep(unsigned int msec)
+void	msleep(uint64_t msec)
 {
-	t_ull	start_time;
-	t_ull	now_time;
+	uint64_t	start_time;
+	uint64_t	now_time;
 
 	start_time = get_time();
 	now_time = get_time();
 	while (start_time + msec * 1000 > now_time)
 	{
-		usleep(50);
+		usleep(100);
 		now_time = get_time();
 	}
 }
