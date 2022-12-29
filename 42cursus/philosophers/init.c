@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:41:27 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 15:10:14 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 15:15:32 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,13 @@ pthread_mutex_t	*init_mutex(void)
 	pthread_mutex_t	*mutex;
 
 	mutex = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
-	pthread_mutex_init(mutex, NULL);
+	if (!mutex)
+		return (NULL);
+	if (pthread_mutex_init(mutex, NULL) != 0)
+	{
+		free(mutex);
+		return (NULL);
+	}
 	return (mutex);
 }
 
@@ -64,9 +70,16 @@ t_info	*init_info(void)
 	t_info	*info;
 
 	info = (t_info *)malloc(sizeof(t_info));
+	if (!info)
+		return (NULL);
 	info->is_dead = 0;
 	info->start_time = get_time();
 	info->print_mutex = init_mutex();
+	if (info->start_time == 0 || !info->print_mutex)
+	{
+		free(info);
+		return (NULL);
+	}
 	return (info);
 }
 
@@ -75,6 +88,8 @@ t_info	*init_info(void)
 int	init_arg(t_arg *arg, int argc, char **argv)
 {
 	arg->info = init_info();
+	if (!arg->info)
+		return (-1);
 	if (parse_argument(arg->info, argc, argv) == -1)
 	{
 		printf("argument infomation error\n");

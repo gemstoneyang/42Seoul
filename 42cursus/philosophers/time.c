@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:40:46 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 12:18:44 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 15:13:11 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ uint64_t	get_time(void)
 {
 	struct timeval	time;
 
-	gettimeofday(&time, NULL);
+	if (gettimeofday(&time, NULL) != 0)
+		return (0);
 	return (time.tv_sec * 1000000 + time.tv_usec);
 }
 

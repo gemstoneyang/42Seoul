@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:24:01 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 15:07:09 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 15:15:55 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int	main(int argc, char **argv)
 		printf("argument count error\n");
 		return (1);
 	}
-	init_arg(&arg, argc, argv);
+	if (init_arg(&arg, argc, argv) == -1)
+		return (1);
 
 	info = arg.info;
 	fork_arr = arg.fork_arr;
