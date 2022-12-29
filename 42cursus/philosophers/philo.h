@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 15:28:41 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 16:06:35 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,16 @@ typedef struct s_arg
 	t_info		*info;
 	t_fork		*fork_arr;
 	t_philo		*philo_arr;
+	int			error;
 }	t_arg;
 
 // init.c
-t_fork			*init_fork_arr(int n);
 t_philo			*init_philo_arr(t_info *info, t_fork *fork_arr);
 pthread_mutex_t	*init_mutex(void);
 
 // arg.c
 int				init_arg(t_arg *arg, int argc, char **argv);
+int				free_arg(t_arg *arg);
 
 // time.c
 uint64_t		get_time(void);

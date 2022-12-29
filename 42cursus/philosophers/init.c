@@ -6,28 +6,12 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:41:27 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 15:22:00 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 15:58:45 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "philo.h"
-
-t_fork	*init_fork_arr(int n)
-{
-	t_fork	*fork_arr;
-	int		i;
-
-	fork_arr = (t_fork *)malloc(sizeof(t_fork) * (n + 1));
-	i = 1;
-	while (i < n + 1)
-	{
-		fork_arr[i].status = 1;
-		fork_arr[i].mutex = init_mutex();
-		i++;
-	}
-	return (fork_arr);
-}
 
 t_philo	*init_philo_arr(t_info *info, t_fork *fork_arr)
 {

@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:21:38 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 15:31:29 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 16:06:52 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,72 @@ static t_info	*init_info(int argc, char **argv)
 	return (info);
 }
 
+static t_fork	*init_fork_arr(int n)
+{
+	t_fork	*fork_arr;
+	int		i;
+	int		error;
+
+	fork_arr = (t_fork *)malloc(sizeof(t_fork) * (n + 1));
+	if (!fork_arr)
+		return (NULL);
+	error = 0;
+	i = 1;
+	while (i < n + 1)
+	{
+		fork_arr[i].status = 1;
+		fork_arr[i].mutex = init_mutex();
+		if (!(fork_arr[i].mutex))
+			error = 1;
+		i++;
+	}
+	if (!error)
+		return (fork_arr);
+	while (--i > 0)
+	{
+		if (fork_arr[i].mutex)
+			pthread_mutex_destroy(fork_arr[i].mutex);
+	}
+	free(fork_arr);
+	return (NULL);
+}
+
 int	init_arg(t_arg *arg, int argc, char **argv)
 {
 	arg->info = NULL;
 	arg->fork_arr = NULL;
 	arg->philo_arr = NULL;
+	arg->error = 1;
 	arg->info = init_info(argc, argv);
 	if (!arg->info)
 		return (-1);
 	arg->fork_arr = init_fork_arr(arg->info->philo_num);
+	if (!arg->fork_arr)
+		return (-1);
 	arg->philo_arr = init_philo_arr(arg->info, arg->fork_arr);
+	arg->error = 0;
 	return (0);
 }
 
-// int	free_arg(t_arg *arg)
-// {
-// 	return (1);
-// }
+int	free_arg(t_arg *arg)
+{
+	int	i;
+
+	if (!arg->info)
+		return (1);
+	i = 1;
+	if (arg->fork_arr)
+	{
+		while (i < arg->info->philo_num)
+		{
+			if(pthread_mutex_destroy(arg->fork_arr[i].mutex) != 0)
+				arg->error = 1;
+			i++;
+		}
+		free(arg->fork_arr);
+	}
+	if (pthread_mutex_destroy(arg->info->print_mutex) != 0)
+		arg->error = 1;
+	free(arg->info);
+	return (1);
+}

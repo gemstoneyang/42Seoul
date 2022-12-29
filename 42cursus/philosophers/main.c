@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:24:01 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 15:15:55 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 16:09:57 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,9 @@ int	main(int argc, char **argv)
 	t_philo		*philo_arr;
 
 	if (argc != 5 && argc != 6)
-	{
-		printf("argument count error\n");
 		return (1);
-	}
 	if (init_arg(&arg, argc, argv) == -1)
-		return (1);
+		return (free_arg(&arg));
 
 	info = arg.info;
 	fork_arr = arg.fork_arr;
@@ -52,6 +49,7 @@ int	main(int argc, char **argv)
 		pthread_create(&(philo_arr[i].thread), NULL, philo_thread, philo_arr + i);
 	for (int i = 1; i < info->philo_num + 1; i++)
 		pthread_join(philo_arr[i].thread, NULL);
+	free_arg(&arg);
 
 	return (0);
 }
