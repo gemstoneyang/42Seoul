@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:41:27 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 14:45:25 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/29 14:59:01 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_fork	*init_fork_arr(int n)
 	while (i < n + 1)
 	{
 		fork_arr[i].status = 1;
-		pthread_mutex_init(&(fork_arr[i].mutex), NULL);
+		fork_arr[i].mutex = init_mutex();
 		i++;
 	}
 	return (fork_arr);
@@ -50,9 +50,22 @@ t_philo	*init_philo_arr(t_info *info, t_fork *fork_arr)
 	return (philo_arr);
 }
 
-void	init_info(t_info *info)
+pthread_mutex_t	*init_mutex(void)
 {
+	pthread_mutex_t	*mutex;
+
+	mutex = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
+	pthread_mutex_init(mutex, NULL);
+	return (mutex);
+}
+
+t_info	*init_info(void)
+{
+	t_info	*info;
+
+	info = (t_info *)malloc(sizeof(t_info));
 	info->is_dead = 0;
 	info->start_time = get_time();
-	pthread_mutex_init(&(info->print_mutex), NULL);
+	info->print_mutex = init_mutex();
+	return (info);
 }
