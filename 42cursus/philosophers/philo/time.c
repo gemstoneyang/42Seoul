@@ -6,11 +6,10 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:40:46 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 18:12:13 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 21:15:03 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <sys/time.h>
 #include <unistd.h>
 #include "philo.h"

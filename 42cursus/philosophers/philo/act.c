@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 16:33:44 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 17:19:34 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 21:21:58 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,15 @@ void	philo_put_down_fork(t_fork *fork, int *error)
 
 void	philo_sleep(t_philo *philo, int *error)
 {
+	if (philo->info->philo_num == 1)
+		return ;
 	*error += print_log(philo, "is sleeping");
 	*error += msleep(philo->info->sleep_time);
 }
 
 void	philo_think(t_philo *philo, int *error)
 {
+	if (philo->info->philo_num == 1)
+		return ;
 	*error += print_log(philo, "is thinking");
 }

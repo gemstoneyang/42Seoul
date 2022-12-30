@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:24:01 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 20:32:39 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 21:30:43 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 void	philo_act(t_philo *philo, int *error)
 {
 	philo_take_fork(philo, philo->left_fork, error);
-	philo_take_fork(philo, philo->right_fork, error);
-	philo_eat(philo, error);
-	philo_put_down_fork(philo->right_fork, error);
+	if (philo->info->philo_num != 1)
+	{
+		philo_take_fork(philo, philo->right_fork, error);
+		philo_eat(philo, error);
+		philo_put_down_fork(philo->right_fork, error);
+	}
 	philo_put_down_fork(philo->left_fork, error);
 }
 
@@ -34,7 +37,7 @@ void	*routine(void *arg)
 	{
 		philo_act(philo, &error);
 		error += ft_mutex_lock(philo->info->dead_mutex);
-		if (philo->info->is_dead)
+		if (philo->info->philo_num == 1 || philo->info->is_dead)
 		{
 			error += ft_mutex_unlock(philo->info->dead_mutex);
 			break ;
