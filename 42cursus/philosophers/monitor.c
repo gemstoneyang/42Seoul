@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:43:19 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 18:11:27 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 20:07:09 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,30 @@ static int	check_eat_count(t_philo *philo_arr, t_info *info, int *error)
 	return (1);
 }
 
+static int	update_dead(t_philo *philo, t_info *info, uint64_t now, int *error)
+{
+	uint64_t	diff;
+
+	*error += ft_mutex_lock(philo->time_mutex);
+	if ((int)(now - philo->last_eat_time) > info->life_time * 1000)
+	{
+		*error += ft_mutex_lock(info->dead_mutex);
+		info->is_dead = 1;
+		diff = (now - info->start_time) / 1000;
+		if (printf("%llu %d %s\n", diff, philo->id, "died") == -1)
+			*error += 1;
+		*error += ft_mutex_unlock(info->dead_mutex);
+		*error += ft_mutex_unlock(philo->time_mutex);
+		return (1);
+	}
+	*error += ft_mutex_unlock(philo->time_mutex);
+	return (0);
+}
+
 static int	check_philo_dead(t_philo *philo_arr, t_info *info, int *error)
 {
 	uint64_t	now_time;
 	int			i;
-	t_philo		philo;
 
 	now_time = get_time();
 	if (now_time == 0)
@@ -45,19 +64,8 @@ static int	check_philo_dead(t_philo *philo_arr, t_info *info, int *error)
 	i = 0;
 	while (++i < info->philo_num + 1)
 	{
-		philo = philo_arr[i];
-		*error += ft_mutex_lock(philo.time_mutex);
-		if ((int)(now_time - philo.last_eat_time) > info->life_time * 1000)
-		{
-			*error += ft_mutex_lock(info->dead_mutex);
-			info->is_dead = 1;
-			if (printf("%llu %d %s\n", (now_time - info->start_time) / 1000, philo.id, "died") == -1)
-				*error += 1;
-			*error += ft_mutex_unlock(info->dead_mutex);
-			*error += ft_mutex_unlock(philo.time_mutex);
+		if (update_dead(philo_arr + i, info, now_time, error) == 1)
 			return (1);
-		}
-		*error += ft_mutex_unlock(philo.time_mutex);
 	}
 	return (0);
 }

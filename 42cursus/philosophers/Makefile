@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/12/30 17:04:09 by wonyang          ###   ########seoul.kr   #
+#    Updated: 2022/12/30 19:59:50 by wonyang          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS		= main.c \
 			  time.c \
 			  init.c \
 			  print.c \
-			  arg.c \
+			  free.c \
 			  act.c \
 			  monitor.c \
 			  mutex.c \

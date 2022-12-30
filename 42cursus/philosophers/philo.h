@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 18:13:06 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 20:27:01 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,10 @@ typedef struct s_arg
 }	t_arg;
 
 // init.c
-
-// arg.c
 int				init_arg(t_arg *arg, int argc, char **argv);
+
+// free.c
+int				free_philo_arr(t_philo *philo_arr, int n);
 int				free_arg(t_arg *arg);
 
 // act.c
@@ -81,13 +82,15 @@ int				print_log(t_philo *philo, char *msg);
 pthread_mutex_t	*init_mutex(void);
 int				ft_mutex_lock(pthread_mutex_t *mutex);
 int				ft_mutex_unlock(pthread_mutex_t *mutex);
+int				ft_mutex_destroy_free(pthread_mutex_t *mutex);
+int				update_error(t_info *info, int error);
 
 // ft_isinteger.c
 int				ft_isinteger(char *str);
 
 // parse.c
 int				ft_atoi(const char *str);
-int				parse_argument(t_info *info, int argc, char **argv);
+int				parse_info(t_info *info, int argc, char **argv);
 
 // monitor.c
 void			monitoring(t_arg *arg);
