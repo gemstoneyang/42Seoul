@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 13:01:10 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 14:32:44 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct s_info
 	int				eat_num;
 	int				is_dead;
 	uint64_t		start_time;
-	pthread_mutex_t	*print_mutex;
 	pthread_mutex_t	*dead_mutex;
 }	t_info;
 

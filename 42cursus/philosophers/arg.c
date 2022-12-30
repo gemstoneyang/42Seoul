@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:21:38 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 12:48:13 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 14:34:32 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ static t_info	*init_info(int argc, char **argv)
 		return (NULL);
 	info->is_dead = 0;
 	info->start_time = get_time();
-	info->print_mutex = init_mutex();
-	if (info->start_time == 0 || !info->print_mutex)
+	if (info->start_time == 0)
 	{
 		free(info);
 		return (NULL);
@@ -31,13 +30,11 @@ static t_info	*init_info(int argc, char **argv)
 	info->dead_mutex = init_mutex();
 	if (!info->dead_mutex)
 	{
-		pthread_mutex_destroy(info->print_mutex);
 		free(info);
 		return (NULL);
 	}
 	if (parse_argument(info, argc, argv) == -1)
 	{
-		pthread_mutex_destroy(info->print_mutex);
 		pthread_mutex_destroy(info->dead_mutex);
 		free(info);
 		return (NULL);
@@ -173,10 +170,8 @@ int	free_arg(t_arg *arg)
 		}
 		free(arg->fork_arr);
 	}
-	if (pthread_mutex_destroy(arg->info->print_mutex) != 0)
+	if (pthread_mutex_destroy(arg->info->dead_mutex) != 0)
 		arg->error = 1;
-	pthread_mutex_destroy(arg->info->print_mutex);
-	pthread_mutex_destroy(arg->info->dead_mutex);
 	free(arg->info);
 	return (arg->error);
 }

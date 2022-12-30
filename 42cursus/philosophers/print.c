@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 11:08:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 13:27:53 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 14:33:03 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@
 int	print_log(t_philo *philo, char *msg)
 {
 	pthread_mutex_t	*dead_mutex;
-	pthread_mutex_t	*print_mutex;
 	uint64_t		diff_time;
 
 	dead_mutex = philo->info->dead_mutex;
-	print_mutex = philo->info->print_mutex;
 	pthread_mutex_lock(dead_mutex);
 	if (philo->info->is_dead)
 	{
