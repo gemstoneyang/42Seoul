@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:43:19 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 22:23:10 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 11:12:18 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	check_philo_dead(t_philo *philo_arr, t_info *info)
 		{
 			pthread_mutex_lock(info->print_mutex);
 			printf("\033[0;3%dm", 1);
-			pass_time(info->start_time, now_time);
+			pass_time(info->start_time);
 			printf(" %d %s\n\033[0m", philo.id, "died");
 			pthread_mutex_unlock(philo.time_mutex);
 			return (1);
