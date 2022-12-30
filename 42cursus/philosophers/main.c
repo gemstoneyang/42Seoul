@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:24:01 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 21:41:51 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 13:32:28 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,21 @@ void	*philo_thread(void *arg)
 		philo_take_fork(philo, philo->left_fork);
 		philo_take_fork(philo, philo->right_fork);
 		philo_eat(philo);
-
 		philo_put_down_fork(philo, philo->right_fork);
 		philo_put_down_fork(philo, philo->left_fork);
+		pthread_mutex_lock(philo->info->dead_mutex);
+		if (philo->info->is_dead)
+		{
+			pthread_mutex_unlock(philo->info->dead_mutex);
+			break ;
+		}
+		pthread_mutex_unlock(philo->info->dead_mutex);
 		philo_sleep(philo);
-		
 		philo_think(philo);
 	}
 	return (NULL);
 }
-
+#include <unistd.h>
 int	main(int argc, char **argv)
 {
 	t_arg	arg;
@@ -52,8 +57,8 @@ int	main(int argc, char **argv)
 
 	for (int i = 1; i < info->philo_num + 1; i++)
 		pthread_create(&(philo_arr[i].thread), NULL, philo_thread, philo_arr + i);
-	for (int i = 1; i < info->philo_num + 1; i++)
-		pthread_detach(philo_arr[i].thread);
 	monitoring(&arg);
+	for (int i = 1; i < info->philo_num + 1; i++)
+		pthread_join(philo_arr[i].thread, NULL);
 	return (free_arg(&arg));
 }

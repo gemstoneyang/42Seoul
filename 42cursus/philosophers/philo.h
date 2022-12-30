@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 12:47:51 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 13:01:10 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void			pass_time(uint64_t start_time);
 void			msleep(uint64_t msec);
 
 // print.c
-void			print_log(t_philo *philo, char *msg);
+int				print_log(t_philo *philo, char *msg);
 
 // ft_isinteger.c
 int				ft_isinteger(char *str);
