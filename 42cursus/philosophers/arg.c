@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:21:38 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 17:41:05 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 18:24:11 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,15 +103,40 @@ int	free_philo_arr(t_philo *philo_arr, int n)
 	return (error);
 }
 
+static int	init_philo(t_philo *philo, t_info *info, t_fork *fork_arr, int i)
+{
+	philo->id = i;
+	philo->eat_count = 0;
+	philo->last_eat_time = start_time;
+	philo->count_mutex = init_mutex();
+	philo->time_mutex = init_mutex();
+	if (!philo->count_mutex || !philo->time_mutex)
+	{
+		if (philo->count_mutex)
+		{
+			pthread_mutex_destroy(philo->count_mutex);
+			free(philo->count_mutex);
+		}
+		if (philo->time_mutex)
+		{
+			pthread_mutex_destroy(philo->time_mutex);
+			free(philo->time_mutex);
+		}
+		return (-1);
+	}
+	philo->left_fork = fork_arr + i;
+	philo->right_fork = fork_arr + (i % info->philo_num + 1);
+	philo->info = info;
+	return (0);
+}
+
 static t_philo	*init_philo_arr(t_info *info, t_fork *fork_arr)
 {
-	t_philo	*philo_arr;
-	int		i;
-	int		n;
+	t_philo		*philo_arr;
+	int			i;
 	u_int64_t	start_time;
 
-	n = info->philo_num;
-	philo_arr = (t_philo *)malloc(sizeof(t_philo) * (n + 1));
+	philo_arr = (t_philo *)malloc(sizeof(t_philo) * (info->philo_num + 1));
 	if (!philo_arr)
 		return (NULL);
 	start_time = get_time();
@@ -121,25 +146,10 @@ static t_philo	*init_philo_arr(t_info *info, t_fork *fork_arr)
 		return (NULL);
 	}
 	i = 1;
-	while (i < n + 1)
+	while (i < info->philo_num + 1)
 	{
-		philo_arr[i].id = i;
-		philo_arr[i].eat_count = 0;
-		philo_arr[i].last_eat_time = start_time;
-		philo_arr[i].count_mutex = init_mutex();
-		philo_arr[i].time_mutex = init_mutex();
-		if (!philo_arr[i].count_mutex || !philo_arr[i].time_mutex)
-		{
-			if (philo_arr[i].count_mutex)
-				pthread_mutex_destroy(philo_arr[i].count_mutex);
-			if (philo_arr[i].count_mutex)
-				pthread_mutex_destroy(philo_arr[i].count_mutex);
+		if (init_philo(philo_arr + i, info, fork_arr, i) == -1)
 			free_philo_arr(philo_arr, i);
-			return (NULL);
-		}
-		philo_arr[i].left_fork = fork_arr + i;
-		philo_arr[i].right_fork = fork_arr + (i % n + 1);
-		philo_arr[i].info = info;
 		i++;
 	}
 	return (philo_arr);

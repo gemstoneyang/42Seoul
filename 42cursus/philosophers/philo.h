@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 17:30:32 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 18:13:06 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef struct s_arg
 }	t_arg;
 
 // init.c
-pthread_mutex_t	*init_mutex(void);
 
 // arg.c
 int				init_arg(t_arg *arg, int argc, char **argv);
@@ -73,13 +72,13 @@ void			philo_think(t_philo *philo, int *error);
 
 // time.c
 uint64_t		get_time(void);
-void			pass_time(uint64_t start_time);
 int				msleep(uint64_t msec);
 
 // print.c
 int				print_log(t_philo *philo, char *msg);
 
-// ft_mutex.c
+// mutex.c
+pthread_mutex_t	*init_mutex(void);
 int				ft_mutex_lock(pthread_mutex_t *mutex);
 int				ft_mutex_unlock(pthread_mutex_t *mutex);
 

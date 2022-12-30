@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:43:19 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 17:45:14 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 18:11:27 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ static int	check_philo_dead(t_philo *philo_arr, t_info *info, int *error)
 	int			i;
 	t_philo		philo;
 
-	i = 1;
 	now_time = get_time();
 	if (now_time == 0)
 		*error += 1;
-	while (i < info->philo_num + 1)
+	i = 0;
+	while (++i < info->philo_num + 1)
 	{
 		philo = philo_arr[i];
 		*error += ft_mutex_lock(philo.time_mutex);
@@ -58,7 +58,6 @@ static int	check_philo_dead(t_philo *philo_arr, t_info *info, int *error)
 			return (1);
 		}
 		*error += ft_mutex_unlock(philo.time_mutex);
-		i++;
 	}
 	return (0);
 }
@@ -80,7 +79,8 @@ void	monitoring(t_arg *arg)
 	{
 		if (check_error(arg->info, &error) != 0)
 			break ;
-		if (arg->info->eat_num != -1 && check_eat_count(arg->philo_arr, arg->info, &error) == 1)
+		if (arg->info->eat_num != -1 && \
+			check_eat_count(arg->philo_arr, arg->info, &error) == 1)
 			break ;
 		if (check_philo_dead(arg->philo_arr, arg->info, &error) == 1)
 			break ;
