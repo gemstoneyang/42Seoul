@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:21:38 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 14:34:32 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 16:30:59 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,16 @@ int	free_philo_arr(t_philo *philo_arr, int n)
 	int	i;
 	int	error;
 
-	i = 1;
 	error = 0;
+	i = 1;
 	while (i < n)
 	{
 		if (pthread_mutex_destroy(philo_arr[i].count_mutex) != 0)
 			error = 1;
 		if (pthread_mutex_destroy(philo_arr[i].time_mutex) != 0)
 			error = 1;
+		free(philo_arr[i].count_mutex);
+		free(philo_arr[i].time_mutex);
 		i++;
 	}
 	free(philo_arr);
@@ -157,21 +159,23 @@ int	free_arg(t_arg *arg)
 
 	if (!arg->info)
 		return (1);
-	if (arg->philo_arr)
-		free_philo_arr(arg->philo_arr, arg->info->philo_num + 1);
 	i = 1;
 	if (arg->fork_arr)
 	{
-		while (i < arg->info->philo_num)
+		while (i < arg->info->philo_num + 1)
 		{
 			if (pthread_mutex_destroy(arg->fork_arr[i].mutex) != 0)
 				arg->error = 1;
+			free(arg->fork_arr[i].mutex);
 			i++;
 		}
 		free(arg->fork_arr);
 	}
+	if (arg->philo_arr)
+		free_philo_arr(arg->philo_arr, arg->info->philo_num + 1);
 	if (pthread_mutex_destroy(arg->info->dead_mutex) != 0)
 		arg->error = 1;
+	free(arg->info->dead_mutex);
 	free(arg->info);
 	return (arg->error);
 }

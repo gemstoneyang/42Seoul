@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:24:01 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 13:32:28 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 16:30:59 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	*philo_thread(void *arg)
 #include <unistd.h>
 int	main(int argc, char **argv)
 {
-	t_arg	arg;
+	t_arg		arg;
 	t_info		*info;
 	t_fork		*fork_arr;
 	t_philo		*philo_arr;
@@ -60,5 +60,6 @@ int	main(int argc, char **argv)
 	monitoring(&arg);
 	for (int i = 1; i < info->philo_num + 1; i++)
 		pthread_join(philo_arr[i].thread, NULL);
-	return (free_arg(&arg));
+	free_arg(&arg);
+	return (0);
 }
