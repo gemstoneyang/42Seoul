@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:40:46 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 22:00:56 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 10:05:08 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ uint64_t	get_time(void)
 	return (time.tv_sec * 1000000 + time.tv_usec);
 }
 
-void	pass_time(uint64_t start_time, uint64_t now_time)
+void	pass_time(uint64_t start_time)
 {
-	printf("%llu", (now_time - start_time) / 1000);
+	printf("%llu", (get_time() - start_time) / 1000);
 }
 
 void	msleep(uint64_t msec)

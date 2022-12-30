@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:21:38 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/29 21:11:44 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 10:04:07 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,22 +90,24 @@ static t_philo	*init_philo_arr(t_info *info, t_fork *fork_arr)
 	t_philo	*philo_arr;
 	int		i;
 	int		n;
+	u_int64_t	start_time;
 
 	n = info->philo_num;
 	philo_arr = (t_philo *)malloc(sizeof(t_philo) * (n + 1));
 	if (!philo_arr)
 		return (NULL);
+	start_time = get_time();
+	if (start_time == 0)
+	{
+		free(philo_arr);
+		return (NULL);
+	}
 	i = 1;
 	while (i < n + 1)
 	{
 		philo_arr[i].id = i;
 		philo_arr[i].eat_count = 0;
-		philo_arr[i].last_eat_time = get_time();
-		if (philo_arr[i].last_eat_time == 0)
-		{
-			free_philo_arr(philo_arr, i);
-			return (NULL);
-		}
+		philo_arr[i].last_eat_time = start_time;
 		philo_arr[i].count_mutex = init_mutex();
 		philo_arr[i].time_mutex = init_mutex();
 		if (!philo_arr[i].count_mutex || !philo_arr[i].time_mutex)
