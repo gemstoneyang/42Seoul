@@ -6,12 +6,12 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/12/30 19:59:50 by wonyang          ###   ########seoul.kr   #
+#    Updated: 2022/12/30 20:36:19 by wonyang          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= philo
-CFLAGS		= -Wall -Werror -Wextra -g
+CFLAGS		= -Wall -Werror -Wextra
 
 HEADER		= philo.h
 SRCS		= main.c \
