@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 11:59:33 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 12:47:51 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct s_info
 	int				is_dead;
 	uint64_t		start_time;
 	pthread_mutex_t	*print_mutex;
-	pthread_mutex_t	*time_mutex;
 	pthread_mutex_t	*dead_mutex;
 }	t_info;
 

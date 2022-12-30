@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:21:38 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 12:02:45 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 12:48:13 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,16 @@ static t_info	*init_info(int argc, char **argv)
 		free(info);
 		return (NULL);
 	}
-	info->time_mutex = init_mutex();
-	if (!info->time_mutex)
-	{
-		pthread_mutex_destroy(info->print_mutex);
-		free(info);
-		return (NULL);
-	}
 	info->dead_mutex = init_mutex();
 	if (!info->dead_mutex)
 	{
 		pthread_mutex_destroy(info->print_mutex);
-		pthread_mutex_destroy(info->time_mutex);
 		free(info);
 		return (NULL);
 	}
 	if (parse_argument(info, argc, argv) == -1)
 	{
 		pthread_mutex_destroy(info->print_mutex);
-		pthread_mutex_destroy(info->time_mutex);
 		pthread_mutex_destroy(info->dead_mutex);
 		free(info);
 		return (NULL);
@@ -185,7 +176,6 @@ int	free_arg(t_arg *arg)
 	if (pthread_mutex_destroy(arg->info->print_mutex) != 0)
 		arg->error = 1;
 	pthread_mutex_destroy(arg->info->print_mutex);
-	pthread_mutex_destroy(arg->info->time_mutex);
 	pthread_mutex_destroy(arg->info->dead_mutex);
 	free(arg->info);
 	return (arg->error);
