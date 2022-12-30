@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 15:21:38 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 16:30:59 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 17:41:05 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,20 @@ static t_info	*init_info(int argc, char **argv)
 		free(info);
 		return (NULL);
 	}
-	if (parse_argument(info, argc, argv) == -1)
+	info->error_mutex = init_mutex();
+	if (!info->error_mutex)
 	{
 		pthread_mutex_destroy(info->dead_mutex);
+		free(info->dead_mutex);
+		free(info);
+		return (NULL);
+	}
+	if (parse_argument(info, argc, argv) == -1)
+	{
+		pthread_mutex_destroy(info->error_mutex);
+		free(info->error_mutex);
+		pthread_mutex_destroy(info->dead_mutex);
+		free(info->dead_mutex);
 		free(info);
 		return (NULL);
 	}
@@ -175,6 +186,9 @@ int	free_arg(t_arg *arg)
 		free_philo_arr(arg->philo_arr, arg->info->philo_num + 1);
 	if (pthread_mutex_destroy(arg->info->dead_mutex) != 0)
 		arg->error = 1;
+	if (pthread_mutex_destroy(arg->info->error_mutex) != 0)
+		arg->error = 1;
+	free(arg->info->error_mutex);
 	free(arg->info->dead_mutex);
 	free(arg->info);
 	return (arg->error);

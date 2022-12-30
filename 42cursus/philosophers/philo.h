@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 14:32:44 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 17:30:32 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ typedef struct s_info
 	int				sleep_time;
 	int				eat_num;
 	int				is_dead;
+	int				error;
 	uint64_t		start_time;
 	pthread_mutex_t	*dead_mutex;
+	pthread_mutex_t	*error_mutex;
 }	t_info;
 
 typedef struct s_fork
@@ -63,19 +65,23 @@ int				init_arg(t_arg *arg, int argc, char **argv);
 int				free_arg(t_arg *arg);
 
 // act.c
-int				philo_take_fork(t_philo *philo, t_fork *fork);
-int				philo_eat(t_philo *philo);
-int				philo_put_down_fork(t_philo *philo, t_fork *fork);
-int				philo_sleep(t_philo *philo);
-int				philo_think(t_philo *philo);
+void			philo_take_fork(t_philo *philo, t_fork *fork, int *error);
+void			philo_eat(t_philo *philo, int *error);
+void			philo_put_down_fork(t_fork *fork, int *error);
+void			philo_sleep(t_philo *philo, int *error);
+void			philo_think(t_philo *philo, int *error);
 
 // time.c
 uint64_t		get_time(void);
 void			pass_time(uint64_t start_time);
-void			msleep(uint64_t msec);
+int				msleep(uint64_t msec);
 
 // print.c
 int				print_log(t_philo *philo, char *msg);
+
+// ft_mutex.c
+int				ft_mutex_lock(pthread_mutex_t *mutex);
+int				ft_mutex_unlock(pthread_mutex_t *mutex);
 
 // ft_isinteger.c
 int				ft_isinteger(char *str);

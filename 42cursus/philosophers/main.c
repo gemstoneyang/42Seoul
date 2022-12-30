@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:24:01 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 16:30:59 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/30 17:49:56 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,39 @@
 void	*philo_thread(void *arg)
 {
 	t_philo	*philo;
+	int		error;
 
+	error = 0;
 	philo = (t_philo *)arg;
 	if (philo->id % 2 == 0)
-		msleep(1);
+		error += msleep(1);
 	while (1)
 	{
-		philo_take_fork(philo, philo->left_fork);
-		philo_take_fork(philo, philo->right_fork);
-		philo_eat(philo);
-		philo_put_down_fork(philo, philo->right_fork);
-		philo_put_down_fork(philo, philo->left_fork);
-		pthread_mutex_lock(philo->info->dead_mutex);
+		philo_take_fork(philo, philo->left_fork, &error);
+		philo_take_fork(philo, philo->right_fork, &error);
+		philo_eat(philo, &error);
+		philo_put_down_fork(philo->right_fork, &error);
+		philo_put_down_fork(philo->left_fork, &error);
+		error += ft_mutex_lock(philo->info->dead_mutex);
 		if (philo->info->is_dead)
 		{
-			pthread_mutex_unlock(philo->info->dead_mutex);
+			error += ft_mutex_unlock(philo->info->dead_mutex);
 			break ;
 		}
-		pthread_mutex_unlock(philo->info->dead_mutex);
-		philo_sleep(philo);
-		philo_think(philo);
+		error += ft_mutex_unlock(philo->info->dead_mutex);
+		philo_sleep(philo, &error);
+		philo_think(philo, &error);
+		if (error)
+		{
+			pthread_mutex_lock(philo->info->error_mutex);
+			philo->info->error = 1;
+			pthread_mutex_unlock(philo->info->error_mutex);
+			break ;
+		}
 	}
 	return (NULL);
 }
-#include <unistd.h>
+
 int	main(int argc, char **argv)
 {
 	t_arg		arg;
@@ -60,6 +69,5 @@ int	main(int argc, char **argv)
 	monitoring(&arg);
 	for (int i = 1; i < info->philo_num + 1; i++)
 		pthread_join(philo_arr[i].thread, NULL);
-	free_arg(&arg);
-	return (0);
+	return (free_arg(&arg));
 }
