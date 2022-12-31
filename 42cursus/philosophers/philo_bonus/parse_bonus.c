@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   parse_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:52:02 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/31 15:16:20 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2022/12/31 20:40:50 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	string_to_integer(char *str)
 	return (ft_atoi(str));
 }
 
-static int	parse_argument(t_info *info, int argc, char **argv)
+int	parse_argument(t_info *info, int argc, char **argv)
 {
 	info->philo_num = string_to_integer(argv[1]);
 	if (info->philo_num < 1)
@@ -70,14 +70,4 @@ static int	parse_argument(t_info *info, int argc, char **argv)
 	else
 		info->eat_num = -1;
 	return (0);
-}
-
-int	parse_info(t_info *info, int argc, char **argv)
-{
-	if (parse_argument(info, argc, argv) != -1)
-		return (0);
-	ft_mutex_destroy_free(info->error_mutex);
-	ft_mutex_destroy_free(info->dead_mutex);
-	free(info);
-	return (-1);
 }

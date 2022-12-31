@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2022/12/31 17:34:18 by wonyang          ###   ########seoul.kr   #
+#    Updated: 2022/12/31 20:51:19 by wonyang          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,15 +15,12 @@ CFLAGS		= -Wall -Werror -Wextra
 
 HEADER		= philo_bonus.h
 SRCS		= main_bonus.c \
-			  ft_isinteger_bonus.c \
 			  parse_bonus.c \
 			  time_bonus.c \
 			  init_bonus.c \
-			  print_bonus.c \
-			  free_bonus.c \
-			  act_bonus.c \
-			  monitor_bonus.c \
-			  mutex_bonus.c \
+			  sem_bonus.c \
+			  util_bonus.c \
+			  ft_isinteger_bonus.c \
 
 OBJS		= $(SRCS:%.c=%.o)
 
