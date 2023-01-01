@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:24:01 by wonyang           #+#    #+#             */
-/*   Updated: 2023/01/01 17:23:10 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2023/01/01 17:26:22 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	*monitor_dead(void *arg)
 	info = philo->info;
 	while (1)
 	{
-		sem_wait(philo->time_sem);
+		// sem_wait(philo->time_sem);
 		now_diff = get_time() - philo->last_eat_time;
-		sem_post(philo->time_sem);
+		// sem_post(philo->time_sem);
 		if ((int)(now_diff) >= info->life_time * 1000)
 		{
 			sem_wait(info->print_sem);
