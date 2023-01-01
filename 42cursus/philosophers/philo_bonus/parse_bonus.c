@@ -6,11 +6,10 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:52:02 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/31 20:40:50 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2023/01/01 20:34:17 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "philo_bonus.h"
 
 int	ft_atoi(const char *str)

@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 20:25:47 by wonyang           #+#    #+#             */
-/*   Updated: 2023/01/01 15:08:07 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2023/01/01 20:38:57 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include "philo_bonus.h"
 
-void	error_exit(const char *msg) // todo : remove kill
+void	error_exit(const char *msg)
 {
 	printf("%s\n", msg);
 	kill(0, SIGINT);

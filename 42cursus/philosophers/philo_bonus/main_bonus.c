@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:24:01 by wonyang           #+#    #+#             */
-/*   Updated: 2023/01/01 19:41:42 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2023/01/01 20:38:30 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdio.h>
 #include "philo_bonus.h"
 
-void	*monitor_dead(void *arg)
+static void	*monitor_dead(void *arg)
 {
 	t_philo		*philo;
 	t_info		*info;
@@ -43,16 +43,19 @@ void	*monitor_dead(void *arg)
 	return (NULL);
 }
 
-void	child_process(t_philo *philo)
+static void	child_process(t_philo *philo)
 {
 	pthread_t	thread;
 	char		*sem_name;
 
 	sem_name = ft_itoa(philo->id);
+	if (!sem_name)
+		sem_post(philo->info->end_sem);
 	philo->time_sem = init_sem(sem_name, 1);
 	free(sem_name);
-	pthread_create(&thread, NULL, monitor_dead, (void *)philo);
-	pthread_detach(thread);
+	if (pthread_create(&thread, NULL, monitor_dead, (void *)philo) != 0
+		|| pthread_detach(thread) != 0)
+		sem_post(philo->info->end_sem);
 	if (philo->id % 2 == 0)
 		msleep(10);
 	while (1)
@@ -65,7 +68,7 @@ void	child_process(t_philo *philo)
 	}
 }
 
-void	*monitor_eat(void *arg)
+static void	*monitor_eat(void *arg)
 {
 	t_info	*info;
 	int		count;
@@ -82,13 +85,14 @@ void	*monitor_eat(void *arg)
 	return (NULL);
 }
 
-void	run_philos(t_philo *philo_arr, t_info *info)
+static void	run_philos(t_philo *philo_arr, t_info *info)
 {
 	int			i;
 	pthread_t	thread;
 
-	pthread_create(&thread, NULL, monitor_eat, (void *)info);
-	pthread_detach(thread);
+	if (pthread_create(&thread, NULL, monitor_eat, (void *)info) != 0
+		|| pthread_detach(thread) != 0)
+		error_exit("pthread fail");
 	i = 1;
 	while (i < info->philo_num + 1)
 	{
