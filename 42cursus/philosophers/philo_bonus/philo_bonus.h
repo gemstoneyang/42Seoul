@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/31 20:51:41 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2023/01/01 17:23:32 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@ typedef struct s_info
 	uint64_t	start_time;
 	sem_t		*fork_sem;
 	sem_t		*eat_sem;
+	sem_t		*end_sem;
+	sem_t		*print_sem;
 }	t_info;
 
 typedef struct s_philo
 {
 	int			id;
+	pid_t		pid;
 	int			eat_count;
 	uint64_t	last_eat_time;
-	sem_t		*count_sem;
 	sem_t		*time_sem;
 	t_info		*info;
 }	t_philo;
@@ -44,47 +46,42 @@ typedef struct s_arg
 	t_philo		*philo_arr;
 }	t_arg;
 
-// init.c
+// init_bonus.c
 void		init_arg(t_arg *arg, int argc, char **argv);
 
 // // free.c
 // int				free_philo_arr(t_philo *philo_arr, int n);
 // int				free_arg(t_arg *arg);
 
-// // act.c
-// void			philo_take_fork(t_philo *philo, t_fork *fork, int *error);
-// void			philo_eat(t_philo *philo, int *error);
-// void			philo_put_down_fork(t_fork *fork, int *error);
-// void			philo_sleep(t_philo *philo, int *error);
-// void			philo_think(t_philo *philo, int *error);
+// act_bonus.c
+void	philo_take_fork(t_philo *philo);
+void	philo_eat(t_philo *philo);
+void	philo_put_down_fork(t_philo *philo);
+void	philo_sleep(t_philo *philo);
+void	philo_think(t_philo *philo);
 
-// time.c
-uint64_t		get_time(void);
-void	ft_usleep(uint64_t time);
-void	msleep(uint64_t msec);
+// time_bonus.c
+uint64_t	get_time(void);
+void		ft_usleep(uint64_t time);
+void		msleep(uint64_t msec);
 
-// // print.c
-// int				print_log(t_philo *philo, char *msg);
+// print_bonus.c
+int			print_log(t_philo *philo, char *msg);
 
 // sem_bonus.c
-sem_t	*init_sem(const char *sem_name, int n);
-// int				ft_mutex_lock(pthread_mutex_t *mutex);
-// int				ft_mutex_unlock(pthread_mutex_t *mutex);
-// int				ft_mutex_destroy_free(pthread_mutex_t *mutex);
-// int				update_error(t_info *info, int error);
+sem_t		*init_sem(const char *sem_name, int n);
 
-// // ft_isinteger.c
-int				ft_isinteger(char *str);
+// ft_isinteger_bonus.c
+char		*ft_itoa(int n);
+int			ft_isinteger(char *str);
 
-// parse.c
-int				ft_atoi(const char *str);
-int		parse_argument(t_info *info, int argc, char **argv);
-
-// // monitor.c
-// void			monitoring(t_arg *arg);
+// parse_bonus.c
+int			ft_atoi(const char *str);
+int			parse_argument(t_info *info, int argc, char **argv);
 
 // util_bonus.c
-void	error_exit(const char *msg);
-void	*ft_malloc(size_t size);
+void		error_exit(const char *msg);
+void		*ft_malloc(size_t size);
+pid_t		ft_fork(void);
 
 #endif

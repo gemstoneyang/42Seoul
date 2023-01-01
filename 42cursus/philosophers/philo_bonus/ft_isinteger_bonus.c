@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isinteger.c                                     :+:      :+:    :+:   */
+/*   ft_isinteger_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 18:28:29 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/31 15:15:51 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2023/01/01 17:20:23 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	*ft_calloc(size_t num, size_t size)
 	return (p);
 }
 
-static char	*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	size_t	i;
 	size_t	len;

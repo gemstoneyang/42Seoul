@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:43:19 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/30 20:07:09 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2023/01/01 16:22:25 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	update_dead(t_philo *philo, t_info *info, uint64_t now, int *error)
 	uint64_t	diff;
 
 	*error += ft_mutex_lock(philo->time_mutex);
-	if ((int)(now - philo->last_eat_time) > info->life_time * 1000)
+	if ((int)(now - philo->last_eat_time) >= info->life_time * 1000)
 	{
 		*error += ft_mutex_lock(info->dead_mutex);
 		info->is_dead = 1;

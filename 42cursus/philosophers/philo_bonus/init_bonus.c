@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:41:27 by wonyang           #+#    #+#             */
-/*   Updated: 2022/12/31 20:51:56 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2023/01/01 15:07:16 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ static t_info	*init_info(int argc, char **argv)
 	info->start_time = get_time();
 	if (parse_argument(info, argc, argv) == -1)
 		error_exit("argument error");
-	info->eat_sem = init_sem("/eat_sem", 1);
 	info->fork_sem = init_sem("/fork_sem", info->philo_num);
+	info->eat_sem = init_sem("/eat_sem", 0);
+	info->end_sem = init_sem("/end_sem", 0);
+	info->print_sem = init_sem("print_sem", 1);
 	return (info);
 }
 
@@ -30,8 +32,6 @@ static int	init_philo(t_philo *philo, t_info *info, int i)
 {
 	philo->id = i;
 	philo->eat_count = 0;
-	philo->count_sem = init_sem("/count_sem", 1);
-	philo->time_sem = init_sem("/time_sem", 1);
 	philo->info = info;
 	return (0);
 }
