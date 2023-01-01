@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 16:33:44 by wonyang           #+#    #+#             */
-/*   Updated: 2023/01/01 17:25:00 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2023/01/01 19:18:40 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	philo_take_fork(t_philo *philo)
 
 void	philo_eat(t_philo *philo)
 {
-	// sem_wait(philo->time_sem);
+	sem_wait(philo->time_sem);
 	philo->last_eat_time = get_time();
-	// sem_post(philo->time_sem);
+	sem_post(philo->time_sem);
 	print_log(philo, "is eating");
 	msleep(philo->info->eat_time);
 	philo->eat_count += 1;

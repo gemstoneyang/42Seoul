@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 16:24:01 by wonyang           #+#    #+#             */
-/*   Updated: 2023/01/01 17:26:22 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2023/01/01 19:41:42 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void	*monitor_dead(void *arg)
 	info = philo->info;
 	while (1)
 	{
-		// sem_wait(philo->time_sem);
+		sem_wait(philo->time_sem);
 		now_diff = get_time() - philo->last_eat_time;
-		// sem_post(philo->time_sem);
+		sem_post(philo->time_sem);
 		if ((int)(now_diff) >= info->life_time * 1000)
 		{
 			sem_wait(info->print_sem);
@@ -46,8 +46,11 @@ void	*monitor_dead(void *arg)
 void	child_process(t_philo *philo)
 {
 	pthread_t	thread;
+	char		*sem_name;
 
-	philo->time_sem = init_sem(ft_itoa(philo->id), 1); // todo : add NULL gard
+	sem_name = ft_itoa(philo->id);
+	philo->time_sem = init_sem(sem_name, 1);
+	free(sem_name);
 	pthread_create(&thread, NULL, monitor_dead, (void *)philo);
 	pthread_detach(thread);
 	if (philo->id % 2 == 0)
@@ -74,6 +77,7 @@ void	*monitor_eat(void *arg)
 		sem_wait(info->eat_sem);
 		count++;
 	}
+	sem_wait(info->print_sem);
 	sem_post(info->end_sem);
 	return (NULL);
 }
@@ -108,9 +112,6 @@ int	main(int argc, char **argv)
 		return (1);
 	init_arg(&arg, argc, argv);
 	run_philos(arg.philo_arr, arg.info);
-	// run_threads(arg.philo_arr, arg.info);
-	// monitoring(&arg);
-	// catch_threads(arg.philo_arr, arg.info);
-	// return (free_arg(&arg));
+	free_arg(&arg);
 	return (0);
 }

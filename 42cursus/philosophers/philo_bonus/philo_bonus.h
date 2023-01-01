@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2023/01/01 17:23:32 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2023/01/01 19:24:47 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,8 @@ typedef struct s_arg
 // init_bonus.c
 void		init_arg(t_arg *arg, int argc, char **argv);
 
-// // free.c
-// int				free_philo_arr(t_philo *philo_arr, int n);
-// int				free_arg(t_arg *arg);
+// free.c
+void		free_arg(t_arg *arg);
 
 // act_bonus.c
 void	philo_take_fork(t_philo *philo);

@@ -6,7 +6,7 @@
 #    By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/28 21:52:18 by wonyang           #+#    #+#              #
-#    Updated: 2023/01/01 17:03:27 by wonyang          ###   ########seoul.kr   #
+#    Updated: 2023/01/01 19:25:02 by wonyang          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS		= main_bonus.c \
 			  ft_isinteger_bonus.c \
 			  act_bonus.c \
 			  print_bonus.c \
+			  free_bonus.c \
 
 OBJS		= $(SRCS:%.c=%.o)
 
