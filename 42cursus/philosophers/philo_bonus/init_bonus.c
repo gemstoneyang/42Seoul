@@ -6,11 +6,12 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 19:41:27 by wonyang           #+#    #+#             */
-/*   Updated: 2023/01/01 19:41:40 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2023/01/01 20:57:58 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <signal.h>
 #include "philo_bonus.h"
 
 static t_info	*init_info(int argc, char **argv)
@@ -58,4 +59,19 @@ void	init_arg(t_arg *arg, int argc, char **argv)
 {
 	arg->info = init_info(argc, argv);
 	arg->philo_arr = init_philo_arr(arg->info);
+}
+
+void	free_arg(t_arg *arg)
+{
+	int	i;
+
+	i = 1;
+	while (i < arg->info->philo_num + 1)
+	{
+		kill(arg->philo_arr[i].pid, SIGINT);
+		i++;
+	}
+	free(arg->philo_arr);
+	free(arg->info);
+	return ;
 }

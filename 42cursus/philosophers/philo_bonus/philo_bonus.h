@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2023/01/01 20:39:18 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2023/01/01 20:59:56 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ typedef struct s_arg
 
 // init_bonus.c
 void		init_arg(t_arg *arg, int argc, char **argv);
-
-// free.c
 void		free_arg(t_arg *arg);
 
 // act_bonus.c
@@ -63,12 +61,7 @@ void		philo_think(t_philo *philo);
 uint64_t	get_time(void);
 void		ft_usleep(uint64_t time);
 void		msleep(uint64_t msec);
-
-// print_bonus.c
 int			print_log(t_philo *philo, char *msg);
-
-// sem_bonus.c
-sem_t		*init_sem(const char *sem_name, int n);
 
 // ft_isinteger_bonus.c
 char		*ft_itoa(int n);
@@ -79,6 +72,7 @@ int			ft_atoi(const char *str);
 int			parse_argument(t_info *info, int argc, char **argv);
 
 // util_bonus.c
+sem_t		*init_sem(const char *sem_name, int n);
 void		error_exit(const char *msg);
 void		*ft_malloc(size_t size);
 pid_t		ft_fork(void);
