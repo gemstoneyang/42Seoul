@@ -1,44 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   util_bonus.c                                       :+:      :+:    :+:   */
+/*   sem_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/31 20:25:47 by wonyang           #+#    #+#             */
-/*   Updated: 2023/01/02 11:22:32 by wonyang          ###   ########seoul.kr  */
+/*   Created: 2023/01/02 11:19:14 by wonyang           #+#    #+#             */
+/*   Updated: 2023/01/02 11:24:28 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <signal.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include "philo_bonus.h"
 
-void	error_exit(const char *msg)
+sem_t	*init_sem(const char *sem_name, int n)
 {
-	printf("%s\n", msg);
-	kill(0, SIGINT);
-	exit(1);
+	sem_t	*sem;
+
+	sem_unlink(sem_name);
+	sem = sem_open(sem_name, O_CREAT, 0644, n);
+	if (sem == SEM_FAILED)
+		error_exit("sem_open fail");
+	sem_unlink(sem_name);
+	return (sem);
 }
 
-void	*ft_malloc(size_t size)
+void	ft_sem_wait(sem_t *sem)
 {
-	void	*ptr;
-
-	ptr = malloc(size);
-	if (!ptr)
-		error_exit("malloc fail");
-	return (ptr);
+	if (sem_wait(sem) != 0)
+		error_exit("sem_wait fail");
 }
 
-pid_t	ft_fork(void)
+void	ft_sem_post(sem_t *sem)
 {
-	pid_t	pid;
-
-	pid = fork();
-	if (pid == -1)
-		error_exit("fork fail");
-	return (pid);
+	if (sem_post(sem) != 0)
+		error_exit("sem_post fail");
 }

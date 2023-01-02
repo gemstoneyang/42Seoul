@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 18:45:03 by wonyang           #+#    #+#             */
-/*   Updated: 2023/01/01 20:59:56 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2023/01/02 11:27:53 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,13 @@ int			ft_atoi(const char *str);
 int			parse_argument(t_info *info, int argc, char **argv);
 
 // util_bonus.c
-sem_t		*init_sem(const char *sem_name, int n);
 void		error_exit(const char *msg);
 void		*ft_malloc(size_t size);
 pid_t		ft_fork(void);
+
+// sem_bonus.c
+sem_t		*init_sem(const char *sem_name, int n);
+void		ft_sem_wait(sem_t *sem);
+void		ft_sem_post(sem_t *sem);
 
 #endif
