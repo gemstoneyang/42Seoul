@@ -6,7 +6,7 @@
 /*   By: wonyang <wonyang@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 18:43:19 by wonyang           #+#    #+#             */
-/*   Updated: 2023/01/01 16:22:25 by wonyang          ###   ########seoul.kr  */
+/*   Updated: 2023/01/02 11:30:23 by wonyang          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ static int	update_dead(t_philo *philo, t_info *info, uint64_t now, int *error)
 		*error += ft_mutex_lock(info->dead_mutex);
 		info->is_dead = 1;
 		diff = (now - info->start_time) / 1000;
-		if (printf("%llu %d %s\n", diff, philo->id, "died") == -1)
-			*error += 1;
+		printf("%llu %d %s\n", diff, philo->id, "died");
 		*error += ft_mutex_unlock(info->dead_mutex);
 		*error += ft_mutex_unlock(philo->time_mutex);
 		return (1);
