@@ -1,9 +1,9 @@
-NAME		= main
+NAME		= phonebook
 CXX			= c++
 CXXFLAGS	= -Wall -Werror -Wextra -std=c++98
 
-# HEADER		= philo.h
-SRCS		= main.cpp \
+SRCS		= Contact.cpp \
+			  PhoneBook.cpp
 
 OBJS		= $(SRCS:%.cpp=%.o)
 

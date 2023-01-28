@@ -14,9 +14,8 @@ int	main(int argc, char **argv)
 		ss << argv[i];
 
 	std::string	str = ss.str();
-	for (size_t i = 0; i < str.size(); i++) {
+	for (size_t i = 0; i < str.size(); i++)
 		str[i] = toupper(str[i]);
-	}
 	std::cout << str << std::endl;
 	return 0;
 }
