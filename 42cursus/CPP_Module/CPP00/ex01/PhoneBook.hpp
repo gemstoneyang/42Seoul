@@ -2,7 +2,6 @@
 #ifndef __PHONEBOOK_H__
 #define __PHONEBOOK_H__
 
-#include <cctype>
 #include "Contact.hpp"
 
 class PhoneBook {
@@ -14,6 +13,8 @@ public:
 private:
 	int		contactCount;
 	Contact	contactArray[8];
+
+	void	printContactArray(void);
 
 };
 

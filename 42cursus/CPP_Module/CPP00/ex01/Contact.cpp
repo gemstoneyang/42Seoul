@@ -3,34 +3,27 @@
 // Constructor
 Contact::Contact(void) {}
 
-Contact::Contact(int idx): index(idx) {}
-
-Contect::Contect(int idx, std:string phoneNumber, std::string firstName,
-std::string	lastName, std::string nickName, std::string darkestSecret)
-	: index(idx),
-	  phoneNumber(phoneNumber),
+Contact::Contact(std::string phoneNumber, std::string firstName,
+	std::string	lastName, std::string nickName, std::string darkestSecret)
+	: phoneNumber(phoneNumber),
 	  firstName(firstName),
 	  lastName(lastName),
 	  nickName(nickName),
 	  darkestSecret(darkestSecret) {}
 
 // Getter
-int	Contect::getIndex(void) {
-	return index;
-}
-
-std::string	Contect::getPhoneNumber(void) {
+std::string	Contact::getPhoneNumber(void) {
 	return phoneNumber;
 }
 
-std::string	Contect::getFirstName(void) {
+std::string	Contact::getFirstName(void) {
 	return firstName;
 }
 
-std::string	Contect::getLastName(void) {
+std::string	Contact::getLastName(void) {
 	return lastName;
 }
 
-std::string	Contect::getNickName(void) {
+std::string	Contact::getNickName(void) {
 	return nickName;
 }
