@@ -9,12 +9,14 @@ class PhoneBook {
 public:
 	PhoneBook(void);
 	bool	addContact(void);
+	void	printContactArray(void);
 
 private:
 	int		contactCount;
 	Contact	contactArray[8];
 
-	void	printContactArray(void);
+	void		printContactInfo(Contact contact);
+	std::string	textFormatting(std::string str);
 
 };
 
