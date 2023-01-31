@@ -6,7 +6,7 @@ int	main(void) {
 	std::string	command;
 
 	while (!std::cin.eof()) {
-		std::cout << "Enter command (ADD, SEARCH, EXIT): " << std::flush;
+		std::cout << "> Enter command (ADD, SEARCH, EXIT)" << std::endl;
 		std::getline(std::cin, command);
 		if (command == "ADD") {
 			phoneBook.addContact();

@@ -39,7 +39,7 @@ int	PhoneBook::getUserInputIndex(void) {
 	char		*endptr;
 	int			index;
 
-	std::cout << "Enter index : " << std::flush;
+	std::cout << "> Enter index" << std::endl;
 	std::getline(std::cin, str);
 	index = strtol(str.c_str(), &endptr, 10);
 
@@ -76,23 +76,23 @@ void	PhoneBook::addContact(void) {
 	std::string	darkestSecret;
 
 	std::cout << "[Enter new contact information]" << std::endl;
-	std::cout << "> First name : " << std::flush;
+	std::cout << "> First name" << std::endl;
 	std::getline(std::cin, firstName);
 	if (std::cin.eof())
 		return;
-	std::cout << "> Last name : " << std::flush;
+	std::cout << "> Last name" << std::endl;
 	std::getline(std::cin, lastName);
 	if (std::cin.eof())
 		return;
-	std::cout << "> Nick name : " << std::flush;
+	std::cout << "> Nick name" << std::endl;
 	std::getline(std::cin, nickName);
 	if (std::cin.eof())
 		return;
-	std::cout << "> Phone number : " << std::flush;
+	std::cout << "> Phone number" << std::endl;
 	std::getline(std::cin, phoneNumber);
 	if (std::cin.eof())
 		return;
-	std::cout << "> Your darkest secret... : " << std::flush;
+	std::cout << "> Your darkest secret..." << std::endl;
 	std::getline(std::cin, darkestSecret);
 	if (std::cin.eof())
 		return;
