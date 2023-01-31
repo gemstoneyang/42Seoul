@@ -8,15 +8,17 @@ class PhoneBook {
 
 public:
 	PhoneBook(void);
-	bool	addContact(void);
-	void	printContactArray(void);
+
+	void	addContact(void);
+	void	searchContact(void);
 
 private:
 	int		contactCount;
 	Contact	contactArray[8];
 
-	void		printContactInfo(Contact contact);
+	void		printContactArray(void);
 	std::string	textFormatting(std::string str);
+	int			getUserInputIndex(void);
 
 };
 

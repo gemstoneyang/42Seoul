@@ -12,7 +12,7 @@ int	main(void) {
 			phoneBook.addContact();
 		}
 		else if (command == "SEARCH") {
-			phoneBook.printContactArray();
+			phoneBook.searchContact();
 		}
 		else if (command == "EXIT") {
 			std::cout << "Bye!" << std::endl;

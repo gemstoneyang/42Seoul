@@ -1,18 +1,12 @@
 #include <iostream>
 #include <iomanip>
+#include <cstdlib>
 #include "PhoneBook.hpp"
 
 // Constructor
 PhoneBook::PhoneBook(void): contactCount(0) {}
 
 // Private Function
-void	PhoneBook::printContactInfo(Contact contact) {
-	std::cout << "First name : " << contact.getFirstName() << '\n'
-			  << "Last name : " << contact.getLastName() << '\n'
-			  << "Nick name : " << contact.getNickName() << '\n'
-			  << "Phone number : " << contact.getPhoneNumber() << std::endl;
-}
-
 std::string	PhoneBook::textFormatting(std::string str) {
 	if (str.length() > 10) {
 		str[9] = '.';
@@ -38,60 +32,76 @@ void	PhoneBook::printContactArray(void) {
 			<< "|" << std::setw(10) << textFormatting(contact.getNickName())
 			<< std::endl;
 	}
-	if (contactCount == 0)
-		return;
+}
 
-	int	idx = -1;
+int	PhoneBook::getUserInputIndex(void) {
+	std::string	str;
+	char		*endptr;
+	int			index;
+
 	std::cout << "Enter index : " << std::flush;
-	std::cin >> idx;
-	std::cout << idx << std::endl;
+	std::getline(std::cin, str);
+	index = strtol(str.c_str(), &endptr, 10);
 
-	std::cin.ignore(1000, '\n');
-	std::cin.clear();
-	if (idx < 0 or idx >= 8
-		or (contactCount < 8 and contactCount <= idx)
-		or (contactCount == 0 and idx == 0)) {
-		std::cout << "Invalid index" << std::endl;
-		return;
+	if (std::cin.eof())
+		return -1;
+	else if (*endptr != '\0' or str.empty() or index < 0 or index >= 8
+		or (contactCount < 8 and contactCount <= index)) {
+		std::cout << "Error : Invalid index" << std::endl;
+		return -1;
 	}
-	printContactInfo(contactArray[idx]);
+	return index;
 }
 
 // Instance Method
-bool	PhoneBook::addContact(void) {
+void	PhoneBook::searchContact(void) {
+	if (contactCount == 0)
+	{
+		std::cout << "Error : No contact in phonebook" << std::endl;
+		return;
+	}
+	printContactArray();
+
+	int	idx = getUserInputIndex();
+	if (idx == -1)
+		return;
+	contactArray[idx].printContactInfo();
+}
+
+void	PhoneBook::addContact(void) {
 	std::string	firstName;
 	std::string	lastName;
 	std::string	nickName;
 	std::string	phoneNumber;
 	std::string	darkestSecret;
 
-	std::cout << "Enter new contact information" << std::endl;
+	std::cout << "[Enter new contact information]" << std::endl;
 	std::cout << "> First name : " << std::flush;
 	std::getline(std::cin, firstName);
 	if (std::cin.eof())
-		return false;
+		return;
 	std::cout << "> Last name : " << std::flush;
 	std::getline(std::cin, lastName);
 	if (std::cin.eof())
-		return false;
+		return;
 	std::cout << "> Nick name : " << std::flush;
 	std::getline(std::cin, nickName);
 	if (std::cin.eof())
-		return false;
+		return;
 	std::cout << "> Phone number : " << std::flush;
 	std::getline(std::cin, phoneNumber);
 	if (std::cin.eof())
-		return false;
+		return;
 	std::cout << "> Your darkest secret... : " << std::flush;
 	std::getline(std::cin, darkestSecret);
 	if (std::cin.eof())
-		return false;
+		return;
 
 	if (firstName.empty() or lastName.empty() or nickName.empty()
 		or phoneNumber.empty() or darkestSecret.empty())
 	{
-		std::cout << "Invalid Contact Field" << std::endl;
-		return false;
+		std::cout << "Error : Invalid contact field" << std::endl;
+		return;
 	}
 
 	Contact contact(phoneNumber, firstName, lastName, nickName, darkestSecret);
@@ -99,5 +109,5 @@ bool	PhoneBook::addContact(void) {
 
 	contactArray[idx] = contact;
 	contactCount++;
-	return true;
+	return;
 }

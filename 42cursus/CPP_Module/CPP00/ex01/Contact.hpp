@@ -11,10 +11,12 @@ public:
 	Contact(std::string phoneNumber, std::string firstName,
 		std::string	lastName, std::string nickName, std::string darkestSecret);
 
-	std::string	getPhoneNumber(void);
-	std::string	getFirstName(void);
-	std::string	getLastName(void);
-	std::string	getNickName(void);
+	std::string	getPhoneNumber(void) const;
+	std::string	getFirstName(void) const;
+	std::string	getLastName(void) const;
+	std::string	getNickName(void) const;
+
+	void	printContactInfo(void) const;
 
 private:
 	std::string	phoneNumber;

@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Contact.hpp"
 
 // Constructor
@@ -12,18 +13,26 @@ Contact::Contact(std::string phoneNumber, std::string firstName,
 	  darkestSecret(darkestSecret) {}
 
 // Getter
-std::string	Contact::getPhoneNumber(void) {
+std::string	Contact::getPhoneNumber(void) const {
 	return phoneNumber;
 }
 
-std::string	Contact::getFirstName(void) {
+std::string	Contact::getFirstName(void) const {
 	return firstName;
 }
 
-std::string	Contact::getLastName(void) {
+std::string	Contact::getLastName(void) const {
 	return lastName;
 }
 
-std::string	Contact::getNickName(void) {
+std::string	Contact::getNickName(void) const {
 	return nickName;
+}
+
+// Instance Method
+void	Contact::printContactInfo(void) const {
+	std::cout << "First name : " << getFirstName() << '\n'
+			  << "Last name : " << getLastName() << '\n'
+			  << "Nick name : " << getNickName() << '\n'
+			  << "Phone number : " << getPhoneNumber() << std::endl;
 }
