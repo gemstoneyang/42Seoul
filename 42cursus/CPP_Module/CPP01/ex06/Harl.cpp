@@ -31,22 +31,26 @@ void	Harl::error(void) {
 
 void	Harl::complain(std::string level) {
 	const std::string	strArr[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	funcptr				funcArr[4];
-
-	funcArr[0] = &Harl::debug;
-	funcArr[1] = &Harl::info;
-	funcArr[2] = &Harl::warning;
-	funcArr[3] = &Harl::error;
-
-	int	i = 0;
+	int					i = 0;
 
 	while (i != 4) {
-		if (level == strArr[i]) {
-			(this->*funcArr[i])();
+		if (level == strArr[i])
 			break;
-		}
 		i++;
 	}
-	if (i >= 4)
-		std::cout << "invalid input" << std::endl;
+
+	switch (i) {
+		case DEBUG:
+			debug();
+		case INFO:
+			info();
+		case WARNING:
+			warning();
+		case ERROR:
+			error();
+			break;
+		default:
+			std::cout << "invalid input" << std::endl;
+			break;
+	}
 }
