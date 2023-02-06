@@ -11,6 +11,9 @@ void	getBuffer(std::ifstream& instream, std::string& buf) {
 }
 
 void	changeBuffer(std::string s1, std::string s2, std::string& buf) {
+	if (s1 == s2)
+		return;
+
 	std::string::size_type	idx;
 
 	while ((idx = buf.find(s1)) != std::string::npos) {

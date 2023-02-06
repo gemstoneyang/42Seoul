@@ -1,12 +1,8 @@
 #include <iostream>
-#include "Weapon.hpp"
-#include "HumanA.hpp"
-#include "HumanB.hpp"
-
 #include <stdlib.h>
+#include "Weapon.hpp"
 #include "HumanA.hpp"
 #include "HumanB.hpp"
-#include "Weapon.hpp"
 
 void	leaksCheck(void) {
 	system("leaks weapon | grep leaks");
