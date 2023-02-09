@@ -1,16 +1,17 @@
 #include <iostream>
+#include <cmath>
 #include "Fixed.hpp"
 
 int main( void ) {
-	Fixed a;
-	Fixed b( a );
-	Fixed c;
+	float	a = 7.625f;
 
-	c = b;
-
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
+	std::cout << a << std::endl;
+	a *= 256;
+	std::cout << a << std::endl;
+	a = roundf(a);
+	std::cout << a << std::endl;
+	a /= 256;
+	std::cout << a << std::endl;
 
 	return 0;
 }
