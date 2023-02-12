@@ -21,11 +21,6 @@ public:
 	bool	operator==(const Fixed& fixed);
 	bool	operator!=(const Fixed& fixed);
 
-	Fixed	operator+(const Fixed& fixed);
-	Fixed	operator-(const Fixed& fixed);
-	Fixed	operator*(const Fixed& fixed);
-	Fixed	operator/(const Fixed& fixed);
-
 	Fixed&	operator++(void);
 	Fixed	operator++(int);
 	Fixed&	operator--(void);
@@ -46,6 +41,11 @@ private:
 	static const int	bit;
 
 };
+
+Fixed	operator+(const Fixed& a, const Fixed& b);
+Fixed	operator-(const Fixed& a, const Fixed& b);
+Fixed	operator*(const Fixed& a, const Fixed& b);
+Fixed	operator/(const Fixed& a, const Fixed& b);
 
 std::ostream&	operator<<(std::ostream& os, const Fixed& c);
 
