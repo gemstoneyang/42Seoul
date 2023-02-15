@@ -1,8 +1,8 @@
 #include "Point.hpp"
 
 static Point	getVector(const Point& start, const Point& end) {
-	float	a = (start.getX() - end.getY()).toFloat();
-	float	b = (start.getX() - end.getY()).toFloat();
+	float	a = (start.getX() - end.getX()).toFloat();
+	float	b = (start.getY() - end.getY()).toFloat();
 
 	return Point(a, b);
 }
