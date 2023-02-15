@@ -8,7 +8,6 @@ hp(10),
 energy(10),
 damage(0)
 {
-	std::cout << "ClapTrap: " << name << " is Created" << std::endl;
 	std::cout << "ClapTrap: String constructor called" << std::endl;
 }
 
@@ -40,4 +39,12 @@ ClapTrap& operator=(const ClapTrap &claptrap) {
 // Instance Method
 void	attack(const std::string& target) {
 	
+}
+
+void	takeDamage(unsigned int amount) {
+
+}
+
+void	beRepaired(unsigned int amount) {
+
 }
