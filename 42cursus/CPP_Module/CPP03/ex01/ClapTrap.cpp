@@ -2,8 +2,9 @@
 #include "ClapTrap.hpp"
 
 // Constructor & Destructor
-
-ClapTrap::ClapTrap(void) {}
+ClapTrap::ClapTrap(void) {
+	std::cout << "ClapTrap " << ": Default constructor called" << std::endl;
+}
 
 ClapTrap::ClapTrap(std::string name)
 :name(name),
@@ -25,8 +26,7 @@ ClapTrap::ClapTrap(const ClapTrap &claptrap) {
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "ClapTrap " << name
-			  << ": Destructor called" << std::endl;
+	std::cout << "ClapTrap " << name << ": Destructor called" << std::endl;
 }
 
 

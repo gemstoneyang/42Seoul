@@ -1,9 +1,9 @@
 #include <iostream>
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int	main(void) {
-	ClapTrap	ct1("wonyang");
-	ClapTrap	ct2("T1000");
+	ScavTrap	ct1("wonyang");
+	ScavTrap	ct2("T1000");
 
 	std::cout << "\n----- Round 1 -----" << std::endl;
 	ct1.attack(ct2.getName());
@@ -24,6 +24,10 @@ int	main(void) {
 	ct2.takeDamage(500);
 	ct2.takeDamage(500);
 	ct2.beRepaired(10);
+
+	std::cout << "\n----- Round 6 -----" << std::endl;
+	ct1.guardGate();
+	ct2.guardGate();
 
 	std::cout << std::endl;
 
