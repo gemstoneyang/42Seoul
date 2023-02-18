@@ -1,6 +1,12 @@
 #include <iostream>
 #include "ScavTrap.hpp"
 
+// Static Variable Initialize
+const int	ScavTrap::S_HP = 100;
+const int	ScavTrap::S_EP = 50;
+const int	ScavTrap::S_AD = 20;
+
+
 // Constructor & Destructor
 ScavTrap::ScavTrap(void)
 :ClapTrap()
@@ -14,9 +20,9 @@ ScavTrap::ScavTrap(std::string name)
 	std::cout << "ScavTrap " << name
 			  << ": String constructor called" << std::endl;
 
-	this->hp = 100;
-	this->energy = 50;
-	this->damage = 20;
+	this->hp = S_HP;
+	this->energy = S_EP;
+	this->damage = S_AD;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& scavtrap)

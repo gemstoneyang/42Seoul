@@ -1,6 +1,12 @@
 #include <iostream>
 #include "ClapTrap.hpp"
 
+// Static Variable Initialize
+const int	ClapTrap::C_HP = 10;
+const int	ClapTrap::C_EP = 10;
+const int	ClapTrap::C_AD = 0;
+
+
 // Constructor & Destructor
 ClapTrap::ClapTrap(void) {
 	std::cout << "ClapTrap " << ": Default constructor called" << std::endl;
@@ -8,9 +14,9 @@ ClapTrap::ClapTrap(void) {
 
 ClapTrap::ClapTrap(std::string name)
 :name(name),
-hp(10),
-energy(10),
-damage(0)
+hp(C_HP),
+energy(C_EP),
+damage(C_AD)
 {
 	std::cout << "ClapTrap " << name
 			  << ": String constructor called" << std::endl;

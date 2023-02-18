@@ -24,8 +24,12 @@ int	main(void) {
 	std::cout << "\n------- test3 --------\n" << std::endl;
 
 	trap.attack("enemyA");
+	std::cout << "\n----------------------\n" << std::endl;
 	trap.whoAmI();
+
+	std::cout << "\n----------------------\n" << std::endl;
 	trap2.attack("enemyB");
+	std::cout << "\n----------------------\n" << std::endl;
 	trap2.whoAmI();
 
 	std::cout << "\n----------------------\n" << std::endl;

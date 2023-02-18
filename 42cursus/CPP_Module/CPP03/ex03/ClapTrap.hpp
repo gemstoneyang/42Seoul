@@ -29,6 +29,10 @@ protected:
 	unsigned int	energy;
 	unsigned int	damage;
 
+	const static int	C_HP;
+	const static int	C_EP;
+	const static int	C_AD;
+
 	bool	checkStatus(void);
 
 };

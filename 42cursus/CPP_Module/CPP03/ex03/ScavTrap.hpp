@@ -17,7 +17,10 @@ public:
 	void	attack(const std::string& target);
 	void	guardGate(void);
 
-private:
+protected:
+	const static int	S_HP;
+	const static int	S_EP;
+	const static int	S_AD;
 
 };
 

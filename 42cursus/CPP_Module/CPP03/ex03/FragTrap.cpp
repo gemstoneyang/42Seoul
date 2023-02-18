@@ -1,6 +1,12 @@
 #include <iostream>
 #include "FragTrap.hpp"
 
+// Static Variable Initialize
+const int	FragTrap::F_HP = 100;
+const int	FragTrap::F_EP = 100;
+const int	FragTrap::F_AD = 30;
+
+
 // Constructor & Destructor
 FragTrap::FragTrap(void)
 :ClapTrap()

@@ -16,7 +16,10 @@ public:
 
 	void	highFivesGuys(void);
 
-private:
+protected:
+	const static int	F_HP;
+	const static int	F_EP;
+	const static int	F_AD;
 
 };
 

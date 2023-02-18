@@ -15,12 +15,11 @@ DiamondTrap::DiamondTrap(std::string name)
 			  << ": String constructor called" << std::endl;
 
 	this->name = name;
-	this->hp = FragTrap::hp;
-	this->energy = ScavTrap::energy;
-	this->damage = FragTrap::damage;
+	this->hp = FragTrap::F_HP;
+	this->energy = ScavTrap::S_EP;
+	this->damage = FragTrap::F_AD;
 }
 
-// todo : ㄱㅣ보ㄴ 생생성자 값  수수정
 DiamondTrap::DiamondTrap(const DiamondTrap &diamondtrap)
 :ClapTrap(diamondtrap.name + "_clap_name")
 {
