@@ -3,9 +3,9 @@
 
 // Constructor & Destructor
 Dog::Dog(void)
-:type("Dog")
 {
 	std::cout << "Dog: Default constructor called" << std::endl;
+	this->type = "Dog";
 }
 
 Dog::Dog(const Dog& dog) {
@@ -30,11 +30,11 @@ Dog& Dog::operator=(const Dog& dog) {
 
 
 // Member Function
-const std::string&	Dog::getType(void) {
+const std::string&	Dog::getType(void) const {
 	return this->type;
 }
 
-void	Dog::makeSound(void) {
-	std::cout << "Dog: \"Baw-wow!\""  << std::endl;
+void	Dog::makeSound(void) const {
+	std::cout << "Dog: \"Baw-wow!\"\tฅ^•ﻌ•^ฅ"  << std::endl;
 }
 

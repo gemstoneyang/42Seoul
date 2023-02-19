@@ -4,7 +4,10 @@ CXXFLAGS	= -Wall -Werror -Wextra -std=c++98
 
 SRCS		= main.cpp \
 			  Animal.cpp \
-			  Dog.cpp
+			  Dog.cpp \
+			  Cat.cpp \
+			  WrongAnimal.cpp \
+			  WrongCat.cpp
 
 OBJS		= $(SRCS:%.cpp=%.o)
 

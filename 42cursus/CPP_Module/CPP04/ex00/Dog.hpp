@@ -2,7 +2,6 @@
 #ifndef __DOG_HPP__
 #define __DOG_HPP__
 
-#include <string>
 #include "Animal.hpp"
 
 class Dog: public Animal {
@@ -14,8 +13,8 @@ public:
 
 	Dog& operator=(const Dog& dog);
 
-	const std::string&	getType(void);
-	void				makeSound(void);
+	const std::string&	getType(void) const;
+	void				makeSound(void) const;
 
 private:
 
