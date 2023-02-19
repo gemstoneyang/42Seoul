@@ -35,6 +35,5 @@ const std::string&	WrongCat::getType(void) const{
 }
 
 void	WrongCat::makeSound(void) const {
-	std::cout << "WrongCat: \"Meow~\"\t₍˄·͈༝·͈˄₎◞"  << std::endl;
+	std::cout << type << ": \"Wrong Meow~\"\t₍˄·͈༝·͈˄₎◞"  << std::endl;
 }
-

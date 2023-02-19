@@ -35,6 +35,5 @@ const std::string&	Dog::getType(void) const {
 }
 
 void	Dog::makeSound(void) const {
-	std::cout << "Dog: \"Baw-wow!\"\tฅ^•ﻌ•^ฅ"  << std::endl;
+	std::cout << type << ": \"Baw-wow!\"\tฅ^•ﻌ•^ฅ"  << std::endl;
 }
-

@@ -35,6 +35,5 @@ const std::string&	WrongAnimal::getType(void) const {
 }
 
 void	WrongAnimal::makeSound(void) const {
-	std::cout << "WrongAnimal: **WrongAnimal Sound**"  << std::endl;
+	std::cout << type << ": **WrongAnimal Sound**"  << std::endl;
 }
-// todo : ㅇㅣ르ㅁ 출출력력으으로 바바꾸꾸기
