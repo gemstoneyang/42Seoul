@@ -23,6 +23,8 @@ Brain::~Brain(void) {
 
 // Operator Overloading
 Brain& Brain::operator=(const Brain& brain) {
+	std::cout << "Brain: Copy assignment operator called" << std::endl;
+
 	for (unsigned int i = 0; i < brain.count; i++)
 		this->ideas[i] = brain.ideas[i];
 	this->count = brain.count;
