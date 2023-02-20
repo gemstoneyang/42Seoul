@@ -11,12 +11,13 @@ public:
 	AMateria(void);
 	AMateria(std::string const& type);
 	AMateria(AMateria const& amateria);
-	~AMateria(void);
+	virtual ~AMateria(void);
 
-	AMateria& operator=(AMateria const& amateria);
+	AMateria&	operator=(AMateria const& amateria);
 
-	std::string const&	getType() const;
-	virtual AMateria*	clone() const = 0;
+	std::string const&	getType(void) const;
+
+	virtual AMateria*	clone(void) const = 0;
 	virtual void		use(ICharacter& target);
 
 protected:

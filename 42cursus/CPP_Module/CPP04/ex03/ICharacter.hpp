@@ -1,5 +1,7 @@
 class ICharacter {
 
+#include "AMateria.hpp"
+
 public:
 	virtual ~ICharacter() {}
 	virtual std::string const & getName() const = 0;

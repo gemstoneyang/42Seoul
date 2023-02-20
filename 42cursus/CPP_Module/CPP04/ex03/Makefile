@@ -2,7 +2,10 @@ NAME		= ex03
 CXX			= c++
 CXXFLAGS	= -Wall -Werror -Wextra -std=c++98
 
-SRCS		= main.cpp
+SRCS		= main.cpp \
+			  AMateria.cpp \
+			  Ice.cpp \
+			  Cure.cpp
 
 OBJS		= $(SRCS:%.cpp=%.o)
 
