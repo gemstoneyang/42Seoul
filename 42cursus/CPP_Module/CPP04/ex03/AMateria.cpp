@@ -1,6 +1,6 @@
 #include <iostream>
 #include "AMateria.hpp"
-
+#include "ICharacter.hpp"
 
 // Constructor & Destructor
 AMateria::AMateria(void) {}
@@ -20,6 +20,7 @@ AMateria::~AMateria(void)
 // Operator overload
 AMateria& AMateria::operator=(AMateria const& amateria) {
 	this->type = amateria.getType();
+	return *this;
 }
 
 
@@ -30,6 +31,6 @@ std::string const&	AMateria::getType(void) const {
 
 
 // Member Function
-void	use(ICharacter& target) {
+void	AMateria::use(ICharacter& target) {
 	std::cout << "*do nothing to "<< target.getName() << "*" << std::endl;
 }

@@ -1,5 +1,6 @@
+#include <iostream>
 #include "Ice.hpp"
-
+#include "ICharacter.hpp"
 
 // Constructor & Destructor
 Ice::Ice(void)
@@ -20,6 +21,7 @@ Ice::~Ice(void) {}
 // Operator overload
 Ice&	Ice::operator=(Ice const& ice) {
 	this->type = ice.getType();
+	return *this;
 }
 
 

@@ -1,5 +1,6 @@
+#include <iostream>
 #include "Cure.hpp"
-
+#include "ICharacter.hpp"
 
 // Constructor & Destructor
 Cure::Cure(void)
@@ -20,6 +21,7 @@ Cure::~Cure(void) {}
 // Operator overload
 Cure&	Cure::operator=(Cure const& cure) {
 	this->type = cure.getType();
+	return *this;
 }
 
 

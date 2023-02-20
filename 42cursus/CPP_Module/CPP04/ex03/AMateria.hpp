@@ -3,7 +3,8 @@
 #define __AMATERIA_HPP__
 
 #include <string>
-#include "ICharacter.hpp"
+
+class ICharacter;
 
 class AMateria {
 
