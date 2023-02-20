@@ -4,7 +4,7 @@
 
 // Constructor & Destructor
 Cure::Cure(void)
-:AMateria("Cure")
+:AMateria("cure")
 {}
 
 Cure::Cure(std::string const& type)
