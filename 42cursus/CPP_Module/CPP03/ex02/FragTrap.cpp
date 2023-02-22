@@ -23,10 +23,6 @@ FragTrap::FragTrap(const FragTrap& fragtrap)
 :ClapTrap(fragtrap.name)
 {
 	std::cout << "FragTrap: Copy constructor called" << std::endl;
-
-	this->hp = fragtrap.hp;
-	this->energy = fragtrap.energy;
-	this->damage = fragtrap.damage;
 }
 
 FragTrap::~FragTrap() {

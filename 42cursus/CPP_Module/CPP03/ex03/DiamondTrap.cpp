@@ -3,13 +3,17 @@
 
 // Constructor & Destructor
 DiamondTrap::DiamondTrap(void)
-:ClapTrap()
+:ClapTrap(),
+FragTrap(),
+ScavTrap()
 {
 	std::cout << "DiamondTrap " << ": Default constructor called" << std::endl;
 }
 
 DiamondTrap::DiamondTrap(std::string name)
-:ClapTrap(name + "_clap_name")
+:ClapTrap(name + "_clap_name"),
+FragTrap(name + "_clap_name"),
+ScavTrap(name + "_clap_name")
 {
 	std::cout << "DiamondTrap " << name
 			  << ": String constructor called" << std::endl;
@@ -21,13 +25,12 @@ DiamondTrap::DiamondTrap(std::string name)
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &diamondtrap)
-:ClapTrap(diamondtrap.name + "_clap_name")
+:ClapTrap(diamondtrap),
+FragTrap(diamondtrap),
+ScavTrap(diamondtrap)
 {
 	std::cout << "DiamondTrap: Copy constructor called" << std::endl;
-
-	this->hp = diamondtrap.hp;
-	this->energy = diamondtrap.energy;
-	this->damage = diamondtrap.damage;
+	this->name = diamondtrap.name;
 }
 
 DiamondTrap::~DiamondTrap(void) {

@@ -4,6 +4,7 @@
 int	main(void) {
 	DiamondTrap	trap("wonyang");
 	DiamondTrap	trap2("tmp");
+	DiamondTrap	trap3(trap);
 
 	std::cout << "\n------- test1 --------\n" << std::endl;
 
