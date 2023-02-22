@@ -7,7 +7,7 @@ class WrongAnimal {
 public:
 	WrongAnimal(void);
 	WrongAnimal(const WrongAnimal& wrongAnimal);
-	~WrongAnimal(void);
+	virtual ~WrongAnimal(void);
 
 	WrongAnimal& operator=(const WrongAnimal& wrongAnimal);
 

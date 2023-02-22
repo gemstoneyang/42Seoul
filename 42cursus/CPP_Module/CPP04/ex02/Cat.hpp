@@ -16,7 +16,7 @@ public:
 
 	const std::string&	getType(void) const;
 	void				makeSound(void) const;
-	const Brain*		getBrain(void) const;
+	Brain*				getBrain(void) const;
 
 private:
 	Brain*	brain;

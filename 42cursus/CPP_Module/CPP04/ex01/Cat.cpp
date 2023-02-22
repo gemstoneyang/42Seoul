@@ -9,14 +9,12 @@ Cat::Cat(void) {
 	this->brain = new Brain();
 }
 
-Cat::Cat(const Cat& cat) {
+Cat::Cat(const Cat& cat)
+:Animal(cat)
+{
 	std::cout << "Cat: Copy constructor called" << std::endl;
 
-	this->type = cat.type;
-
-	delete brain;
-	Brain*	newBrain(cat.brain);
-	this->brain = newBrain;
+	this->brain = new Brain(*cat.brain);
 }
 
 Cat::~Cat(void) {
@@ -33,15 +31,14 @@ Cat& Cat::operator=(const Cat& cat) {
 	this->type = cat.type;
 
 	delete brain;
-	Brain*	newBrain(cat.brain);
-	this->brain = newBrain;
+	this->brain = new Brain(*cat.brain);
 
 	return *this;
 }
 
 
 // Member Function
-const std::string&	Cat::getType(void) const{
+const std::string&	Cat::getType(void) const {
 	return this->type;
 }
 
@@ -49,6 +46,6 @@ void	Cat::makeSound(void) const {
 	std::cout << type << ": \"Meow~\"\t₍˄·͈༝·͈˄₎◞"  << std::endl;
 }
 
-const Brain*	Cat::getBrain(void) const {
+Brain*	Cat::getBrain(void) const {
 	return this->brain;
 }

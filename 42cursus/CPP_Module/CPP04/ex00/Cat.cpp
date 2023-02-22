@@ -8,10 +8,10 @@ Cat::Cat(void)
 	this->type = "Cat";
 }
 
-Cat::Cat(const Cat& cat) {
+Cat::Cat(const Cat& cat)
+:Animal(cat)
+{
 	std::cout << "Cat: Copy constructor called" << std::endl;
-
-	this->type = cat.type;
 }
 
 Cat::~Cat(void) {
