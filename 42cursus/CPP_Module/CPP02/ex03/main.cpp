@@ -6,7 +6,7 @@ int main( void ) {
 	Point	b = Point(4, 0);
 	Point	c = Point(0, 4);
 
-	Point	p1 = Point(1, 1);
+	Point	p1 = Point(1.125f, 1);
 	Point	p2 = Point(2, 0);
 
 	std::cout << "[ Triangle points ]" << std::endl;

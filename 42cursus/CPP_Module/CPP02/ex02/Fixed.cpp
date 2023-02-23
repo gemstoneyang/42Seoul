@@ -24,8 +24,7 @@ Fixed::Fixed(const float num) {
 	this->raw = roundf(fix);
 }
 
-Fixed::~Fixed(void) {
-}
+Fixed::~Fixed(void) {}
 
 
 // Operator overload
