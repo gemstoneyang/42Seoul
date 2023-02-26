@@ -26,6 +26,12 @@ int main( void ) {
 		std::cout << " is inside point" << std::endl;
 	else
 		std::cout << " is outside point" << std::endl;
+	
+	std::cout << "-------------" << std::endl;
+	Fixed	fix(1.1f);
+
+	std::cout << (fix < 1.2f) << std::endl;
+	std::cout << (1.2f < fix) << std::endl;
 
 	return 0;
 }

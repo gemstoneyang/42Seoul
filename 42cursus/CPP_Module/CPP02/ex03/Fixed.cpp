@@ -32,28 +32,29 @@ Fixed&	Fixed::operator=(const Fixed& fixed) {
 	return *this;
 }
 
-bool	Fixed::operator>(const Fixed& fixed) {
-	return this->raw > fixed.getRawBits();
+
+bool	operator>(const Fixed& lfix, const Fixed& rfix) {
+	return lfix.getRawBits() > rfix.getRawBits();
 }
 
-bool	Fixed::operator<(const Fixed& fixed) {
-	return this->raw < fixed.getRawBits();
+bool	operator<(const Fixed& lfix, const Fixed& rfix) {
+	return lfix.getRawBits() < rfix.getRawBits();
 }
 
-bool	Fixed::operator>=(const Fixed& fixed) {
-	return this->raw >= fixed.getRawBits();
+bool	operator>=(const Fixed& lfix, const Fixed& rfix) {
+	return lfix.getRawBits() >= rfix.getRawBits();
 }
 
-bool	Fixed::operator<=(const Fixed& fixed) {
-	return this->raw <= fixed.getRawBits();
+bool	operator<=(const Fixed& lfix, const Fixed& rfix) {
+	return lfix.getRawBits() <= rfix.getRawBits();
 }
 
-bool	Fixed::operator==(const Fixed& fixed) {
-	return this->raw == fixed.getRawBits();
+bool	operator==(const Fixed& lfix, const Fixed& rfix) {
+	return lfix.getRawBits() == rfix.getRawBits();
 }
 
-bool	Fixed::operator!=(const Fixed& fixed) {
-	return this->raw != fixed.getRawBits();
+bool	operator!=(const Fixed& lfix, const Fixed& rfix) {
+	return lfix.getRawBits() != rfix.getRawBits();
 }
 
 

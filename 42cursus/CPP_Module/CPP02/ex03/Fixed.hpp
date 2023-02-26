@@ -14,12 +14,6 @@ public:
 	~Fixed(void);
 
 	Fixed&	operator=(const Fixed& fixed);
-	bool	operator>(const Fixed& fixed);
-	bool	operator<(const Fixed& fixed);
-	bool	operator>=(const Fixed& fixed);
-	bool	operator<=(const Fixed& fixed);
-	bool	operator==(const Fixed& fixed);
-	bool	operator!=(const Fixed& fixed);
 
 	Fixed&	operator++(void);
 	Fixed	operator++(int);
@@ -32,15 +26,22 @@ public:
 	int		toInt(void) const;
 
 	static Fixed&		min(Fixed& a, Fixed& b);
-	const static Fixed&	min(const Fixed& a, const Fixed& b);
+	static const Fixed&	min(const Fixed& a, const Fixed& b);
 	static Fixed&		max(Fixed& a, Fixed& b);
-	const static Fixed&	max(const Fixed& a, const Fixed& b);
+	static const Fixed&	max(const Fixed& a, const Fixed& b);
 
 private:
 	int					raw;
 	static const int	bit;
 
 };
+
+bool	operator>(const Fixed& lfix, const Fixed& rfix);
+bool	operator<(const Fixed& lfix, const Fixed& rfix);
+bool	operator>=(const Fixed& lfix, const Fixed& rfix);
+bool	operator<=(const Fixed& lfix, const Fixed& rfix);
+bool	operator==(const Fixed& lfix, const Fixed& rfix);
+bool	operator!=(const Fixed& lfix, const Fixed& rfix);
 
 Fixed	operator+(const Fixed& a, const Fixed& b);
 Fixed	operator-(const Fixed& a, const Fixed& b);
