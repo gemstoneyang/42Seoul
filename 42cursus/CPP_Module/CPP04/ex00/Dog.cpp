@@ -30,10 +30,6 @@ Dog& Dog::operator=(const Dog& dog) {
 
 
 // Member Function
-const std::string&	Dog::getType(void) const {
-	return this->type;
-}
-
 void	Dog::makeSound(void) const {
 	std::cout << type << ": \"Baw-wow!\"\tฅ^•ﻌ•^ฅ"  << std::endl;
 }

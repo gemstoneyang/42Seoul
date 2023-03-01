@@ -14,9 +14,8 @@ public:
 
 	Cat& operator=(const Cat& cat);
 
-	const std::string&	getType(void) const;
-	void				makeSound(void) const;
-	Brain*				getBrain(void) const;
+	void	makeSound(void) const;
+	Brain*	getBrain(void) const;
 
 private:
 	Brain*	brain;

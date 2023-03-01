@@ -13,8 +13,7 @@ public:
 
 	WrongCat& operator=(const WrongCat& wrongCat);
 
-	const std::string&	getType(void) const;
-	void				makeSound(void) const;
+	void	makeSound(void) const;
 
 private:
 

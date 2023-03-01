@@ -13,8 +13,8 @@ public:
 
 	Animal& operator=(const Animal& animal);
 
-	virtual const std::string&	getType(void) const;
-	virtual void				makeSound(void) const = 0;
+	const std::string&	getType(void) const;
+	virtual void		makeSound(void) const = 0;
 
 protected:
 	std::string	type;

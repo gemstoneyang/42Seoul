@@ -30,10 +30,6 @@ WrongCat& WrongCat::operator=(const WrongCat& wrongCat) {
 
 
 // Member Function
-const std::string&	WrongCat::getType(void) const{
-	return this->type;
-}
-
 void	WrongCat::makeSound(void) const {
 	std::cout << type << ": \"Wrong Meow~\"\t₍˄·͈༝·͈˄₎◞"  << std::endl;
 }

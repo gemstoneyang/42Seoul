@@ -38,10 +38,6 @@ Cat& Cat::operator=(const Cat& cat) {
 
 
 // Member Function
-const std::string&	Cat::getType(void) const {
-	return this->type;
-}
-
 void	Cat::makeSound(void) const {
 	std::cout << type << ": \"Meow~\"\t₍˄·͈༝·͈˄₎◞"  << std::endl;
 }
