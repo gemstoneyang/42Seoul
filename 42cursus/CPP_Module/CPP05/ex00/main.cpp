@@ -1,6 +1,6 @@
 #include <iostream>
 #include <exception>
-#include <Bureaucrat.hpp>
+#include "Bureaucrat.hpp"
 
 int	main(void) {
 	{
@@ -79,7 +79,7 @@ int	main(void) {
 
 		std::cout << humanB << std::endl;
 		std::cout << humanC << std::endl;
-	}	
+	}
 
 	return 0;
 }

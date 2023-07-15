@@ -6,6 +6,8 @@
 #include <exception>
 #include <iostream>
 
+class AForm;
+
 class Bureaucrat {
 
 public:
@@ -19,6 +21,8 @@ public:
 
 	void	incrementGrade(void);
 	void	decrementGrade(void);
+	void	signForm(AForm& form);
+	void	executeForm(AForm const& form) const;
 
 private:
 	std::string	const	name;

@@ -1,17 +1,18 @@
 #include <iostream>
 #include <exception>
-#include <Bureaucrat.hpp>
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main(void) {
 	{
 		// Constructor & Outstream Overloading Test
 		std::cout << "------- [ Example 1 ] -------" << std::endl;
 
-		Bureaucrat	humanA;
-		Bureaucrat	humanB("wonyang", 77);
+		Form	formA;
+		Form	formB("paper", 10, 30);
 
-		std::cout << humanA << std::endl;
-		std::cout << humanB << std::endl;
+		std::cout << formA << std::endl;
+		std::cout << formB << std::endl;
 	}
 
 	{
@@ -19,18 +20,36 @@ int	main(void) {
 		std::cout << "------- [ Example 2 ] -------" << std::endl;
 
 		try {
-			Bureaucrat	humanA("wonyang", 151);
+			Form	formA("formA", 151, 10);
 
-			std::cout << "wonyang is 151 grade. wow!" << std::endl;
+			std::cout << "formA is 151 grade. wow!" << std::endl;
 		}
 		catch (std::exception& e) {
 			std::cout << e.what() << std::endl;
 		}
 
 		try {
-			Bureaucrat	humanB("wonyang", 0);
+			Form	formB("formB", 10, 151);
 
-			std::cout << "wonyang is 0 grade. wow!" << std::endl;
+			std::cout << "formB is 151 grade. wow!" << std::endl;
+		}
+		catch (std::exception& e) {
+			std::cout << e.what() << std::endl;
+		}
+
+		try {
+			Form	formC("formC", 0, 10);
+
+			std::cout << "formC is 0 grade. wow!" << std::endl;
+		}
+		catch (std::exception& e) {
+			std::cout << e.what() << std::endl;
+		}
+
+		try {
+			Form	formD("formD", 10, 0);
+
+			std::cout << "formD is 0 grade. wow!" << std::endl;
 		}
 		catch (std::exception& e) {
 			std::cout << e.what() << std::endl;
@@ -38,48 +57,36 @@ int	main(void) {
 	}
 
 	{
-		// Grade Exception Test
+		// Member Function Test
 		std::cout << "------- [ Example 3 ] -------" << std::endl;
 
-		try {
-			Bureaucrat	humanA("wonyang", 7);
+		Form	formA("formA", 5, 9);
+		Bureaucrat	humanA("high man", 5);
+		Bureaucrat	humanB("low man", 9);
 
-			for (int i = 0; i < 10; i++) {
-				humanA.incrementGrade();
-				std::cout << humanA << std::endl;
-			}
-		}
-		catch (std::exception& e) {
-			std::cout << e.what() << std::endl;
-		}
+		std::cout << formA << std::endl;
 
-		try {
-			Bureaucrat	humanB("wonyang", 148);
+		humanA.signForm(formA);
+		std::cout << formA << std::endl;
 
-			for (int i = 0; i < 10; i++) {
-				humanB.decrementGrade();
-				std::cout << humanB << std::endl;
-			}
-		}
-		catch (std::exception& e) {
-			std::cout << e.what() << std::endl;
-		}
+		humanB.signForm(formA);
+		std::cout << formA << std::endl;
 	}
 
 	{
 		// OCCF Test
 		std::cout << "------- [ Example 4 ] -------" << std::endl;
 
-		Bureaucrat	humanA;
-		Bureaucrat	humanB("wonyang", 11);
+		Form	formA;
+		Form	formB("formB", 1, 2);
 
-		// humanA = humanB;
+		// formA = formB;
 
-		Bureaucrat	humanC(humanB);
+		Form	formC(formB);
 
-		std::cout << humanB << std::endl;
-		std::cout << humanC << std::endl;
-	}	
+		std::cout << formB << std::endl;
+		std::cout << formC << std::endl;
+	}
 
 	return 0;
 }

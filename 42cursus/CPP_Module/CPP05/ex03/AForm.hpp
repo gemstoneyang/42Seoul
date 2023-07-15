@@ -1,6 +1,6 @@
 #pragma once
-#ifndef __FORM_HPP__
-#define __FORM_HPP__
+#ifndef __AFORM_HPP__
+#define __AFORM_HPP__
 
 #include <string>
 #include <exception>
@@ -8,21 +8,22 @@
 
 class Bureaucrat;
 
-class Form {
+class AForm {
 
 public:
-	Form(void);
-	Form(Form const& form);
-	Form(std::string const& name, int const signGrade, int const executeGrade);
-	~Form(void);
-
+	AForm(void);
+	AForm(AForm const& form);
+	AForm(std::string const& name, int const signGrade, int const executeGrade);
+	virtual ~AForm(void);
 
 	std::string const&	getName(void) const;
 	bool const&			getIsSigned(void) const;
 	int const&			getSignGrade(void) const;
 	int const&			getExecuteGrade(void) const;
 
-	void	beSigned(Bureaucrat const& b);
+	void			beSigned(Bureaucrat const& b);
+	void			checkExecutable(Bureaucrat const& b) const;
+	virtual void	execute(Bureaucrat const& executor) const = 0;
 
 private:
 	std::string const	name;
@@ -40,9 +41,14 @@ private:
 			char const* what() const throw();
 	};
 
-	Form&	operator=(Form const& form);
+	class NoSignExecuteException: public std::exception {
+		private:
+			char const* what() const throw();
+	};
+
+	AForm&	operator=(AForm const& form);
 };
 
-std::ostream&	operator<<(std::ostream& os, Form const& f);
+std::ostream&	operator<<(std::ostream& os, AForm const& f);
 
 #endif

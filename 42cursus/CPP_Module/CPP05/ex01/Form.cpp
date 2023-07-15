@@ -8,7 +8,11 @@ isSigned(false),
 signGrade(42),
 executeGrade(42) {}
 
-// Form::Form(Form const& form) {}
+Form::Form(Form const& form)
+:name(form.getName()),
+isSigned(form.getIsSigned()),
+signGrade(form.getSignGrade()), 
+executeGrade(form.getExecuteGrade()) {}
 
 Form::Form(std::string const& name, int const signGrade, int const executeGrade)
 :name(name),
