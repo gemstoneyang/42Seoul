@@ -2,6 +2,7 @@
 
 #include <cstdlib>
 #include <cstring>
+#include <iostream>
 
 inline bool ScalarConverter::hasDot(char *str) {
   return (std::strchr(str, '.') != NULL);
@@ -32,4 +33,27 @@ ScalarConverter::Type ScalarConverter::getType(char *str) {
     return FLOAT;
   else
     return INVALID;
+}
+
+void ScalarConverter::print(char c, int i, float f, double d) {
+  std::cout << "char: '" << c << "'" << std::endl;
+  std::cout << "int: " << i << std::endl;
+  std::cout << "float: " << f << std::endl;
+  std::cout << "double: " << d << std::endl;
+}
+
+void ScalarConverter::charCasting(char *str) {
+  char c = str[0];
+
+  int i = static_cast<int>(c);
+  float f = static_cast<float>(c);
+  double d = static_cast<double>(c);
+
+  ScalarConverter::print(c, i, f, d);
+}
+
+void ScalarConverter::casting(char *str) {
+  ScalarConverter::Type type = ScalarConverter::getType(str);
+
+  if (type == CHAR) ScalarConverter::charCasting(str);
 }

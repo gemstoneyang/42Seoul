@@ -6,7 +6,7 @@
 int main(int argc, char **argv) {
   if (argc != 2) return 0;
 
-  std::cout << ScalarConverter::getType(argv[1]) << std::endl;
+  ScalarConverter::casting(argv[1]);
 
   return 0;
 }
