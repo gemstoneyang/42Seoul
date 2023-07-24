@@ -8,6 +8,13 @@ class ScalarConverter {
   static void casting(char* str);
 
  private:
+  static double num;
+  static char c;
+  static int i;
+  static float f;
+  static double d;
+  static char* str;
+
   ScalarConverter(void);
   ScalarConverter(ScalarConverter const& scalarconverter);
   ~ScalarConverter(void);
@@ -17,8 +24,12 @@ class ScalarConverter {
   static inline bool hasDot(char* str);
   static bool isPseudo(char* str);
   static Type getType(char* str);
-  static void print(char c, int i, float f, double d);
+
   static void charCasting(char* str);
+  static void intCasting(double n);
+  static void floatCasting(char* str, double n);
+  static void doubleCasting(char* str, double n);
+  static void print(int p);
 };
 
 #endif
