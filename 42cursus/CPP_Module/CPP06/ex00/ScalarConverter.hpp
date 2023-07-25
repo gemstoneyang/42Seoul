@@ -13,23 +13,25 @@ class ScalarConverter {
   static int i;
   static float f;
   static double d;
-  static char* str;
+  static bool overflow[4];
+
+  static inline bool hasDot(char* str);
+  static bool isPseudo(char* str);
+  static Type getType(char* str);
+  static int countPrecision(char* str);
+  static void checkOverflow(char* str, double n);
+
+  static void print(char* str, int p);
+  static void charCasting(char* str);
+  static void intCasting(char* str, double n);
+  static void floatCasting(char* str, double n);
+  static void doubleCasting(char* str, double n);
 
   ScalarConverter(void);
   ScalarConverter(ScalarConverter const& scalarconverter);
   ~ScalarConverter(void);
 
   ScalarConverter& operator=(ScalarConverter const& scalarconverter);
-
-  static inline bool hasDot(char* str);
-  static bool isPseudo(char* str);
-  static Type getType(char* str);
-
-  static void charCasting(char* str);
-  static void intCasting(double n);
-  static void floatCasting(char* str, double n);
-  static void doubleCasting(char* str, double n);
-  static void print(int p);
 };
 
 #endif

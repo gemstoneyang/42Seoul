@@ -5,13 +5,14 @@
 #include <cstring>
 #include <iomanip>
 #include <iostream>
+#include <limits>
 
 double ScalarConverter::num = 0;
 char ScalarConverter::c = 0;
 int ScalarConverter::i = 0;
 float ScalarConverter::f = 0;
 double ScalarConverter::d = 0;
-char *ScalarConverter::str = 0;
+bool ScalarConverter::overflow[4] = {false};
 
 inline bool ScalarConverter::hasDot(char *str) {
   return (std::strchr(str, '.') != NULL);
@@ -46,26 +47,56 @@ ScalarConverter::Type ScalarConverter::getType(char *str) {
   return INVALID;
 }
 
+int ScalarConverter::countPrecision(char *str) {
+  if (std::strchr(str, 'f') == NULL)
+    return std::strchr(str, '\0') - std::strchr(str, '.') - 1;
+  return std::strchr(str, 'f') - std::strchr(str, '.') - 1;
+}
+
+void ScalarConverter::checkOverflow(char *str, double n) {
+  if (static_cast<double>(std::numeric_limits<char>::min()) > n or
+      static_cast<double>(std::numeric_limits<char>::max()) < n)
+    ScalarConverter::overflow[CHAR] = true;
+  if (static_cast<double>(std::numeric_limits<int>::min()) > n or
+      static_cast<double>(std::numeric_limits<int>::max()) < n)
+    ScalarConverter::overflow[INT] = true;
+  if (not ScalarConverter::isPseudo(str) and
+      (static_cast<double>(std::numeric_limits<float>::lowest()) > n or
+       static_cast<double>(std::numeric_limits<float>::max()) < n))
+    ScalarConverter::overflow[FLOAT] = true;
+}
+
 void ScalarConverter::print(char *str, int p) {
-  if (ScalarConverter::isPseudo(str))
+  // char
+  if (overflow[CHAR] == true or ScalarConverter::isPseudo(str))
     std::cout << "char: impossible" << std::endl;
   else if (ScalarConverter::i < 32 or ScalarConverter::i > 126)
     std::cout << "char: Non displayable" << std::endl;
   else {
     std::cout << "char: '" << ScalarConverter::c << "'" << std::endl;
   }
-  if (ScalarConverter::isPseudo(str))
+
+  // int
+  if (overflow[INT] == true or ScalarConverter::isPseudo(str))
     std::cout << "int: impossible" << std::endl;
   else
     std::cout << "int: " << ScalarConverter::i << std::endl;
-  std::cout << "float: " << std::fixed << std::setprecision(p)
-            << ScalarConverter::f << "f" << std::endl;
+
+  // float
+  if (overflow[FLOAT] == true)
+    std::cout << "float: impossible" << std::endl;
+  else
+    std::cout << "float: " << std::fixed << std::setprecision(p)
+              << ScalarConverter::f << "f" << std::endl;
+
+  // double
   std::cout << "double: " << std::fixed << std::setprecision(p)
             << ScalarConverter::d << std::endl;
 }
 
 void ScalarConverter::charCasting(char *str) {
   char c = str[0];
+
   ScalarConverter::c = c;
   ScalarConverter::i = static_cast<int>(c);
   ScalarConverter::f = static_cast<float>(c);
@@ -74,8 +105,15 @@ void ScalarConverter::charCasting(char *str) {
   ScalarConverter::print(str, 1);
 }
 
-void ScalarConverter::intCasting(double n) {
+void ScalarConverter::intCasting(char *str, double n) {
+  if ((static_cast<double>(std::numeric_limits<int>::min()) > n or
+       static_cast<double>(std::numeric_limits<int>::max()) < n)) {
+    std::cout << "invalid" << std::endl;
+    return;
+  }
+
   int i = static_cast<int>(n);
+
   ScalarConverter::c = static_cast<char>(i);
   ScalarConverter::i = i;
   ScalarConverter::f = static_cast<float>(i);
@@ -85,55 +123,42 @@ void ScalarConverter::intCasting(double n) {
 }
 
 void ScalarConverter::floatCasting(char *str, double n) {
-  float f = static_cast<float>(n);
-
-  char c = static_cast<char>(f);
-  if (ScalarConverter::isPseudo(str))
-    std::cout << "char: impossible" << std::endl;
-  else if (std::isprint(c))
-    std::cout << "char: '" << c << "'" << std::endl;
-  else {
-    std::cout << "char: Non displayable" << std::endl;
+  if (not ScalarConverter::isPseudo(str) and
+      (static_cast<double>(std::numeric_limits<float>::lowest()) > n or
+       static_cast<double>(std::numeric_limits<float>::max()) < n)) {
+    std::cout << "invalid" << std::endl;
+    return;
   }
 
-  int i = static_cast<int>(f);
-  if (ScalarConverter::isPseudo(str))
-    std::cout << "int: impossible" << std::endl;
-  else
-    std::cout << "int: " << i << std::endl;
-  std::cout << "float: " << std::fixed << f << "f" << std::endl;
-  std::cout << "double: " << std::fixed << static_cast<double>(f) << std::endl;
+  float f = static_cast<float>(n);
+
+  ScalarConverter::c = static_cast<char>(f);
+  ScalarConverter::i = static_cast<int>(f);
+  ScalarConverter::f = f;
+  ScalarConverter::d = static_cast<double>(f);
+
+  ScalarConverter::print(str, ScalarConverter::countPrecision(str));
 }
 
 void ScalarConverter::doubleCasting(char *str, double n) {
   double d = n;
 
-  char c = static_cast<char>(d);
-  if (ScalarConverter::isPseudo(str))
-    std::cout << "char: impossible" << std::endl;
-  else if (std::isprint(c))
-    std::cout << "char: '" << c << "'" << std::endl;
-  else {
-    std::cout << "char: Non displayable" << std::endl;
-  }
+  ScalarConverter::c = static_cast<char>(d);
+  ScalarConverter::i = static_cast<int>(d);
+  ScalarConverter::f = static_cast<float>(d);
+  ScalarConverter::d = d;
 
-  int i = static_cast<int>(d);
-  if (ScalarConverter::isPseudo(str))
-    std::cout << "int: impossible" << std::endl;
-  else
-    std::cout << "int: " << i << std::endl;
-  std::cout << "float: " << std::fixed << static_cast<float>(d) << "f"
-            << std::endl;
-  std::cout << "double: " << std::fixed << d << std::endl;
+  ScalarConverter::print(str, ScalarConverter::countPrecision(str));
 }
 
 void ScalarConverter::casting(char *str) {
   ScalarConverter::Type type = ScalarConverter::getType(str);
+  ScalarConverter::checkOverflow(str, ScalarConverter::num);
 
   if (type == CHAR)
     ScalarConverter::charCasting(str);
   else if (type == INT)
-    ScalarConverter::intCasting(ScalarConverter::num);
+    ScalarConverter::intCasting(str, ScalarConverter::num);
   else if (type == FLOAT)
     ScalarConverter::floatCasting(str, ScalarConverter::num);
   else if (type == DOUBLE)
