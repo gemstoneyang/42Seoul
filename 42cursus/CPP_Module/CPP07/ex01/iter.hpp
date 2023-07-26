@@ -1,3 +1,6 @@
+#ifndef __ITER_HPP__
+#define __ITER_HPP__
+
 #include <cstddef>
 
 template <typename T>
@@ -6,3 +9,5 @@ void iter(T* arr, size_t len, void (*func)(T&)) {
     (*func)(arr[i]);
   }
 }
+
+#endif
