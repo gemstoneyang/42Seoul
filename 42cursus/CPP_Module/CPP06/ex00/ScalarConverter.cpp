@@ -53,20 +53,22 @@ int ScalarConverter::countPrecision(char *str) {
   return std::strchr(str, 'f') - std::strchr(str, '.') - 1;
 }
 
-void ScalarConverter::checkOverflow(char *str, double n) {
-  if (static_cast<double>(std::numeric_limits<char>::min()) > n or
-      static_cast<double>(std::numeric_limits<char>::max()) < n)
+void ScalarConverter::checkOverflow(char *str) {
+  if (std::numeric_limits<char>::min() > ScalarConverter::d or
+      std::numeric_limits<char>::max() < ScalarConverter::d)
     ScalarConverter::overflow[CHAR] = true;
-  if (static_cast<double>(std::numeric_limits<int>::min()) > n or
-      static_cast<double>(std::numeric_limits<int>::max()) < n)
+  if (std::numeric_limits<int>::min() > ScalarConverter::d or
+      std::numeric_limits<int>::max() < ScalarConverter::d)
     ScalarConverter::overflow[INT] = true;
   if (not ScalarConverter::isPseudo(str) and
-      (static_cast<double>(std::numeric_limits<float>::lowest()) > n or
-       static_cast<double>(std::numeric_limits<float>::max()) < n))
+      (std::numeric_limits<float>::lowest() > ScalarConverter::d or
+       std::numeric_limits<float>::max() < ScalarConverter::d))
     ScalarConverter::overflow[FLOAT] = true;
 }
 
 void ScalarConverter::print(char *str, int p) {
+  ScalarConverter::checkOverflow(str);
+
   // char
   if (overflow[CHAR] == true or ScalarConverter::isPseudo(str))
     std::cout << "char: impossible" << std::endl;
@@ -113,6 +115,7 @@ void ScalarConverter::intCasting(char *str, double n) {
   }
 
   int i = static_cast<int>(n);
+  ScalarConverter::checkOverflow(str, i);
 
   ScalarConverter::c = static_cast<char>(i);
   ScalarConverter::i = i;
@@ -153,7 +156,6 @@ void ScalarConverter::doubleCasting(char *str, double n) {
 
 void ScalarConverter::casting(char *str) {
   ScalarConverter::Type type = ScalarConverter::getType(str);
-  ScalarConverter::checkOverflow(str, ScalarConverter::num);
 
   if (type == CHAR)
     ScalarConverter::charCasting(str);

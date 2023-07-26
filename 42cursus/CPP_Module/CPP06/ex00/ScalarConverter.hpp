@@ -19,7 +19,7 @@ class ScalarConverter {
   static bool isPseudo(char* str);
   static Type getType(char* str);
   static int countPrecision(char* str);
-  static void checkOverflow(char* str, double n);
+  static void checkOverflow(char* str);
 
   static void print(char* str, int p);
   static void charCasting(char* str);
