@@ -115,7 +115,6 @@ void ScalarConverter::intCasting(char *str, double n) {
   }
 
   int i = static_cast<int>(n);
-  ScalarConverter::checkOverflow(str, i);
 
   ScalarConverter::c = static_cast<char>(i);
   ScalarConverter::i = i;
