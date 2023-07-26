@@ -13,13 +13,13 @@ class ScalarConverter {
   static int i;
   static float f;
   static double d;
-  static bool overflow[4];
+  static bool overflow[2];
 
   static inline bool hasDot(char* str);
   static bool isPseudo(char* str);
   static Type getType(char* str);
   static int countPrecision(char* str);
-  static void checkOverflow(char* str);
+  static void checkOverflow(void);
 
   static void print(char* str, int p);
   static void charCasting(char* str);

@@ -12,7 +12,7 @@ char ScalarConverter::c = 0;
 int ScalarConverter::i = 0;
 float ScalarConverter::f = 0;
 double ScalarConverter::d = 0;
-bool ScalarConverter::overflow[4] = {false};
+bool ScalarConverter::overflow[2] = {false};
 
 inline bool ScalarConverter::hasDot(char *str) {
   return (std::strchr(str, '.') != NULL);
@@ -53,21 +53,17 @@ int ScalarConverter::countPrecision(char *str) {
   return std::strchr(str, 'f') - std::strchr(str, '.') - 1;
 }
 
-void ScalarConverter::checkOverflow(char *str) {
+void ScalarConverter::checkOverflow(void) {
   if (std::numeric_limits<char>::min() > ScalarConverter::d or
       std::numeric_limits<char>::max() < ScalarConverter::d)
     ScalarConverter::overflow[CHAR] = true;
   if (std::numeric_limits<int>::min() > ScalarConverter::d or
       std::numeric_limits<int>::max() < ScalarConverter::d)
     ScalarConverter::overflow[INT] = true;
-  if (not ScalarConverter::isPseudo(str) and
-      (std::numeric_limits<float>::lowest() > ScalarConverter::d or
-       std::numeric_limits<float>::max() < ScalarConverter::d))
-    ScalarConverter::overflow[FLOAT] = true;
 }
 
 void ScalarConverter::print(char *str, int p) {
-  ScalarConverter::checkOverflow(str);
+  ScalarConverter::checkOverflow();
 
   // char
   if (overflow[CHAR] == true or ScalarConverter::isPseudo(str))
@@ -85,11 +81,8 @@ void ScalarConverter::print(char *str, int p) {
     std::cout << "int: " << ScalarConverter::i << std::endl;
 
   // float
-  if (overflow[FLOAT] == true)
-    std::cout << "float: impossible" << std::endl;
-  else
-    std::cout << "float: " << std::fixed << std::setprecision(p)
-              << ScalarConverter::f << "f" << std::endl;
+  std::cout << "float: " << std::fixed << std::setprecision(p)
+            << ScalarConverter::f << "f" << std::endl;
 
   // double
   std::cout << "double: " << std::fixed << std::setprecision(p)
@@ -125,13 +118,6 @@ void ScalarConverter::intCasting(char *str, double n) {
 }
 
 void ScalarConverter::floatCasting(char *str, double n) {
-  if (not ScalarConverter::isPseudo(str) and
-      (static_cast<double>(std::numeric_limits<float>::lowest()) > n or
-       static_cast<double>(std::numeric_limits<float>::max()) < n)) {
-    std::cout << "invalid" << std::endl;
-    return;
-  }
-
   float f = static_cast<float>(n);
 
   ScalarConverter::c = static_cast<char>(f);
