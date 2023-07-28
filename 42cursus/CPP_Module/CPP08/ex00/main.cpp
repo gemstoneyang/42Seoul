@@ -11,10 +11,10 @@ int main(void) {
     vec[i] = i * 10;
   }
 
-  std::cout << ::easyfind(vec, 20) << std::endl;
+  std::cout << *(::easyfind(vec, 20)) << std::endl;
 
   try {
-    std::cout << ::easyfind(vec, 42) << std::endl;
+    std::cout << *(::easyfind(vec, 42)) << std::endl;
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
   }
