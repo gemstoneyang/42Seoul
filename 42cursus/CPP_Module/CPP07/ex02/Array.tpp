@@ -7,7 +7,9 @@ template <typename T>
 Array<T>::Array(unsigned int n) : arr(new T[n]()), n(n) {}
 
 template <typename T>
-Array<T>::Array(Array const& array) : arr(new T[array.n]()), n(array.n) {}
+Array<T>::Array(Array const& array) : arr(new T[array.n]()), n(array.n) {
+  for (unsigned int i = 0; i < this->n; i++) this->arr[i] = array.arr[i];
+}
 
 template <typename T>
 Array<T>::~Array(void) {
@@ -18,8 +20,11 @@ template <typename T>
 Array<T>& Array<T>::operator=(Array const& array) {
   if (this == &array) return *this;
 
+  if (this->arr != NULL) delete this->arr;
+
   this->arr = new T[array.n]();
   this->n = array.n;
+  for (unsigned int i = 0; i < this->n; i++) this->arr[i] = array.arr[i];
   return *this;
 }
 
