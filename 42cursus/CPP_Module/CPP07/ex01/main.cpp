@@ -22,7 +22,13 @@ int main(void) {
   }
   std::cout << std::endl;
 
+  std::cout << "------------------" << std::endl;
+
   iter(arr, 10, print);
+
+  std::cout << "------------------" << std::endl;
+
+  iter(arr, 10, tprint);
 
   return 0;
 }

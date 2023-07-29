@@ -17,4 +17,9 @@ void iter(T* arr, size_t len, void (*func)(T const&)) {
   }
 }
 
+template <typename T>
+void tprint(T const& a) {
+  std::cout << a << std::endl;
+}
+
 #endif
