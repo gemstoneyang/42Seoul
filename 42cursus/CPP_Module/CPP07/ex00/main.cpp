@@ -20,7 +20,7 @@ int main(void) {
   std::cout << "min( c, d ) = " << ::min(c, d) << std::endl;
   std::cout << "max( c, d ) = " << ::max(c, d) << std::endl;
 
-  ::min(1.5, 2.4);
+  std::cout << "min( 1.5, 2.4 ) = " << ::min(1.5, 2.4) << std::endl;
 
   return 0;
 }
