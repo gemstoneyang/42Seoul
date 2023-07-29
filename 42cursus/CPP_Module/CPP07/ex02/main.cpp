@@ -20,7 +20,7 @@ int main(void) {
     arr[42] = 42;
     std::cout << "Wow.." << std::endl;
   } catch (std::exception &e) {
-    std::cout << e.what() << std::endl;
+    std::cout << "exception!" << std::endl;
   }
 
   return 0;

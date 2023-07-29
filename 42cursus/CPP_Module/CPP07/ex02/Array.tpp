@@ -30,7 +30,7 @@ Array<T>& Array<T>::operator=(Array const& array) {
 
 template <typename T>
 T& Array<T>::operator[](unsigned int idx) {
-  if (idx < 0 or idx >= n) throw std::out_of_range("Index out of range");
+  if (idx < 0 or idx >= n) throw std::exception();
   return this->arr[idx];
 }
 
