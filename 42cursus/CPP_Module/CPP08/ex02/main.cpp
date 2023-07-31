@@ -11,7 +11,7 @@ int main() {
     mstack.push(5);
     mstack.push(17);
 
-    std::cout << mstack.top() << std::endl;
+    std::cout << "mstack.top(): "<< mstack.top() << std::endl;
 
     mstack.pop();
 
@@ -33,6 +33,7 @@ int main() {
 
     std::stack<int> s(mstack);
   }
+  std::cout << std::endl;
 
   std::cout << "----------< std::list test >----------" << std::endl;
   {
@@ -61,6 +62,36 @@ int main() {
       ++it;
     }
   }
+  std::cout << std::endl;
+
+  std::cout << "----------< rbegin & rend test >----------" << std::endl;
+  {
+    MutantStack<int> mstack;
+
+    mstack.push(5);
+    mstack.push(17);
+
+    std::cout << "mstack.top(): "<< mstack.top() << std::endl;
+
+    mstack.pop();
+
+    std::cout << mstack.size() << std::endl;
+
+    mstack.push(3);
+    mstack.push(5);
+    mstack.push(737);
+    mstack.push(0);
+
+    MutantStack<int>::reverse_iterator rit = mstack.rbegin();
+    MutantStack<int>::reverse_iterator rite = mstack.rend();
+    ++rit;
+    --rit;
+    while (rit != rite) {
+      std::cout << *rit << std::endl;
+      ++rit;
+    }
+  }
+  std::cout << std::endl;
 
   return 0;
 }
