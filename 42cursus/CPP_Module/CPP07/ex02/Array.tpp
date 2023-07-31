@@ -20,7 +20,7 @@ template <typename T>
 Array<T>& Array<T>::operator=(Array const& array) {
   if (this == &array) return *this;
 
-  if (this->arr != NULL) delete this->arr;
+  if (this->arr != NULL) delete[] this->arr;
 
   this->arr = new T[array.n]();
   this->n = array.n;
