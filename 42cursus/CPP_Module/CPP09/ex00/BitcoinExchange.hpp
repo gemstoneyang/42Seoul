@@ -3,16 +3,21 @@
 #define __BITCOINEXCHANGE_HPP__
 
 #include <map>
+#include <string>
 
 class BitcoinExchange {
  public:
+  static void readDatabase(void);
+
+ private:
+  static std::map<std::string, double> _database;
+
+  static bool isValidDate(const std::string& date);
+
   BitcoinExchange(void);
   BitcoinExchange(BitcoinExchange const& rhs);
   ~BitcoinExchange(void);
-
   BitcoinExchange& operator=(BitcoinExchange const& rhs);
-
- private:
 };
 
 #endif
