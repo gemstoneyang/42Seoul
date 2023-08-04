@@ -8,7 +8,12 @@ int main(int argc, char **argv) {
     return 0;
   }
 
-  (void)argv;
+  try {
+    std::cout << RPN::calculate(argv[1]) << std::endl;
+  } catch (std::exception &e) {
+    (void)e;
+    RPN::printError();
+  }
 
   return 0;
 }
