@@ -7,12 +7,24 @@
 
 class BitcoinExchange {
  public:
-  static void readDatabase(void);
+  static void execute(char* argv);
 
  private:
   static std::map<std::string, double> _database;
 
   static bool isValidDate(const std::string& date);
+
+  static void parseDBLine(std::string const& line, std::string& date,
+                          double& value);
+  static void readDatabase(void);
+
+  static bool isValidInput(void);
+  static void parseInputLine(std::string const& line, std::string& date,
+                             double& value);
+  static void printInputData(std::string const& date, double const& value);
+  static void readInputData(char* argv);
+
+  static void print(std::map<std::string, double> data);
 
   BitcoinExchange(void);
   BitcoinExchange(BitcoinExchange const& rhs);
@@ -21,8 +33,3 @@ class BitcoinExchange {
 };
 
 #endif
-
-// db parsing -> 날짜 처리(굉장 복잡) 함수 만들기 : 시세
-// 입력 파싱 -> 섞어 섞어 처리 : 구매
-// 찾을 때 없으면 가장 가까운 전 날짜 데이터 -> 1월 2일 ㅡㅡ 1월 5일 : 알고리즘
-// bound 관련 함수

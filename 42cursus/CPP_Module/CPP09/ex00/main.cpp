@@ -3,11 +3,13 @@
 #include "BitcoinExchange.hpp"
 
 int main(int argc, char **argv) {
-  // if (argc != 2) return 0;
+  if (argc != 2) return 0;
 
-  (void)argc;
-  (void)argv;
-  BitcoinExchange::readDatabase();
+  try {
+    BitcoinExchange::execute(argv[1]);
+  } catch (std::exception &e) {
+    std::cout << "Error: " << e.what() << std::endl;
+  }
 
   return 0;
 }
