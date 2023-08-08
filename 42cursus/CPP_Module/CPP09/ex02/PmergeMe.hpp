@@ -10,6 +10,10 @@ class PmergeMe {
   static void execute(int argc, char** argv);
 
  private:
+  typedef std::vector<std::vector<int> >::iterator vecvec_iterator;
+  typedef std::vector<int>::iterator vec_iterator;
+  typedef std::vector<int>::reverse_iterator vec_reverse_iterator;
+
   static std::vector<int> _vec;
   static std::deque<int> _deq;
 
@@ -31,6 +35,10 @@ class PmergeMe {
   static void checkDuplicate(void);
   static void checkArgument(int argc, char** argv);
 
+  static void merge(std::vector<std::vector<int> >& vec);
+  static void devide(std::vector<std::vector<int> >& vec);
+  static void mergeInsertionSort(void);
+
   PmergeMe(void);
   PmergeMe(PmergeMe const& pmergeme);
   ~PmergeMe(void);
@@ -44,3 +52,6 @@ class PmergeMe {
 // 포드존슨 구현하기.. -> 자료구조 정하고 구현
 // 구현하고 시간 측정
 // 다른 자료구조로 다시 구현 -> 정민은 벡터와 데크로 함..
+
+// 자코비스탈 숫자 구현
+// 이분탐색 구현

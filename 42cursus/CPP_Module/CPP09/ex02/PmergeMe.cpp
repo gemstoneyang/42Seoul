@@ -1,6 +1,7 @@
 #include "PmergeMe.hpp"
 
 #include <algorithm>
+#include <iostream>
 #include <sstream>
 #include <stdexcept>
 
@@ -35,4 +36,77 @@ void PmergeMe::checkArgument(int argc, char **argv) {
 
 void PmergeMe::execute(int argc, char **argv) {
   PmergeMe::checkArgument(argc, argv);
+  PmergeMe::mergeInsertionSort();
+}
+
+void PmergeMe::merge(std::vector<std::vector<int> > &vec) {
+  size_t end = vec.size();
+  if (end < 4) return;
+
+  for (size_t i = 0; i < end / 2; ++i) {
+    int a = vec[i][0];
+    int b = vec[i + 1][0];
+    if (a > b) {
+      for (vec_reverse_iterator rit = vec[i + 1].rbegin();
+           rit < vec[i + 1].rend(); ++rit) {
+        vec[i].push_back(*rit);
+      }
+      vec.erase(vec.begin() + i + 1);
+    } else {
+      for (vec_reverse_iterator rit = vec[i].rbegin(); rit < vec[i].rend();
+           ++rit) {
+        vec[i + 1].push_back(*rit);
+      }
+      vec.erase(vec.begin() + i);
+    }
+  }
+
+  PmergeMe::merge(vec);
+}
+
+void PmergeMe::devide(std::vector<std::vector<int> > &vec) {
+  std::vector<std::vector<int> > loserVec;
+
+  for (vecvec_iterator vit = vec.begin(); vit < vec.end(); ++vit) {
+    std::vector<int> &tmpVec = *vit;
+    std::vector<int> newVec;
+    for (vec_reverse_iterator rit = tmpVec.rbegin();
+         rit < tmpVec.rbegin() + tmpVec.size() / 2; ++rit) {
+      newVec.push_back(*rit);
+    }
+    size_t size = tmpVec.size();
+    for (size_t i = 0; i < size / 2; ++i) tmpVec.pop_back();
+    loserVec.push_back(newVec);
+  }
+
+  vec.insert(vec.begin(), loserVec[0]);
+
+  for (size_t i = 0; i < loserVec.size(); i++) {
+    for (size_t j = 0; j < loserVec[i].size(); j++) {
+      std::cout << loserVec[i][j] << " ";
+    }
+    std::cout << std::endl;
+  }
+  std::cout << "------------" << std::endl;
+}
+
+void PmergeMe::mergeInsertionSort(void) {
+  std::vector<std::vector<int> > vec;
+
+  for (vec_iterator it = _vec.begin(); it < _vec.end(); it++) {
+    std::vector<int> newVec(1, *it);
+    vec.push_back(newVec);
+  }
+
+  if (vec.size() == 1) return;
+
+  PmergeMe::merge(vec);
+  PmergeMe::devide(vec);
+
+  for (size_t i = 0; i < vec.size(); i++) {
+    for (size_t j = 0; j < vec[i].size(); j++) {
+      std::cout << vec[i][j] << " ";
+    }
+    std::cout << std::endl;
+  }
 }
