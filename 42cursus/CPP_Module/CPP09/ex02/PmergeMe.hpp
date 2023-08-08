@@ -4,13 +4,14 @@
 
 class PmergeMe {
  public:
+  static void execute(int argc, char** argv);
+
+ private:
   PmergeMe(void);
   PmergeMe(PmergeMe const& pmergeme);
   ~PmergeMe(void);
 
   PmergeMe& operator=(PmergeMe const& pmergeme);
-
- private:
 };
 
 #endif
