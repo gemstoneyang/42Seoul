@@ -35,6 +35,10 @@ class PmergeMe {
   static void checkDuplicate(void);
   static void checkArgument(int argc, char** argv);
 
+  static int jacobsthal(int n);
+  static std::vector<int> generateOrder(int max);
+  static void binarySearch(std::vector<std::vector<int> >& vec,
+                           std::vector<int> target);
   static void merge(std::vector<std::vector<int> >& vec);
   static void devide(std::vector<std::vector<int> >& vec);
   static void mergeInsertionSort(void);
