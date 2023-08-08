@@ -2,11 +2,35 @@
 #ifndef __PMERGEME_HPP__
 #define __PMERGEME_HPP__
 
+#include <deque>
+#include <vector>
+
 class PmergeMe {
  public:
   static void execute(int argc, char** argv);
 
  private:
+  static std::vector<int> _vec;
+  static std::deque<int> _deq;
+
+  static void checkInteger(int argc, char** argv);
+
+  template <typename T>
+  static bool isDuplicate(T const& arr) {
+    T temp = arr;
+    std::sort(temp.begin(), temp.end());
+
+    for (size_t i = 1; i < temp.size(); ++i) {
+      if (temp[i] == temp[i - 1]) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  static void checkDuplicate(void);
+  static void checkArgument(int argc, char** argv);
+
   PmergeMe(void);
   PmergeMe(PmergeMe const& pmergeme);
   ~PmergeMe(void);
