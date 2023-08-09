@@ -102,8 +102,7 @@ void BitcoinExchange::printInputData(std::string const& date,
 }
 
 void BitcoinExchange::readInputData(char* argv) {
-  std::string filename = argv;
-  std::ifstream file(filename);
+  std::ifstream file(argv);
   if (!file.is_open()) throw std::runtime_error("could not open file.");
 
   std::string line;
