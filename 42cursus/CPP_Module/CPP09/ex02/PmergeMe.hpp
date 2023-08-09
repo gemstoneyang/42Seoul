@@ -2,7 +2,10 @@
 #ifndef __PMERGEME_HPP__
 #define __PMERGEME_HPP__
 
+#include <cstddef>
+#include <ctime>
 #include <deque>
+#include <string>
 #include <vector>
 
 class PmergeMe {
