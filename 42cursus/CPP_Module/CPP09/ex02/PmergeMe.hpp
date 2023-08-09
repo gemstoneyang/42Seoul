@@ -10,52 +10,49 @@ class PmergeMe {
   static void execute(int argc, char** argv);
 
  private:
-  typedef std::vector<std::vector<int> >::iterator vecvec_iterator;
+  typedef std::vector<std::vector<int> > vecMatrix;
+  typedef vecMatrix::iterator vecvec_iterator;
   typedef std::vector<int>::iterator vec_iterator;
   typedef std::vector<int>::reverse_iterator vec_reverse_iterator;
+  typedef std::deque<std::deque<int> > deqMatrix;
+  typedef deqMatrix::iterator deqdeq_iterator;
+  typedef std::deque<int>::iterator deq_iterator;
+  typedef std::deque<int>::reverse_iterator deq_reverse_iterator;
 
   static std::vector<int> _vec;
   static std::deque<int> _deq;
+  static size_t _size;
 
   static void checkInteger(int argc, char** argv);
-
-  template <typename T>
-  static bool isDuplicate(T const& arr) {
-    T temp = arr;
-    std::sort(temp.begin(), temp.end());
-
-    for (size_t i = 1; i < temp.size(); ++i) {
-      if (temp[i] == temp[i - 1]) {
-        return true;
-      }
-    }
-    return false;
-  }
-
+  static bool isDuplicate(std::vector<int> const& arr);
+  static bool isDuplicate(std::deque<int> const& arr);
   static void checkDuplicate(void);
   static void checkArgument(int argc, char** argv);
+  static void printArray(std::vector<int>& vec);
+  static void printTime(clock_t time, std::string name);
 
-  static int jacobsthal(int n);
-  static std::vector<int> generateOrder(int max);
-  static void binarySearch(std::vector<std::vector<int> >& vec,
-                           std::vector<int> target);
-  static void merge(std::vector<std::vector<int> >& vec);
-  static void devide(std::vector<std::vector<int> >& vec);
-  static void mergeInsertionSort(void);
+  static void hardSort(vecMatrix& vec);
+  static void merge(vecMatrix& vec);
+  static int vectorJacobsthal(int n);
+  static std::vector<int> vectorGenerateOrder(int max);
+  static void binarySearchInsertion(vecMatrix& vec, std::vector<int> target);
+  static void devide(vecMatrix& vec);
+  static void divideAndConquer(vecMatrix& vec);
+  static void vectorMergeInsertionSort(void);
+
+  static void hardSort(deqMatrix& deq);
+  static void merge(deqMatrix& deq);
+  static int dequeJacobsthal(int n);
+  static std::deque<int> dequeGenerateOrder(int max);
+  static void binarySearchInsertion(deqMatrix& deq, std::deque<int> target);
+  static void devide(deqMatrix& deq);
+  static void divideAndConquer(deqMatrix& deq);
+  static void dequeMergeInsertionSort(void);
 
   PmergeMe(void);
   PmergeMe(PmergeMe const& pmergeme);
   ~PmergeMe(void);
-
   PmergeMe& operator=(PmergeMe const& pmergeme);
 };
 
 #endif
-
-// push swap 처럼 파싱 -> 중복 처리는 알아서 -> 정민은 금지함..
-// 포드존슨 구현하기.. -> 자료구조 정하고 구현
-// 구현하고 시간 측정
-// 다른 자료구조로 다시 구현 -> 정민은 벡터와 데크로 함..
-
-// 자코비스탈 숫자 구현
-// 이분탐색 구현

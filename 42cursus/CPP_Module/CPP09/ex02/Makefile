@@ -1,6 +1,6 @@
 NAME		= PmergeMe
 CXX			= c++
-CXXFLAGS	= -Wall -Werror -Wextra -std=c++98
+CXXFLAGS	= -Wall -Werror -Wextra -std=c++98 -fsanitize=address -g3
 
 SRCS		= main.cpp \
 			  PmergeMe.cpp
