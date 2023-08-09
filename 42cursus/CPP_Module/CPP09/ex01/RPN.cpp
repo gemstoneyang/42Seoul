@@ -1,5 +1,7 @@
 #include "RPN.hpp"
 
+#include <cctype>
+#include <cstring>
 #include <iostream>
 #include <stdexcept>
 
@@ -54,7 +56,7 @@ int RPN::calculate(char* argv) {
   for (size_t i = 0; i < std::strlen(argv); i++) {
     if (argv[i] == ' ')
       continue;
-    else if (isnumber(argv[i]) == true)
+    else if (std::isdigit(argv[i]) == true)
       _stack.push(argv[i] - '0');
     else
       RPN::executeOperation(argv[i]);
