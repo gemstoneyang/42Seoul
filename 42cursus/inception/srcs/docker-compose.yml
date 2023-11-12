@@ -227,28 +227,33 @@ services:
 
 volumes:
   wp-volume:
+    driver: local
     driver_opts:
-      o: local
       type: none
-      device: /home/${USER}/data/wordpress
+      device: /home/wonyang/data/wordpress
+      o: bind
 
   db-volume:
+    driver: local
     driver_opts:
-      o: local
       type: none
-      device: /home/${USER}/data/mariadb
+      device: /home/wonyang/data/mariadb
+      o: bind
 
   web-volume:
+    driver: local
     driver_opts:
-      o: local
       type: none
-      device: /home/${USER}/data/website
+      device: /home/wonyang/data/website
+      o: bind
   
   pt-volume:
+    driver: local
     driver_opts:
-      o: local
       type: none
-      device: /home/${USER}/data/portainer
+      device: /home/wonyang/data/portainer
+      o: bind
+
 
 networks:
   inception:

@@ -31,14 +31,7 @@ RUN sed -i "s|listen = 127.0.0.1:9000|listen = 9000|g" \
     sed -i "s|user = nobody|user = www-data|g" \
       /etc/php81/php-fpm.d/www.conf && \
     sed -i "s|group = nobody|group = www-data|g" \
-      /etc/php81/php-fpm.d/www.conf && \
-    sed -i "s|;listen.owner = nobody|listen.owner = www-data|g" \
-      /etc/php81/php-fpm.d/www.conf && \
-    sed -i "s|;listen.group = nobody|listen.group = www-data|g" \
-      /etc/php81/php-fpm.d/www.conf && \
-    sed -i "s|;pm.max_requests = 500|pm.max_requests = 100|g" \
-      /etc/php81/php-fpm.d/www.conf && \
-    rm -f /var/cache/apk/*
+      /etc/php81/php-fpm.d/www.conf
 
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \

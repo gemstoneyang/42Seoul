@@ -32,16 +32,12 @@ re: down build
 
 clean: down
 	@printf "Cleaning configuration $(name)..."
-	@docker system prune -a
-	@rm -rf ~/data/{wordpress,mariadb,website,portainer}/*
-	@rm -f ./srcs/.env
+	@docker system prune -a --volumes
 
 fclean:
 	@printf "Total clean of all configurations docker"
 	@docker stop $$(docker ps -qa)
 	@docker system prune --all --force --volumes
-	@docker network prune --force
-	@docker volume prune --force
 	@rm -rf ~/data/{wordpress,mariadb,website,portainer}/*
 	@rm -f ./srcs/.env
 

@@ -1,4 +1,4 @@
-until mysql -h mariadb -u wpuser -p$DB_PASS -e "show databases;"; do
+until mysql -h mariadb -u $DB_USER -p$DB_PASS -e "show databases;"; do
     echo "Waiting for database connection..."
     sleep 5
 done
